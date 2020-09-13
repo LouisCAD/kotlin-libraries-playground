@@ -27,6 +27,7 @@ dependencies {
     implementation(Square.retrofit2.retrofit)
     implementation(Square.retrofit2.converter.moshi)
     implementation(JakeWharton.retrofit2.converter.kotlinxSerialization)
+    implementation(Square.okHttp3.okHttp)
     implementation(Square.okHttp3.loggingInterceptor)
     implementation(Square.okHttp3.mockWebServer)
 

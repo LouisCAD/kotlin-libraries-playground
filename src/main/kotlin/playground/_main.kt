@@ -9,6 +9,8 @@ fun main() {
     println()
     playground.retrofit.main()
     println()
+    playground.okhttp.main()
+    println()
 }
 
 infix fun <T: Any?> T.shouldBe(expected: T) {
