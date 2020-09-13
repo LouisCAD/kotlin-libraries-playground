@@ -17,6 +17,8 @@ repositories {
 }
 
 dependencies {
+    implementation(Kotlin.stdlib.jdk8)
+    implementation("org.jetbrains.kotlin:kotlin-reflect:_")
     implementation(KotlinX.coroutines.core)
 
     implementation(Square.moshi)
@@ -32,8 +34,23 @@ dependencies {
     implementation(KotlinX.serialization.properties)
 
     testImplementation(Testing.kotest.runner.junit5)
+    testImplementation(Testing.kotest.property)
+    testImplementation(Testing.kotest.assertions.core)
+    testImplementation(Testing.mockK)
+    testImplementation(Testing.mockK.common)
+    testImplementation(Testing.mockito.core)
+    testImplementation(Testing.mockito.junitJupiter)
+    testImplementation(Testing.mockito.kotlin)
+    testImplementation(Testing.junit)
+    testImplementation(Testing.spek.dsl.jvm)
+    testImplementation(Testing.spek.runner.junit5)
+    testImplementation(Testing.spek.runtime.jvm)
+    testImplementation(Testing.strikt.core)
 }
 
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
 
 tasks.register("run", JavaExec::class.java) {
     this.main = "playground._mainKt"
