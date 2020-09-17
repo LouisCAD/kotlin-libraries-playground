@@ -4,7 +4,7 @@ A playground to gain a wider and deeper knowledge of the libraries in the Kotlin
 
 Also the official sample for [gradle refreshVersions](https://github.com/jmfayard/refreshVersions)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VhYERonB8co" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![](http://img.youtube.com/vi/VhYERonB8co/0.jpg)](http://www.youtube.com/watch?v=VhYERonB8co "Gradle refreshVersions")
 
 ### 🤔How do you keep up with all the new stuff?
 
