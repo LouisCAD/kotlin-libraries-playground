@@ -4,7 +4,7 @@ A playground to gain a wider and deeper knowledge of the libraries in the Kotlin
 
 Also the official sample for [gradle refreshVersions](https://github.com/jmfayard/refreshVersions)
 
-[![](http://img.youtube.com/vi/VhYERonB8co/0.jpg)](http://www.youtube.com/watch?v=VhYERonB8co "Gradle refreshVersions")
+[![](https://user-images.githubusercontent.com/459464/93568735-ddcc9300-f990-11ea-952b-1c9a461f8e14.png)](http://www.youtube.com/watch?v=VhYERonB8co "Gradle refreshVersions")
 
 ### 🤔How do you keep up with all the new stuff?
 
@@ -14,7 +14,7 @@ But once you master the language, you are not done just yet.
 
 You now face another challenging task: become familiar with its ecosystem of libraries.
 
-With time, you want to both acquire
+With time, you want to both acquire:
 
 - a **wider** knowledge of what good libraries are available in the ecosystem in general
 - a **deeper** knowledge of some specific libraries particulary important for you
@@ -23,7 +23,7 @@ There are several inefficient ways to do that:
 
 - reading tutorial after tutorial and being stuck in a loop where you "learn" about things you don't practice
 - starting a new project from scratch for every libraries you come around - overwhelming
-- trying out the library in your main project at work - a project with a compilation time of 5 minutes, who uses an older version of the library than the tutorial assume ; not sure your colleagues will be happy that you introduce a dependency you don't yet master.
+- trying out the library in your main project at work - a project with a compilation time of 5 minutes, who uses an older version of the library than the tutorial assumes ; not sure your colleagues will be happy that you introduce a dependency you don't yet master.
 
 ### 🦅Widening your knowledge of libraries
 
@@ -31,12 +31,12 @@ The `kotlin-libraries-playgound` contains samples for a growing number of good K
 [Moshi, Okio, OkHttp, Retrofit, Kotlinx Serialization](https://github.com/LouisCAD/kotlin-libraries-playground/tree/master/src/main/kotlin/playground), 
 [KoTest, Mockk, Spek, Strikt,](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/src/test/kotlin/framework) ...
 
-You are very welcome to contribute new samples (see below)
+You are very welcome to contribute new samples (see contributing section below).
 
-For each library we have a sample usage that is
+For each library, we have a sample usage that is:
 
 - self-contained (own package and main function, usually one file)
-- simple yet meaningful (no fancy coffee machine with [termosiphon](https://github.com/google/dagger/tree/master/examples/maven/coffee/src/main/java/example/dagger))
+- simple, yet meaningful (no fancy coffee machine with [termosiphon](https://github.com/google/dagger/tree/master/examples/maven/coffee/src/main/java/example/dagger))
 
 Here is for example the sample usage for [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
 
@@ -63,7 +63,7 @@ internal data class User(
 
 The more good libraries we cover, the better!
 
-You are very welcome to contribute your own library sample
+You are very welcome to contribute your own library sample.
 
 ## 🔭 Deepening your understanding of one library
 
