@@ -3,7 +3,6 @@
 package playground.retrofit
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -11,8 +10,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import playground.shouldBe
-import retrofit2.Retrofit
-import retrofit2.create
+import retrofit2.*
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
@@ -25,19 +23,19 @@ import retrofit2.http.QueryMap
 - [Consuming APIs with Retrofit | CodePath Android Cliffnotes](https://guides.codepath.com/android/Consuming-APIs-with-Retrofit#references)
  */
 fun main() {
-    runBlocking {
-        val api: RetrofitHttpbinApi = Network.retrofit.create()
-        val result = api.get(mapOf("hello" to "world"))
-        println(result)
-        result.args shouldBe mapOf("hello" to "world")
-        result.url shouldBe "http://httpbin.org/get?hello=world"
+    val api: RetrofitHttpbinApi = Network.retrofit.create()
+    val response = api.get(mapOf("hello" to "world")).execute()
+    response.isSuccessful shouldBe true
+    response.body()!!.run {
+        args shouldBe mapOf("hello" to "world")
+        url shouldBe "http://httpbin.org/get?hello=world"
     }
 }
 
 interface RetrofitHttpbinApi {
 
     @GET("get")
-    suspend fun get(@QueryMap params: Map<String, String>): HttpbinGet
+    fun get(@QueryMap params: Map<String, String>): Call<HttpbinGet>
 }
 
 @Serializable
@@ -61,6 +59,7 @@ object Network {
     val retrofit = Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(API_URL)
+            //.addCallAdapterFactory(CallAdapter.Factory)
             .addConverterFactory(Json.asConverterFactory(contentType))
             .build()
 }

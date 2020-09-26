@@ -18,7 +18,11 @@ repositories {
 // File build.gradle.kts
 dependencies {
     implementation(Kotlin.stdlib.jdk8)
+    implementation("org.jetbrains.kotlin:kotlin-reflect:_")
     implementation(KotlinX.coroutines.core)
+
+    implementation("com.squareup.moshi:moshi:_")
+    kapt(Square.moshi.kotlinCodegen)
 
     implementation(Square.retrofit2.retrofit)
     implementation(Square.retrofit2.converter.moshi)
@@ -26,13 +30,25 @@ dependencies {
     implementation(Square.okHttp3.okHttp)
     implementation(Square.okHttp3.loggingInterceptor)
     implementation(Square.okHttp3.mockWebServer)
+
     implementation(KotlinX.serialization.core)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation(KotlinX.serialization.properties)
-    kapt(Square.)
 
     testImplementation(Testing.kotest.runner.junit5)
     testImplementation(Testing.kotest.property)
     testImplementation(Testing.kotest.assertions.core)
+    testImplementation(Testing.mockK)
+    testImplementation(Testing.mockK.common)
+    testImplementation(Testing.mockito.core)
+    testImplementation(Testing.mockito.junitJupiter)
+    testImplementation(Testing.mockito.kotlin)
+    testImplementation(Testing.junit)
+    testImplementation(Testing.spek.dsl.jvm)
+    testImplementation(Testing.spek.runner.junit5)
+    testImplementation(Testing.spek.runtime.jvm)
+    testImplementation(Testing.strikt.core)
+    testImplementation(Testing.strikt.arrow)
 }
 
 tasks.withType<Test> {
@@ -42,6 +58,17 @@ tasks.withType<Test> {
 tasks.register("run", JavaExec::class.java) {
     this.main = "playground._mainKt"
 }
+
+/**
+ * How do I setup GitHub Actions for my Gradle or Android project?
+ * https://dev.to/jmfayard/how-do-i-setup-github-actions-for-my-gradle-or-android-project-3eal
+ */
+tasks.register("runOnGitHub") {
+    dependsOn(":run")
+    group = "custom"
+    description = "$ ./gradlew runOnGitHub # runs on GitHub Action"
+}
+
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
