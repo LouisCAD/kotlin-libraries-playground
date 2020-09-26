@@ -4,7 +4,7 @@ A playground to gain a wider and deeper knowledge of the libraries in the Kotlin
 
 Also the official sample for [gradle refreshVersions](https://github.com/jmfayard/refreshVersions)
 
-[![](http://img.youtube.com/vi/VhYERonB8co/0.jpg)](http://www.youtube.com/watch?v=VhYERonB8co "Gradle refreshVersions")
+[![](https://user-images.githubusercontent.com/459464/93568735-ddcc9300-f990-11ea-952b-1c9a461f8e14.png)](http://www.youtube.com/watch?v=VhYERonB8co "Gradle refreshVersions")
 
 ### 🤔How do you keep up with all the new stuff?
 
