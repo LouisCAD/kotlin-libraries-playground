@@ -28,8 +28,8 @@ There are several inefficient ways to do that:
 ### 🦅Widening your knowledge of libraries
 
 The `kotlin-libraries-playgound` contains samples for a growing number of good Kotlin libraries including 
-[Moshi, Okio, OkHttp, Retrofit, Kotlinx Serialization](https://github.com/LouisCAD/kotlin-libraries-playground/tree/master/src/main/kotlin/playground), 
-[KoTest, Mockk, Spek, Strikt,](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/src/test/kotlin/framework) ...
+[Moshi, Okio, OkHttp, Retrofit, Kotlinx Serialization](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/main/kotlin/playground), 
+[KoTest, Mockk, Spek, Strikt,](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/test/kotlin/framework) ...
 
 You are very welcome to contribute new samples (see contributing section below).
 

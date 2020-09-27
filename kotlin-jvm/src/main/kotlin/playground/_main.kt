@@ -11,6 +11,8 @@ fun main() {
     println()
     playground.okhttp.main()
     println()
+    playground.ktor.client.main()
+    println()
 }
 
 infix fun <T: Any?> T.shouldBe(expected: T) {

@@ -24,6 +24,10 @@ dependencies {
     implementation("com.squareup.moshi:moshi:_")
     kapt(Square.moshi.kotlinCodegen)
 
+    implementation(Ktor.client.core)
+    implementation(Ktor.client.okHttp)
+    implementation(Ktor.client.serialization)
+
     implementation(Square.retrofit2.retrofit)
     implementation(Square.retrofit2.converter.moshi)
     implementation(JakeWharton.retrofit2.converter.kotlinxSerialization)
@@ -35,6 +39,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation(KotlinX.serialization.properties)
 
+    testImplementation(Testing.junit.params)
     testImplementation(Testing.kotest.runner.junit5)
     testImplementation(Testing.kotest.property)
     testImplementation(Testing.kotest.assertions.core)
