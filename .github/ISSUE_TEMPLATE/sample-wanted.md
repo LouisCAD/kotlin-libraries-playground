@@ -15,7 +15,7 @@ assignees: ''
 
 ## What the sample could do
 
-Two tables `User` and  `Order`. Show how to create the database, insert entries, do a relational query and delete entries
+XXX
 
 ## Wants to contribute the sample?
 

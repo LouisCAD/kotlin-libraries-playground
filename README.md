@@ -6,6 +6,14 @@ Also the official sample for [gradle refreshVersions](https://github.com/jmfayar
 
 [![](https://user-images.githubusercontent.com/459464/93568735-ddcc9300-f990-11ea-952b-1c9a461f8e14.png)](http://www.youtube.com/watch?v=VhYERonB8co "Gradle refreshVersions")
 
+## ❤️ Contributors welcome! #hacktoberfest
+
+We want to collect sample usage of Kotlin libraries, and the more the better!
+
+You are very welcome to contribute your own library sample.
+
+<big>==> [CONTRIBUTING.md](https://github.com/LouisCAD/kotlin-libraries-playground/blob/main/CONTRIBUTING.md)</big>
+
 ### 🤔How do you keep up with all the new stuff?
 
 There are [great resources to learn Kotlin](https://dev.to/jmfayard/best-ways-to-learn-kotlin-from-scratch-or-from-java-with-books-or-tutorials-online-or-in-the-ide-52cm). 
@@ -28,8 +36,8 @@ There are several inefficient ways to do that:
 ### 🦅Widening your knowledge of libraries
 
 The `kotlin-libraries-playgound` contains samples for a growing number of good Kotlin libraries including 
-[Moshi, Okio, OkHttp, Retrofit, Kotlinx Serialization](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/main/kotlin/playground), 
-[KoTest, Mockk, Spek, Strikt,](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/test/kotlin/framework) ...
+[Moshi, Okio, OkHttp, Retrofit, Kotlinx Serialization, Ktor-client, ...](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/main/kotlin/playground), 
+[KoTest, Mockk, Spek, Strikt, Mockito, Junit-Jupiter, ...](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/test/kotlin/framework) ...
 
 You are very welcome to contribute new samples (see contributing section below).
 
@@ -59,11 +67,6 @@ internal data class User(
 )
 ```
 
-## ❤️ Contributors welcome! #hacktoberfest
-
-The more good libraries we cover, the better!
-
-You are very welcome to contribute your own library sample.
 
 ## 🔭 Deepening your understanding of one library
 
