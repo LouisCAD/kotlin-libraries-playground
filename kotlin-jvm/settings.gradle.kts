@@ -9,6 +9,19 @@ buildscript {
     )
 }
 
+plugins {
+    id("com.gradle.enterprise") version "3.4.1"
+}
+
+// https://dev.to/jmfayard/the-one-gradle-trick-that-supersedes-all-the-others-5bpg
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+        termsOfServiceAgree = "yes"
+        publishOnFailure()
+    }
+}
+
 rootProject.name = "kotlin-libraries-playground"
 
 bootstrapRefreshVersions()
