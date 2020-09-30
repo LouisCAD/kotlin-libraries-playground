@@ -19,7 +19,7 @@ For the purpose of the guide, I will assume you choose to work on **Koin**
 
 - 🛠 **Fork** the project
 - ⬇️ Download the project locally
-- ⑂ Create a git **branch** called `koin`
+- ⑂ Create a git **branch** called `<LIBRARY_NAME>`
 - 📁 Open the folder `kotlin-jvm` in [IntelliJ IDEA Community](https://www.jetbrains.com/idea/download) or in [Android Studio](https://developer.android.com/studio/)
 - ⌛ Wait until your IDE has configured Gradle and indexed all the thing
 - 📂 Open the file `kotlin-jvm/src/main/kotlin/playground/_main.kt`
@@ -32,7 +32,7 @@ Or, if you are fine with using the command-line:
 ```bash
 $ git clone https://github.com/LouisCAD/kotlin-libraries-playground
 $ cd kotlin-libraries-playground
-$ git checkout -b koin
+$ git checkout -b <LIBRARY_NAME>
 $ cd kotlin-jvm
 $ ./gradlew run
 > Task :run
