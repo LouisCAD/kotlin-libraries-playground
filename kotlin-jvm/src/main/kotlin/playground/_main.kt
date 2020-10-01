@@ -15,6 +15,8 @@ fun main() {
     println()
     playground.kotlinx.collections.immutable.main()
     println()
+    playground.exposed.main()
+    println()
 }
 
 infix fun <T: Any?> T.shouldBe(expected: T) {
