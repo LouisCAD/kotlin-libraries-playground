@@ -13,6 +13,8 @@ fun main() {
     println()
     playground.ktor.client.main()
     println()
+    playground.kotlinx.collections.immutable.main()
+    println()
 }
 
 infix fun <T: Any?> T.shouldBe(expected: T) {
