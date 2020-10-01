@@ -40,6 +40,7 @@ dependencies {
     implementation(KotlinX.serialization.core)
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation(KotlinX.serialization.properties)
+    implementation(KotlinX.collections.immutable)
 
     testImplementation(Testing.junit.params)
     testImplementation(Testing.kotest.runner.junit5)
