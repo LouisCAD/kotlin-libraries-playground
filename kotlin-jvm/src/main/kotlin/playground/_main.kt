@@ -1,29 +1,24 @@
 package playground
 
 fun main() {
-    playground.moshi.main()
-    println()
-    playground.kotlinx.serialization.main()
-    println()
-    playground.okio.main()
-    println()
-    playground.retrofit.main()
-    println()
-    playground.okhttp.main()
-    println()
-    playground.ktor.client.main()
-    println()
-    playground.kotlinx.collections.immutable.main()
-    println()
-    playground.clikt.main(arrayOf<String>())
-    playground.clikt.main(arrayOf<String>("--language", "FR", "--greeting", "Bonjour"))
-    println()
-    playground.kotlinx.html.main()
-    println()
+
+    /**
+     * Keep the list sorted to minimize merge conflicts on pull-requests!
+     */
+    playground.clikt.main(arrayOf("--language", "FR", "--greeting", "Bonjour"))
+    playground.clikt.main(arrayOf())
     playground.exposed.main()
-    println()
+    playground.kodein.di.main()
     playground.kotlinpoet.main()
-    println()
+    playground.kotlinx.collections.immutable.main()
+    playground.kotlinx.html.main()
+    playground.kotlinx.serialization.main()
+    playground.ktor.client.main()
+    playground.moshi.main()
+    playground.okhttp.main()
+    playground.okio.main()
+    playground.retrofit.main()
+    playground.sqldelight.main()
 }
 
 infix fun <T: Any?> T.shouldBe(expected: T) {

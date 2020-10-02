@@ -26,6 +26,7 @@ import retrofit2.http.QueryMap
 - [GitHub ktorio/ktor](https://github.com/ktorio/ktor)
  */
 fun main() {
+    println()
     println("# Ktor Http client")
     val api: KtorHttpbinApi = KtorHttpbinApi(Network.ktorClient)
 

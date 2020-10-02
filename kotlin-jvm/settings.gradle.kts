@@ -1,5 +1,15 @@
 import de.fayard.refreshVersions.bootstrapRefreshVersions
 
+pluginManagement {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        google()
+        gradlePluginPortal()
+    }
+}
+
 buildscript {
     val useSnapshot = false
     repositories { mavenLocal() ; gradlePluginPortal() }

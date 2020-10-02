@@ -35,6 +35,7 @@ import java.io.File
 private const val PLAYGROUND_MODE = false
 
 fun main() {
+    println()
     println("# kotlinx.html")
 
     val libraryInfo = loadLibraryInfo()

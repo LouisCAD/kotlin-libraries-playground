@@ -19,6 +19,7 @@ import java.time.Month
  * - [GitHub](https://github.com/JetBrains/Exposed)
  */
 fun main() {
+    println()
     println("# JetBrains/Exposed - Kotlin SQL Framework")
 
     Database.connect("jdbc:h2:mem:playground")
