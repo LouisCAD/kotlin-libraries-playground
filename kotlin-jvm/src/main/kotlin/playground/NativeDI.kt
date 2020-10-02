@@ -1,6 +1,8 @@
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
+
+
 /**
  * Native Dependency Injection: Pure Kotlin, no framework required Dependency Injection
  * ideal for smaller-mid level projects which can be migrated easily to Dagger|Hilt like
@@ -11,6 +13,7 @@ import kotlinx.coroutines.runBlocking
  * - [Author](https://chetangupta.net)
  */
 fun main() {
+
     val viewModel = Injector.viewModel
     viewModel.userCallback = { user ->
         if (user != null) {
@@ -18,8 +21,9 @@ fun main() {
         }
     }
     viewModel.error = { error ->
-        print(error.stackTrace)
+        println(error.stackTrace)
     }
+
     viewModel.getUser()
     // for migration guide to Hilt or Dagger, please refer to companion blog
 }
@@ -78,9 +82,11 @@ class ViewModel(private val sampleRepo: SampleRepository) {
 
     fun getUser() = runBlocking {
         //get cache value
+        println("reading from cache")
         var user: SampleUser? = sampleRepo.getCacheUser()
         // get remote value
-        if (user != null) {
+        if (user == null) {
+            println("reading remote cache")
             val result = sampleRepo.getRemoteUser()
             user = when (result) {
                 is Result.Success -> result.value
@@ -91,7 +97,8 @@ class ViewModel(private val sampleRepo: SampleRepository) {
             }
         }
         // get last local value
-        if (user != null) {
+        if (user == null) {
+            println("reading local cache")
             val result = sampleRepo.getLocalUser()
             user = when (result) {
                 is Result.Success -> result.value
@@ -101,7 +108,6 @@ class ViewModel(private val sampleRepo: SampleRepository) {
                 }
             }
         }
-
         userCallback.invoke(user)
     }
 }
