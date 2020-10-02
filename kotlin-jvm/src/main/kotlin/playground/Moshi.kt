@@ -15,6 +15,7 @@ import playground.shouldBe
  * - [JavaDoc](https://square.github.io/moshi/1.x/moshi/)
  */
 fun main() {
+    println()
     println("# square/moshi - A modern JSON library for Kotlin and Java")
     val moshi: Moshi = configureMoshi()
     val adapter: JsonAdapter<User> = moshi.adapter(User::class.java)

@@ -17,6 +17,7 @@ class CliktPlayground : CliktCommand() {
     private val greeting: String by option(help="Greeting").default("Hello")
 
     override fun run() {
+        println()
         println("# ajalt/Clikt : Multiplatform command line interface parsing for Kotlin")
         println("Greeting: $greeting, Language: $language")
     }

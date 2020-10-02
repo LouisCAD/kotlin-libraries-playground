@@ -27,6 +27,7 @@ private val testOrders by lazy {
 }
 
 fun main() {
+    println()
     println("# cashapp/SQLDelight - Kotlin SQL Framework")
 
     val driver: SqlDriver = JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY)
@@ -38,7 +39,7 @@ fun main() {
     readData(database)
 
     deleteData(database)
-    
+
 }
 
 fun insertData(database: AppDatabase) {

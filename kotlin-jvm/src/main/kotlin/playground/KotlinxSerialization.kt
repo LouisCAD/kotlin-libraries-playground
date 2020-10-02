@@ -17,6 +17,7 @@ import playground.shouldBe
  * - [CHANGELOG](https://github.com/Kotlin/kotlinx.serialization/blob/master/CHANGELOG.md)
  */
 fun main() {
+    println()
     println("# Kotlin/kotlinx.serialization : Kotlin multiplatform / multi-format serialization")
     val user = User(name = "Robert", age = 42)
     val json = """{"name":"Robert","age":42}"""
