@@ -14,6 +14,8 @@ import kotlinx.coroutines.runBlocking
  */
 fun main() {
 
+    println("# Native dependency injection in pure Kotlin")
+
     val viewModel = Injector.viewModel
     viewModel.userCallback = { user ->
         if (user != null) {
