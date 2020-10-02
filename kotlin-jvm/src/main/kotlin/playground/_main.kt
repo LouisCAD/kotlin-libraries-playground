@@ -15,6 +15,11 @@ fun main() {
     println()
     playground.kotlinx.collections.immutable.main()
     println()
+    playground.clikt.main(arrayOf<String>())
+    playground.clikt.main(arrayOf<String>("--language", "FR", "--greeting", "Bonjour"))
+    println()
+    playground.kotlinx.html.main()
+    println()
     playground.exposed.main()
     println()
 }
