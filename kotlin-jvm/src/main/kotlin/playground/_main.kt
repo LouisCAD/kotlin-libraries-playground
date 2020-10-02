@@ -22,6 +22,8 @@ fun main() {
     println()
     playground.exposed.main()
     println()
+    playground.native.di.main()
+    println()
 }
 
 infix fun <T: Any?> T.shouldBe(expected: T) {

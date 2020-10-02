@@ -1,11 +1,15 @@
+@file:Suppress("PackageDirectoryMismatch")
+
+package playground.di.manual
+
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
 
 /**
- * Native Dependency Injection: Pure Kotlin, no framework required Dependency Injection
+ * Manual Dependency Injection: Pure Kotlin, no framework required Dependency Injection
  * ideal for smaller-mid level projects which can be migrated easily to Dagger|Hilt like
- * framewokr
+ * framework.
  *
  * - [Blog](https://proandroiddev.com/hold-on-before-you-dagger-or-hilt-try-this-simple-di-f674c83ebeec)
  * - [Github-Sample](https://github.com/ch8n/android-no-3rd-party-mvvm-example)
@@ -13,7 +17,7 @@ import kotlinx.coroutines.runBlocking
  */
 fun main() {
 
-    println("# Native dependency injection in pure Kotlin")
+    println("# Manual dependency injection, written purely using Kotlin")
 
     val viewModel = Injector.viewModel
     viewModel.userCallback = { user ->
