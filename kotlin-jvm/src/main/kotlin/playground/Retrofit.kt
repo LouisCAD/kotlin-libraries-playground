@@ -23,6 +23,8 @@ import retrofit2.http.QueryMap
 - [Consuming APIs with Retrofit | CodePath Android Cliffnotes](https://guides.codepath.com/android/Consuming-APIs-with-Retrofit#references)
  */
 fun main() {
+    println()
+    println("# square/retrofit - A type-safe HTTP client for Android and the JVM")
     val api: RetrofitHttpbinApi = Network.retrofit.create()
     val response = api.get(mapOf("hello" to "world")).execute()
     response.isSuccessful shouldBe true

@@ -1,0 +1,13 @@
+CREATE TABLE user (
+  user_id_pk INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  user_name TEXT NOT NULL
+);
+
+insertUser:
+INSERT OR REPLACE INTO user (user_id_pk, user_name) VALUES ?;
+
+selectAllUsers:
+SELECT * FROM user ORDER BY user_id_pk;
+
+deleteAllUsers:
+DELETE FROM user;

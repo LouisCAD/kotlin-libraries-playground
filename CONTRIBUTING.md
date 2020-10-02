@@ -92,12 +92,21 @@ Just strive to have your code both simple and meaningful
 
 ![image](https://user-images.githubusercontent.com/459464/94724991-610bc280-035b-11eb-855d-c961b2c6717f.png)
 
+## Avoid common mistakes
+
+Common mistakes made in pull-requests:
+
+- Did your put code in his own package?
+- Did you call your sample from `kotlin-jvm/src/main/kotlin/playground/_main.kt`?
+- Did you reformat your code before committing? Use the action `Reformat Code  Alt-Cmd-L`
+
 ## Contribute the pull-request 
 
 - Make sure your code is run when you run the task `./gradlew runOnGitHub`. This task will be run [on GitHub Actions](https://github.com/LouisCAD/kotlin-libraries-playground/actions)
 - Create your pull request. Hint: there is an action for that in IntelliJ/Android Studio
 
 ![](https://user-images.githubusercontent.com/459464/94725192-adef9900-035b-11eb-8df7-7ce9564580c4.png)
+
 
 ## What if I'm stuck?
 

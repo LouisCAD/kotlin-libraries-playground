@@ -13,6 +13,7 @@ import playground.shouldBe
  * - [CHANGELOG](https://github.com/Kodein-Framework/Kodein-DI/blob/master/CHANGELOG.md)
  */
 fun main() {
+    println()
     println("# Kotlin/org.kodein.di : Kotlin multiplatform / painless dependency injection")
 
     // A dependency container that provides a UserRepository for testing and a "real" one.

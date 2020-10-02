@@ -15,6 +15,7 @@ import playground.shouldBe
  * - [CHANGELOG](https://github.com/Kotlin/kotlinx.collections.immutable/blob/master/CHANGELOG.md)
  */
 fun main() {
+    println()
     println("# Kotlin/kotlinx.collections.immutable : Immutable Collections Library for Kotlin")
 
     persistentList()
