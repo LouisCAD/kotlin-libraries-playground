@@ -96,7 +96,7 @@ Just strive to have your code both simple and meaningful
 
 Common mistakes made in pull-requests:
 
-- Did your code in his own package?
+- Did your put code in his own package?
 - Did you call your sample from `kotlin-jvm/src/main/kotlin/playground/_main.kt`?
 - Did you reformat your code before committing? Use the action `Reformat Code  Alt-Cmd-L`
 
