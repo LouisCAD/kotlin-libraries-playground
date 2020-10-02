@@ -36,6 +36,7 @@ dependencies {
     implementation(Square.okHttp3.okHttp)
     implementation(Square.okHttp3.loggingInterceptor)
     implementation(Square.okHttp3.mockWebServer)
+    implementation(Square.kotlinPoet)
 
     implementation(KotlinX.serialization.core)
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
