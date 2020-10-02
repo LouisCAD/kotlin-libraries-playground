@@ -21,7 +21,7 @@ fun main() {
         print(error.stackTrace)
     }
     viewModel.getUser()
-    // for migration guide please refer to companion blog
+    // for migration guide to Hilt or Dagger, please refer to companion blog
 }
 
 
