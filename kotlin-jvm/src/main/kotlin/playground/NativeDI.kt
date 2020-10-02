@@ -2,7 +2,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
 
-
 /**
  * Native Dependency Injection: Pure Kotlin, no framework required Dependency Injection
  * ideal for smaller-mid level projects which can be migrated easily to Dagger|Hilt like
@@ -40,7 +39,10 @@ object Resolver {
         return ViewModel(sampleRepository)
     }
 
-    fun provideSampleRepository(localDataSource: DataSourceLocal, remoteDataSource: DataSourceRemote): SampleRepository {
+    fun provideSampleRepository(
+            localDataSource: DataSourceLocal,
+            remoteDataSource: DataSourceRemote
+    ): SampleRepository {
         return SampleRepositoryImpl(localDataSource, remoteDataSource)
     }
 
@@ -216,12 +218,11 @@ sealed class Result<out E, out V> {
     data class Error<out E>(val error: E) : Result<E, Nothing>()
 
     companion object Factory {
-        inline fun <V> build(function: () -> V): Result<Exception, V> =
-                try {
-                    Success(function.invoke())
-                } catch (e: kotlin.Exception) {
-                    Error(e)
-                }
+        inline fun <V> build(function: () -> V): Result<Exception, V> = try {
+            Success(function.invoke())
+        } catch (e: kotlin.Exception) {
+            Error(e)
+        }
     }
 
 }
