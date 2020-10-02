@@ -8,6 +8,7 @@ fun main() {
      */
     playground.clikt.main(arrayOf("--language", "FR", "--greeting", "Bonjour"))
     playground.clikt.main(arrayOf())
+    playground.di.manual.main()
     playground.exposed.main()
     playground.kodein.di.main()
     playground.kotlinpoet.main()

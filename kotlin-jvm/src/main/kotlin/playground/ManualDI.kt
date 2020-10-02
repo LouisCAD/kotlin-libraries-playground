@@ -16,7 +16,7 @@ import kotlinx.coroutines.runBlocking
  * - [Author](https://chetangupta.net)
  */
 fun main() {
-
+    println()
     println("# Manual dependency injection, written purely using Kotlin")
 
     val viewModel = Injector.viewModel
@@ -44,8 +44,8 @@ object Resolver {
     }
 
     fun provideSampleRepository(
-            localDataSource: DataSourceLocal,
-            remoteDataSource: DataSourceRemote
+        localDataSource: DataSourceLocal,
+        remoteDataSource: DataSourceRemote
     ): SampleRepository {
         return SampleRepositoryImpl(localDataSource, remoteDataSource)
     }
@@ -121,8 +121,8 @@ class ViewModel(private val sampleRepo: SampleRepository) {
 }
 
 class SampleRepositoryImpl(
-        private val dataSourceLocal: DataSourceLocal,
-        private val dataSourceRemote: DataSourceRemote
+    private val dataSourceLocal: DataSourceLocal,
+    private val dataSourceRemote: DataSourceRemote
 ) : SampleRepository {
 
     private var user: SampleUser? = null
@@ -205,10 +205,10 @@ interface SampleRepository {
 
 // --------- DTO/Entity -------
 data class SampleUser(
-        val name: String = "Chetan Gupta",
-        val socialMedia: String = "twitter.com@ch8n2",
-        val portfolio: String = "https://chetangupta.net",
-        var dataSource: DataSource = DataSource.DEFAULT
+    val name: String = "Chetan Gupta",
+    val socialMedia: String = "twitter.com@ch8n2",
+    val portfolio: String = "https://chetangupta.net",
+    var dataSource: DataSource = DataSource.DEFAULT
 )
 
 enum class DataSource {
