@@ -37,6 +37,8 @@ dependencies {
     implementation(Ktor.client.okHttp)
     implementation(Ktor.client.serialization)
 
+    implementation("org.kodein.di:kodein-di:_")
+
     implementation(Square.retrofit2.retrofit)
     implementation(Square.retrofit2.converter.moshi)
     implementation(JakeWharton.retrofit2.converter.kotlinxSerialization)
@@ -47,6 +49,7 @@ dependencies {
     implementation(KotlinX.serialization.core)
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation(KotlinX.serialization.properties)
+    implementation(KotlinX.collections.immutable)
 
     implementation("com.squareup.sqldelight:sqlite-driver:_")
 
