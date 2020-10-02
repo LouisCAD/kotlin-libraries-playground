@@ -44,6 +44,8 @@ dependencies {
 
     implementation(KotlinX.html.jvm)
 
+    implementation("com.github.ajalt.clikt:clikt:_")
+
     testImplementation(Testing.junit.params)
     testImplementation(Testing.kotest.runner.junit5)
     testImplementation(Testing.kotest.property)
