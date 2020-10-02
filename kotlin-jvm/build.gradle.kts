@@ -53,6 +53,16 @@ dependencies {
 
     implementation("com.squareup.sqldelight:sqlite-driver:_")
 
+    implementation(KotlinX.html.jvm)
+
+    implementation("com.github.ajalt.clikt:clikt:_")
+
+    implementation("org.jetbrains.exposed:exposed-core:_")
+    implementation("org.jetbrains.exposed:exposed-dao:_")
+    implementation("org.jetbrains.exposed:exposed-jdbc:_")
+    implementation("org.jetbrains.exposed:exposed-java-time:_")
+    implementation("com.h2database:h2:_")
+
     testImplementation(Testing.junit.params)
     testImplementation(Testing.kotest.runner.junit5)
     testImplementation(Testing.kotest.property)

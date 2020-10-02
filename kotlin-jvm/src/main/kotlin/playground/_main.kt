@@ -17,6 +17,13 @@ fun main() {
     println()
     playground.sqldelight.main()
     println()
+    playground.clikt.main(arrayOf<String>())
+    playground.clikt.main(arrayOf<String>("--language", "FR", "--greeting", "Bonjour"))
+    println()
+    playground.kotlinx.html.main()
+    println()
+    playground.exposed.main()
+    println()
 }
 
 infix fun <T: Any?> T.shouldBe(expected: T) {
