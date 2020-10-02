@@ -1,0 +1,15 @@
+CREATE TABLE orders (
+  order_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  order_name TEXT NOT NULL,
+  order_date INTEGER NOT NULL,
+  user_id_fk INTEGER NOT NULL
+);
+
+insertOrder:
+INSERT OR REPLACE INTO orders (order_id, order_name, order_date, user_id_fk) VALUES ?;
+
+selectOrderByUserID:
+SELECT * FROM orders WHERE user_id_fk = ?;
+
+deleteAllOrders:
+DELETE FROM orders;

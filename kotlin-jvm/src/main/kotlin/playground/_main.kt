@@ -13,6 +13,8 @@ fun main() {
     println()
     playground.ktor.client.main()
     println()
+    playground.sqldelight.main()
+    println()
 }
 
 infix fun <T: Any?> T.shouldBe(expected: T) {

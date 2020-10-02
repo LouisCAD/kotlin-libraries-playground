@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm")
     kotlin("kapt")
     kotlin("plugin.serialization")
+    id("com.squareup.sqldelight")
 }
 
 group = "playground"
@@ -15,6 +16,14 @@ repositories {
     jcenter()
     maven(url = "https://dl.bintray.com/kotlin/kotlin-eap/")
 }
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "util"
+    }
+    linkSqlite = false
+}
+
 // File build.gradle.kts
 dependencies {
     implementation(Kotlin.stdlib.jdk8)
@@ -38,6 +47,8 @@ dependencies {
     implementation(KotlinX.serialization.core)
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation(KotlinX.serialization.properties)
+
+    implementation("com.squareup.sqldelight:sqlite-driver:_")
 
     testImplementation(Testing.junit.params)
     testImplementation(Testing.kotest.runner.junit5)
