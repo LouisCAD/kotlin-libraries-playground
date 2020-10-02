@@ -22,6 +22,8 @@ fun main() {
     println()
     playground.exposed.main()
     println()
+    playground.kotlinpoet.main()
+    println()
 }
 
 infix fun <T: Any?> T.shouldBe(expected: T) {
