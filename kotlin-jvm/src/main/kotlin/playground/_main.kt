@@ -22,7 +22,7 @@ fun main() {
     println()
     playground.exposed.main()
     println()
-    playground.native.di.main()
+    playground.di.manual.main()
     println()
 }
 
