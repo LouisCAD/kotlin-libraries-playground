@@ -2,6 +2,7 @@ package playground
 
 fun main() {
 
+
     /**
      * Keep the list sorted to minimize merge conflicts on pull-requests!
      */
@@ -21,7 +22,7 @@ fun main() {
     playground.sqldelight.main()
 }
 
-infix fun <T: Any?> T.shouldBe(expected: T) {
+infix fun <T : Any?> T.shouldBe(expected: T) {
     println("Test: $expected")
     check(this == expected) { "Test failed!\nWanted: $expected\nGot:    $this" }
 }
