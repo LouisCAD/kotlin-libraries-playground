@@ -42,6 +42,8 @@ dependencies {
     implementation(KotlinX.serialization.properties)
     implementation(KotlinX.collections.immutable)
 
+    implementation(KotlinX.html.jvm)
+
     testImplementation(Testing.junit.params)
     testImplementation(Testing.kotest.runner.junit5)
     testImplementation(Testing.kotest.property)
