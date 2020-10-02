@@ -20,9 +20,9 @@ import java.util.*
 private val testUser by lazy { User(1L, "Jack") }
 private val testOrders by lazy {
     listOf(
-            Orders(1L, "McDonalds", Date().time, testUser.user_id_pk),
-            Orders(2L, "Taco Bell", Date().time, testUser.user_id_pk),
-            Orders(3L, "Shake Shack", Date().time, testUser.user_id_pk)
+        Orders(1L, "McDonalds", Date().time, testUser.user_id_pk),
+        Orders(2L, "Taco Bell", Date().time, testUser.user_id_pk),
+        Orders(3L, "Shake Shack", Date().time, testUser.user_id_pk)
     )
 }
 
