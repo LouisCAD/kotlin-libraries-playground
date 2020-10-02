@@ -19,6 +19,7 @@ import playground.shouldBe
  */
 
 fun main() {
+    println()
     println("# Kotlin Poet")
 
     val `package` = "references.kotlinPoet"
