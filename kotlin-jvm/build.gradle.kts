@@ -57,6 +57,22 @@ dependencies {
     implementation(Square.retrofit2.converter.moshi)
     implementation(Square.retrofit2.retrofit)
     kapt(Square.moshi.kotlinCodegen)
+    implementation(Square.kotlinPoet)
+
+    implementation(KotlinX.serialization.core)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
+    implementation(KotlinX.serialization.properties)
+    implementation(KotlinX.collections.immutable)
+
+    implementation(KotlinX.html.jvm)
+
+    implementation("com.github.ajalt.clikt:clikt:_")
+
+    implementation("org.jetbrains.exposed:exposed-core:_")
+    implementation("org.jetbrains.exposed:exposed-dao:_")
+    implementation("org.jetbrains.exposed:exposed-jdbc:_")
+    implementation("org.jetbrains.exposed:exposed-java-time:_")
+    implementation("com.h2database:h2:_")
 
     testImplementation(Testing.junit.params)
     testImplementation(Testing.kotest.runner.junit5)
