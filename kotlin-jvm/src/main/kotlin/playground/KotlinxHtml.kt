@@ -1,4 +1,6 @@
-package playground
+@file:Suppress("PackageDirectoryMismatch")
+
+package playground.kotlinx.html
 
 import io.ktor.http.LinkHeader
 import kotlinx.html.FlowContent
@@ -18,6 +20,7 @@ import kotlinx.html.pre
 import kotlinx.html.stream.appendHTML
 import kotlinx.html.title
 import kotlinx.html.unsafe
+import playground.shouldBe
 import java.io.File
 
 
