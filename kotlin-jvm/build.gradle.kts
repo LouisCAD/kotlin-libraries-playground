@@ -42,6 +42,8 @@ dependencies {
     implementation(KotlinX.serialization.properties)
     implementation(KotlinX.collections.immutable)
 
+    implementation(KotlinX.html.jvm)
+
     implementation("com.github.ajalt.clikt:clikt:_")
 
     testImplementation(Testing.junit.params)

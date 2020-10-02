@@ -17,6 +17,8 @@ fun main() {
     println()
     playground.clikt.main(arrayOf<String>("--language", "FR", "--greeting", "Bonjour"))
     println()
+    playground.kotlinx.html.main()
+    println()
 }
 
 infix fun <T: Any?> T.shouldBe(expected: T) {
