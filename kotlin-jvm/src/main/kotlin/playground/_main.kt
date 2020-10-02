@@ -20,6 +20,8 @@ fun main() {
     println()
     playground.kotlinx.html.main()
     println()
+    playground.exposed.main()
+    println()
 }
 
 infix fun <T: Any?> T.shouldBe(expected: T) {
