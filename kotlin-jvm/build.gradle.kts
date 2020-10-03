@@ -32,6 +32,7 @@ dependencies {
      */
     implementation("com.github.ajalt.clikt:clikt:_")
     implementation("com.github.ajalt.clikt:clikt:_")
+    implementation ("com.github.ajalt:mordant:_")
     implementation("com.h2database:h2:_")
     implementation("com.h2database:h2:_")
     implementation("com.squareup.moshi:moshi:_")
