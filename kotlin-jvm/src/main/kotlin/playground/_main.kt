@@ -19,6 +19,7 @@ fun main() {
     playground.moshi.main()
     playground.okhttp.main()
     playground.okio.main()
+    playground.picnic.main()
     playground.retrofit.main()
     playground.sqldelight.main()
 }
