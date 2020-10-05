@@ -8,10 +8,10 @@ fun main() {
      */
     playground.clikt.main(arrayOf("--language", "FR", "--greeting", "Bonjour"))
     playground.clikt.main(arrayOf())
-    playground.exposed.main()
     playground.di.kodein.main()
     playground.di.manual.main()
     playground.di.koin.main()
+    playground.exposed.main()
     playground.kotlinpoet.main()
     playground.kotlinx.collections.immutable.main()
     playground.kotlinx.html.main()
