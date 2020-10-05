@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch")
 
-package playground.kodein.di
+package playground.di.kodein
 
 import org.kodein.di.*
 import playground.shouldBe
@@ -52,7 +52,7 @@ internal class Application(private val userRepository: UserRepository) {
 /**
  * An interface that defines a user repository.
  */
-interface UserRepository {
+internal interface UserRepository {
     fun addUser(user: User)
     fun userById(id: Int): User?
 }
@@ -60,7 +60,7 @@ interface UserRepository {
 /**
  * A barebones user model.
  */
-data class User(val id: Int)
+internal data class User(val id: Int)
 
 /**
  * User repository that stores data in memory.
