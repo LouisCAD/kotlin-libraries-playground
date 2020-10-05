@@ -13,6 +13,7 @@ fun main() {
     playground.kodein.di.main()
     playground.kotlinpoet.main()
     playground.kotlinx.collections.immutable.main()
+    playground.kotlinx.datetime.main()
     playground.kotlinx.html.main()
     playground.kotlinx.serialization.main()
     playground.ktor.client.main()
