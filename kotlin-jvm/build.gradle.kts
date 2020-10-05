@@ -49,6 +49,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.kodein.di:kodein-di:_")
+    implementation("org.koin:koin-core:_")
     implementation(JakeWharton.retrofit2.converter.kotlinxSerialization)
     implementation(Kotlin.stdlib.jdk8)
     implementation(KotlinX.collections.immutable)
