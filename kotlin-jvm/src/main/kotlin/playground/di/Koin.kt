@@ -27,7 +27,7 @@ fun main() {
         } bind UserRepository::class
     }
 
-    startKoin() {
+    startKoin {
         modules(deps)
     }
 
@@ -49,7 +49,7 @@ fun main() {
 /**
  * Abstraction of an application that can get and add users given a  UserRepository.
  */
-internal class Application(environment: String): KoinComponent {
+internal class Application(environment: String) : KoinComponent {
     private val userRepository by inject<UserRepository>(qualifier = named(environment))
 
     fun getUser(id: Int): User? {
