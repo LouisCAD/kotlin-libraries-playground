@@ -10,6 +10,13 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 import playground.shouldBe
 
+/**
+ * Koin: A pragmatic lightweight dependency injection framework for Kotlin developers.
+ *
+ * - [Website](https://insert-koin.io/)
+ * - [Github](https://github.com/InsertKoinIO/koin)
+ * - [CHANGELOG](https://github.com/InsertKoinIO/koin/blob/master/CHANGELOG.md)
+ */
 fun main() {
     val deps = module {
         single(qualifier = named("production")) {
