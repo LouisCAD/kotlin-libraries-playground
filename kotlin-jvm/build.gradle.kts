@@ -28,12 +28,10 @@ sqldelight {
 // File build.gradle.kts
 dependencies {
 
-    /**
-     * Keep dependencies sorted to minimize merge conflicts on pull-requests!
-     */
-    implementation("com.github.ajalt.clikt:clikt:_")
-    implementation("com.github.ajalt.clikt:clikt:_")
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     implementation ("com.github.ajalt:mordant:_")
+    implementation("com.github.ajalt.clikt:clikt:_")
+    implementation("com.github.ajalt.clikt:clikt:_")
     implementation("com.h2database:h2:_")
     implementation("com.h2database:h2:_")
     implementation("com.squareup.moshi:moshi:_")
@@ -52,6 +50,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.kodein.di:kodein-di:_")
+    implementation("org.koin:koin-core:_")
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     implementation(JakeWharton.retrofit2.converter.kotlinxSerialization)
     implementation(Kotlin.stdlib.jdk8)
     implementation(KotlinX.collections.immutable)
@@ -72,7 +72,9 @@ dependencies {
     implementation(Square.okHttp3.okHttp)
     implementation(Square.retrofit2.converter.moshi)
     implementation(Square.retrofit2.retrofit)
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     kapt(Square.moshi.kotlinCodegen)
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     testImplementation(Testing.junit)
     testImplementation(Testing.junit.params)
     testImplementation(Testing.kotest.assertions.core)
@@ -88,6 +90,7 @@ dependencies {
     testImplementation(Testing.spek.runtime.jvm)
     testImplementation(Testing.strikt.arrow)
     testImplementation(Testing.strikt.core)
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
 }
 
 tasks.withType<Test> {

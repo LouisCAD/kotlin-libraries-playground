@@ -1,31 +1,40 @@
 @file:Suppress("PackageDirectoryMismatch")
 
-package playground.kodein.di
+package playground.di.koin
 
-import org.kodein.di.*
+import org.koin.core.KoinComponent
+import org.koin.core.context.startKoin
+import org.koin.core.inject
+import org.koin.core.qualifier.named
+import org.koin.dsl.bind
+import org.koin.dsl.module
 import playground.shouldBe
 
 /**
- * Kodein DI: painless Kotlin dependency injection
+ * Koin: A pragmatic lightweight dependency injection framework for Kotlin developers.
  *
- * - [Website](kodein.org/di/)
- * - [Github](https://github.com/Kodein-Framework/Kodein-DI)
- * - [CHANGELOG](https://github.com/Kodein-Framework/Kodein-DI/blob/master/CHANGELOG.md)
+ * - [Website](https://insert-koin.io/)
+ * - [Github](https://github.com/InsertKoinIO/koin)
+ * - [CHANGELOG](https://github.com/InsertKoinIO/koin/blob/master/CHANGELOG.md)
  */
 fun main() {
-    println()
-    println("# Kotlin/org.kodein.di : Kotlin multiplatform / painless dependency injection")
-
-    // A dependency container that provides a UserRepository for testing and a "real" one.
-    val deps = DI {
-        bind<UserRepository>(tag = "test") with singleton { MockedUserStore() }
-        bind<UserRepository>() with singleton { InMemoryUserStore() }
+    val deps = module {
+        single(qualifier = named("production")) {
+            InMemoryUserStore()
+        } bind UserRepository::class
+        single(qualifier = named("test")) {
+            MockedUserStore()
+        } bind UserRepository::class
     }
 
-    val testApp by deps.newInstance { Application(instance(tag = "test")) }
-    val realApp by deps.newInstance { Application(instance()) }
+    startKoin {
+        modules(deps)
+    }
 
     val user = User(1)
+
+    val testApp = Application("test")
+    val realApp = Application("production")
 
     testApp.addUser(user)
     // In the test app, we want always the same user.
@@ -36,10 +45,13 @@ fun main() {
     realApp.getUser(1) shouldBe user
 }
 
+
 /**
  * Abstraction of an application that can get and add users given a  UserRepository.
  */
-internal class Application(private val userRepository: UserRepository) {
+internal class Application(environment: String) : KoinComponent {
+    private val userRepository by inject<UserRepository>(qualifier = named(environment))
+
     fun getUser(id: Int): User? {
         return userRepository.userById(id)
     }
@@ -52,7 +64,7 @@ internal class Application(private val userRepository: UserRepository) {
 /**
  * An interface that defines a user repository.
  */
-interface UserRepository {
+internal interface UserRepository {
     fun addUser(user: User)
     fun userById(id: Int): User?
 }
@@ -60,7 +72,7 @@ interface UserRepository {
 /**
  * A barebones user model.
  */
-data class User(val id: Int)
+internal data class User(val id: Int)
 
 /**
  * User repository that stores data in memory.
