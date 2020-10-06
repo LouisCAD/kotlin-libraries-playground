@@ -15,6 +15,7 @@ repositories {
     google()
     jcenter()
     maven(url = "https://dl.bintray.com/kotlin/kotlin-eap/")
+    maven("https://kotlin.bintray.com/kotlinx/")
 }
 
 sqldelight {
@@ -37,6 +38,7 @@ dependencies {
     implementation("com.h2database:h2:_")
     implementation("com.squareup.moshi:moshi:_")
     implementation("com.squareup.sqldelight:sqlite-driver:_")
+    implementation("io.github.serpro69:kotlin-faker:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-dao:_")
@@ -46,6 +48,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:_")
     implementation("org.jetbrains.exposed:exposed-jdbc:_")
     implementation("org.jetbrains.kotlin:kotlin-reflect:_")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:_")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.kodein.di:kodein-di:_")
