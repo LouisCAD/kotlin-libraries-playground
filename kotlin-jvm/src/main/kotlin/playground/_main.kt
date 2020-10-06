@@ -1,8 +1,6 @@
 package playground
 
 fun main() {
-
-
     /**
      * Keep the list sorted to minimize merge conflicts on pull-requests!
      */
@@ -12,7 +10,6 @@ fun main() {
     playground.di.koin.main()
     playground.di.manual.main()
     playground.exposed.main()
-    playground.kodein.di.main()
     playground.kotlinfaker.main()
     playground.kotlinpoet.main()
     playground.kotlinx.collections.immutable.main()
@@ -26,6 +23,9 @@ fun main() {
     playground.okio.main()
     playground.retrofit.main()
     playground.sqldelight.main()
+    /**
+     * Keep the list sorted to minimize merge conflicts on pull-requests!
+     */
 }
 
 infix fun <T : Any?> T.shouldBe(expected: T) {
