@@ -11,6 +11,7 @@ fun main() {
     playground.di.manual.main()
     playground.exposed.main()
     playground.kodein.di.main()
+    playground.kotlinfaker.main()
     playground.kotlinpoet.main()
     playground.kotlinx.collections.immutable.main()
     playground.kotlinx.datetime.main()
