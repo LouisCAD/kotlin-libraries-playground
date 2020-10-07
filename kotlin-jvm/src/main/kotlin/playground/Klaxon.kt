@@ -15,9 +15,10 @@ fun main() {
     println("# klaxon - A library to parse JSON in Kotlin.")
     val json = """{"id" : 1, "name" : "Adam"}"""
     val user = User(id = 1, name = "Adam")
+    val klaxon = Klaxon()
 
-    Klaxon().parse<User>(json) shouldBe user
-    Klaxon().toJsonString(user) shouldBe json
+    klaxon.parse<User>(json) shouldBe user
+    klaxon.toJsonString(user) shouldBe json
 }
 
 internal data class User(val id: Int, val name: String)
