@@ -23,6 +23,7 @@ fun main() {
     playground.okio.main()
     playground.retrofit.main()
     playground.sqldelight.main()
+    playground.apollo.main()
     /**
      * Keep the list sorted to minimize merge conflicts on pull-requests!
      */
