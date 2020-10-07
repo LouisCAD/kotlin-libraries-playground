@@ -1,4 +1,5 @@
 @file:Suppress("PackageDirectoryMismatch")
+
 package playground.klaxon
 
 import com.beust.klaxon.Klaxon
