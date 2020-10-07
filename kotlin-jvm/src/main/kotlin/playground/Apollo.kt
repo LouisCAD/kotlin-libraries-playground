@@ -27,7 +27,7 @@ fun main() {
     }
 
     response.data?.launches?.launches?.forEach {
-      println("Miision ${it?.mission?.name} launched from site ${it?.site} ")
+      println("Mission ${it?.mission?.name} launched from site ${it?.site} ")
     }
   }
 }
