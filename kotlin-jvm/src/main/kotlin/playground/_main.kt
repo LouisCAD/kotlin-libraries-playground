@@ -4,6 +4,7 @@ fun main() {
     /**
      * Keep the list sorted to minimize merge conflicts on pull-requests!
      */
+    playground.apollo.main()
     playground.clikt.main(arrayOf("--language", "FR", "--greeting", "Bonjour"))
     playground.clikt.main(arrayOf())
     playground.di.kodein.main()
@@ -23,7 +24,6 @@ fun main() {
     playground.okio.main()
     playground.retrofit.main()
     playground.sqldelight.main()
-    playground.apollo.main()
     /**
      * Keep the list sorted to minimize merge conflicts on pull-requests!
      */
