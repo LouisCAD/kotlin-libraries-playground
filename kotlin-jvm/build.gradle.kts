@@ -78,6 +78,7 @@ dependencies {
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     kapt(Square.moshi.kotlinCodegen)
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
+    testImplementation("ch.tutteli.atrium:atrium-fluent-en_GB:_")
     testImplementation(Testing.junit)
     testImplementation(Testing.junit.params)
     testImplementation(Testing.kotest.assertions.core)
