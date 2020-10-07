@@ -5,7 +5,7 @@ plugins {
     kotlin("kapt")
     kotlin("plugin.serialization")
     id("com.squareup.sqldelight")
-    id("com.apollographql.apollo").version("2.4.1")
+    id("com.apollographql.apollo")
 }
 
 group = "playground"
