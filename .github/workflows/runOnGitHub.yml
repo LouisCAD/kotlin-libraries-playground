@@ -27,5 +27,3 @@ jobs:
           wrapper-cache-enabled: true
           dependencies-cache-enabled: true
           configuration-cache-enabled: true
-          build-root-directory: kotlin-jvm
-          wrapper-directory: kotlin-jvm
