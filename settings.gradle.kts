@@ -1,10 +1,10 @@
 import de.fayard.refreshVersions.bootstrapRefreshVersions
 
 buildscript {
-    repositories { mavenLocal() ; gradlePluginPortal() }
+    repositories { mavenLocal(); gradlePluginPortal() }
     val useSnapshot = false
     dependencies.classpath(
-            if (useSnapshot) "de.fayard.refreshVersions:refreshVersions:0.9.6-SNAPSHOT" else "de.fayard.refreshVersions:refreshVersions:0.9.5"
+        if (useSnapshot) "de.fayard.refreshVersions:refreshVersions:0.9.6-SNAPSHOT" else "de.fayard.refreshVersions:refreshVersions:0.9.5"
     )
 }
 
@@ -26,3 +26,4 @@ rootProject.name = "kotlin-libraries-playground"
 bootstrapRefreshVersions()
 
 include("kotlin-jvm")
+include("kotlin-testing")

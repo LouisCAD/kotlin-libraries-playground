@@ -71,23 +71,6 @@ dependencies {
     implementation(Square.retrofit2.retrofit)
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     kapt(Square.moshi.kotlinCodegen)
-    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
-    testImplementation(Testing.junit)
-    testImplementation(Testing.junit.params)
-    testImplementation(Testing.kotest.assertions.core)
-    testImplementation(Testing.kotest.property)
-    testImplementation(Testing.kotest.runner.junit5)
-    testImplementation(Testing.mockK)
-    testImplementation(Testing.mockK.common)
-    testImplementation(Testing.mockito.core)
-    testImplementation(Testing.mockito.junitJupiter)
-    testImplementation(Testing.mockito.kotlin)
-    testImplementation(Testing.spek.dsl.jvm)
-    testImplementation(Testing.spek.runner.junit5)
-    testImplementation(Testing.spek.runtime.jvm)
-    testImplementation(Testing.strikt.arrow)
-    testImplementation(Testing.strikt.core)
-    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
 }
 
 tasks.withType<Test> {
@@ -97,10 +80,6 @@ tasks.withType<Test> {
 tasks.register("run", JavaExec::class.java) {
     this.main = "playground._mainKt"
 }
-
-
-
-
 
 apollo {
     generateKotlinModels.set(true)
