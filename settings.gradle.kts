@@ -27,3 +27,4 @@ bootstrapRefreshVersions()
 
 include("kotlin-jvm")
 include("kotlin-testing")
+include("kotlin-codegen")

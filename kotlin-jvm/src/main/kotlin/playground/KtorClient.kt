@@ -14,6 +14,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import playground.HttpbinGet
 import playground.ktor.client.Network.API_URL
 import playground.shouldBe
 import retrofit2.*
@@ -69,10 +70,3 @@ object Network {
     }
 }
 
-@Serializable
-data class HttpbinGet(
-        val args: Map<String, String> = emptyMap(),
-        val headers: Map<String, String> = emptyMap(),
-        val origin: String,
-        val url: String
-)

@@ -4,13 +4,15 @@ package playground.retrofit
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import playground.HttpbinGet
 import playground.shouldBe
-import retrofit2.*
+import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
@@ -40,13 +42,6 @@ interface RetrofitHttpbinApi {
     fun get(@QueryMap params: Map<String, String>): Call<HttpbinGet>
 }
 
-@Serializable
-data class HttpbinGet(
-        val args: Map<String, String> = emptyMap(),
-        val headers: Map<String, String> = emptyMap(),
-        val origin: String,
-        val url: String
-)
 
 object Network {
     var API_URL = "http://httpbin.org/"
