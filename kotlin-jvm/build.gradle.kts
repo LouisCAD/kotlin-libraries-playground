@@ -8,15 +8,8 @@ plugins {
     id("com.apollographql.apollo")
 }
 
-group = "playground"
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-    google()
-    jcenter()
-    maven(url = "https://dl.bintray.com/kotlin/kotlin-eap/")
-    maven("https://kotlin.bintray.com/kotlinx/")
+tasks.withType<JavaExec> {
+    classpath = sourceSets["main"].runtimeClasspath
 }
 
 sqldelight {
@@ -105,32 +98,9 @@ tasks.register("run", JavaExec::class.java) {
     this.main = "playground._mainKt"
 }
 
-/**
- * How do I setup GitHub Actions for my Gradle or Android project?
- * https://dev.to/jmfayard/how-do-i-setup-github-actions-for-my-gradle-or-android-project-3eal
- */
-tasks.register("runOnGitHub") {
-    dependsOn(":run")
-    group = "custom"
-    description = "$ ./gradlew runOnGitHub # runs on GitHub Action"
-}
 
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-    kotlinOptions.freeCompilerArgs = listOf(
-            "-Xopt-in=kotlin.RequiresOptIn"
-    )
-}
 
-tasks.withType(JavaExec::class.java) {
-    classpath = sourceSets["main"].runtimeClasspath
-}
-
-tasks.register<DefaultTask>("hello") {
-    group = "Custom"
-    description = "Minimal task that do nothing. Useful to debug a failing build"
-}
 
 apollo {
     generateKotlinModels.set(true)

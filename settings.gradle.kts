@@ -24,3 +24,5 @@ gradleEnterprise {
 rootProject.name = "kotlin-libraries-playground"
 
 bootstrapRefreshVersions()
+
+include("kotlin-jvm")
