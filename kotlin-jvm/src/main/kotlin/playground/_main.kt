@@ -11,6 +11,7 @@ fun main() {
     playground.di.koin.main()
     playground.di.manual.main()
     playground.exposed.main()
+    playground.klaxon.main()
     playground.kotlinfaker.main()
     playground.kotlinpoet.main()
     playground.kotlinx.collections.immutable.main()
