@@ -45,5 +45,5 @@ fun main() {
      * (The JVM waits for all threads to terminate before exiting by default)
      */
     executorService.shutdown()
-    dispatcher.executorService().shutdown()
+    dispatcher.executorService.shutdown()
 }

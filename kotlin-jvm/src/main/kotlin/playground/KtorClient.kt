@@ -6,19 +6,12 @@ import io.ktor.client.*
 import io.ktor.client.engine.okhttp.*
 import io.ktor.client.features.json.*
 import io.ktor.client.request.*
-import io.ktor.http.*
-import io.ktor.util.*
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import playground.HttpbinGet
+import playground.kotlinx.serialization.HttpbinGet
 import playground.ktor.client.Network.API_URL
 import playground.shouldBe
-import retrofit2.*
-import retrofit2.http.QueryMap
 
 /**
  * Ktor Http Clients

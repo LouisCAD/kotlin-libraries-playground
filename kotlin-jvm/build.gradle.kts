@@ -1,5 +1,10 @@
 plugins {
     kotlin("jvm")
+    kotlin("plugin.serialization")
+    id("com.squareup.sqldelight")
+    id("com.apollographql.apollo")
+
+    /** kotlin("kapt") **/
     // NOTE: IF the library does code generation, either with kapt or a gradle/compiler plugin
     // NOTE: THEN it belongs in "kotlin-codegen", not here!
 }
@@ -12,12 +17,13 @@ tasks.withType<JavaExec> {
 dependencies {
     implementation(project(":kotlin-codegen"))
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
-    implementation("com.beust:klaxon:_")
     implementation ("com.github.ajalt:mordant:_")
+    implementation("com.beust:klaxon:_")
     implementation("com.github.ajalt.clikt:clikt:_")
     implementation("com.github.ajalt.clikt:clikt:_")
     implementation("com.h2database:h2:_")
     implementation("com.h2database:h2:_")
+    implementation("com.squareup.sqldelight:sqlite-driver:_")
     implementation("com.squareup.sqldelight:sqlite-driver:_")
     implementation("io.github.serpro69:kotlin-faker:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
@@ -53,6 +59,10 @@ dependencies {
     implementation(Square.okHttp3.okHttp)
     implementation(Square.retrofit2.converter.moshi)
     implementation(Square.retrofit2.retrofit)
+    implementation("com.apollographql.apollo:apollo-coroutines-support:_")
+    implementation("com.apollographql.apollo:apollo-runtime:_")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-properties:_")
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
 }
 
@@ -62,4 +72,15 @@ tasks.withType<Test> {
 
 tasks.register("run", JavaExec::class.java) {
     this.main = "playground._mainKt"
+}
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "util"
+    }
+    linkSqlite = false
+}
+
+apollo {
+    generateKotlinModels.set(true)
 }
