@@ -8,7 +8,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import playground.kotlinx.serialization.HttpbinGet
+import playground.kotlinx.serialization.HttpBinGet
 import playground.shouldBe
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -39,7 +39,7 @@ fun main() {
 interface RetrofitHttpbinApi {
 
     @GET("get")
-    fun get(@QueryMap params: Map<String, String>): Call<HttpbinGet>
+    fun get(@QueryMap params: Map<String, String>): Call<HttpBinGet>
 }
 
 

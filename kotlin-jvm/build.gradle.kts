@@ -9,8 +9,15 @@ plugins {
     // NOTE: THEN it belongs in "kotlin-codegen", not here!
 }
 
-tasks.withType<JavaExec> {
-    classpath = sourceSets["main"].runtimeClasspath
+sqldelight {
+    database("AppDatabase") {
+        packageName = "playground.sqldelight"
+    }
+    linkSqlite = false
+}
+
+apollo {
+    generateKotlinModels.set(true)
 }
 
 // File build.gradle.kts
@@ -76,13 +83,6 @@ tasks.register("run", JavaExec::class.java) {
     this.main = "playground._mainKt"
 }
 
-sqldelight {
-    database("AppDatabase") {
-        packageName = "util"
-    }
-    linkSqlite = false
-}
-
-apollo {
-    generateKotlinModels.set(true)
+tasks.withType<JavaExec> {
+    classpath = sourceSets["main"].runtimeClasspath
 }

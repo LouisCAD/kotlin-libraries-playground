@@ -58,7 +58,7 @@ internal data class Users(
 )
 
 @Serializable
-data class HttpbinGet(
+data class HttpBinGet(
     val args: Map<String, String> = emptyMap(),
     val headers: Map<String, String> = emptyMap(),
     val origin: String,
