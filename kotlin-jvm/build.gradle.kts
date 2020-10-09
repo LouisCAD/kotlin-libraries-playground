@@ -5,6 +5,7 @@ plugins {
     kotlin("kapt")
     kotlin("plugin.serialization")
     id("com.squareup.sqldelight")
+    id("com.apollographql.apollo")
 }
 
 group = "playground"
@@ -15,6 +16,7 @@ repositories {
     google()
     jcenter()
     maven(url = "https://dl.bintray.com/kotlin/kotlin-eap/")
+    maven("https://kotlin.bintray.com/kotlinx/")
 }
 
 sqldelight {
@@ -27,15 +29,19 @@ sqldelight {
 // File build.gradle.kts
 dependencies {
 
-    /**
-     * Keep dependencies sorted to minimize merge conflicts on pull-requests!
-     */
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
+    implementation("com.beust:klaxon:_")
+    implementation ("com.github.ajalt:mordant:_")
     implementation("com.github.ajalt.clikt:clikt:_")
     implementation("com.github.ajalt.clikt:clikt:_")
     implementation("com.h2database:h2:_")
     implementation("com.h2database:h2:_")
     implementation("com.squareup.moshi:moshi:_")
     implementation("com.squareup.sqldelight:sqlite-driver:_")
+    implementation("com.uchuhimo:konf:_")
+    implementation("io.github.serpro69:kotlin-faker:_")
+    implementation("com.apollographql.apollo:apollo-runtime:_")
+    implementation("com.apollographql.apollo:apollo-coroutines-support:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-dao:_")
@@ -45,9 +51,12 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:_")
     implementation("org.jetbrains.exposed:exposed-jdbc:_")
     implementation("org.jetbrains.kotlin:kotlin-reflect:_")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:_")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.kodein.di:kodein-di:_")
+    implementation("org.koin:koin-core:_")
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     implementation(JakeWharton.retrofit2.converter.kotlinxSerialization)
     implementation(Kotlin.stdlib.jdk8)
     implementation(KotlinX.collections.immutable)
@@ -68,7 +77,9 @@ dependencies {
     implementation(Square.okHttp3.okHttp)
     implementation(Square.retrofit2.converter.moshi)
     implementation(Square.retrofit2.retrofit)
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     kapt(Square.moshi.kotlinCodegen)
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     testImplementation(Testing.junit)
     testImplementation(Testing.junit.params)
     testImplementation(Testing.kotest.assertions.core)
@@ -84,6 +95,7 @@ dependencies {
     testImplementation(Testing.spek.runtime.jvm)
     testImplementation(Testing.strikt.arrow)
     testImplementation(Testing.strikt.core)
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
 }
 
 tasks.withType<Test> {
@@ -119,4 +131,8 @@ tasks.withType(JavaExec::class.java) {
 tasks.register<DefaultTask>("hello") {
     group = "Custom"
     description = "Minimal task that do nothing. Useful to debug a failing build"
+}
+
+apollo {
+    generateKotlinModels.set(true)
 }
