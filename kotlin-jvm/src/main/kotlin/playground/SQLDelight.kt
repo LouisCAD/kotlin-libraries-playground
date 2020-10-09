@@ -5,9 +5,6 @@ package playground.sqldelight
 import com.squareup.sqldelight.db.SqlDriver
 import com.squareup.sqldelight.sqlite.driver.JdbcSqliteDriver
 import playground.shouldBe
-import util.AppDatabase
-import util.Orders
-import util.User
 import java.util.*
 
 /**

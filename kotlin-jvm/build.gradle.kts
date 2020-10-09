@@ -1,47 +1,39 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("jvm")
-    kotlin("kapt")
     kotlin("plugin.serialization")
     id("com.squareup.sqldelight")
     id("com.apollographql.apollo")
-}
 
-group = "playground"
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-    google()
-    jcenter()
-    maven(url = "https://dl.bintray.com/kotlin/kotlin-eap/")
-    maven("https://kotlin.bintray.com/kotlinx/")
+    /** kotlin("kapt") **/
+    // NOTE: IF if your library uses kapt
+    // NOTE: THEN it belongs in "kotlin-codegen", not here!
 }
 
 sqldelight {
     database("AppDatabase") {
-        packageName = "util"
+        packageName = "playground.sqldelight"
     }
     linkSqlite = false
 }
 
+apollo {
+    generateKotlinModels.set(true)
+}
+
 // File build.gradle.kts
 dependencies {
-
+    implementation(project(":kotlin-codegen"))
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
-    implementation("com.beust:klaxon:_")
     implementation ("com.github.ajalt:mordant:_")
+    implementation("com.beust:klaxon:_")
     implementation("com.github.ajalt.clikt:clikt:_")
     implementation("com.github.ajalt.clikt:clikt:_")
     implementation("com.h2database:h2:_")
     implementation("com.h2database:h2:_")
-    implementation("com.squareup.moshi:moshi:_")
+    implementation("com.squareup.sqldelight:sqlite-driver:_")
     implementation("com.squareup.sqldelight:sqlite-driver:_")
     implementation("com.uchuhimo:konf:_")
     implementation("io.github.serpro69:kotlin-faker:_")
-    implementation("com.apollographql.apollo:apollo-runtime:_")
-    implementation("com.apollographql.apollo:apollo-coroutines-support:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-dao:_")
@@ -52,8 +44,6 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:_")
     implementation("org.jetbrains.kotlin:kotlin-reflect:_")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:_")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.kodein.di:kodein-di:_")
     implementation("org.koin:koin-core:_")
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
@@ -78,24 +68,10 @@ dependencies {
     implementation(Square.okHttp3.okHttp)
     implementation(Square.retrofit2.converter.moshi)
     implementation(Square.retrofit2.retrofit)
-    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
-    kapt(Square.moshi.kotlinCodegen)
-    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
-    testImplementation(Testing.junit)
-    testImplementation(Testing.junit.params)
-    testImplementation(Testing.kotest.assertions.core)
-    testImplementation(Testing.kotest.property)
-    testImplementation(Testing.kotest.runner.junit5)
-    testImplementation(Testing.mockK)
-    testImplementation(Testing.mockK.common)
-    testImplementation(Testing.mockito.core)
-    testImplementation(Testing.mockito.junitJupiter)
-    testImplementation(Testing.mockito.kotlin)
-    testImplementation(Testing.spek.dsl.jvm)
-    testImplementation(Testing.spek.runner.junit5)
-    testImplementation(Testing.spek.runtime.jvm)
-    testImplementation(Testing.strikt.arrow)
-    testImplementation(Testing.strikt.core)
+    implementation("com.apollographql.apollo:apollo-coroutines-support:_")
+    implementation("com.apollographql.apollo:apollo-runtime:_")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-properties:_")
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
 }
 
@@ -107,33 +83,6 @@ tasks.register("run", JavaExec::class.java) {
     this.main = "playground._mainKt"
 }
 
-/**
- * How do I setup GitHub Actions for my Gradle or Android project?
- * https://dev.to/jmfayard/how-do-i-setup-github-actions-for-my-gradle-or-android-project-3eal
- */
-tasks.register("runOnGitHub") {
-    dependsOn(":run")
-    group = "custom"
-    description = "$ ./gradlew runOnGitHub # runs on GitHub Action"
-}
-
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-    kotlinOptions.freeCompilerArgs = listOf(
-            "-Xopt-in=kotlin.RequiresOptIn"
-    )
-}
-
-tasks.withType(JavaExec::class.java) {
+tasks.withType<JavaExec> {
     classpath = sourceSets["main"].runtimeClasspath
-}
-
-tasks.register<DefaultTask>("hello") {
-    group = "Custom"
-    description = "Minimal task that do nothing. Useful to debug a failing build"
-}
-
-apollo {
-    generateKotlinModels.set(true)
 }

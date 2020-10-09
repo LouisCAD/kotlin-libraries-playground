@@ -1,0 +1,15 @@
+plugins {
+    kotlin("jvm")
+    kotlin("kapt")
+
+}
+
+
+dependencies {
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
+    implementation("com.squareup.moshi:moshi:_")
+    kapt(Square.moshi.kotlinCodegen)
+    // Keep dependencies sorted to minimize merge conflicts on pull-requests!
+}
+
+
