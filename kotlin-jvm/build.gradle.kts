@@ -5,7 +5,7 @@ plugins {
     id("com.apollographql.apollo")
 
     /** kotlin("kapt") **/
-    // NOTE: IF the library does code generation, either with kapt or a gradle/compiler plugin
+    // NOTE: IF if your library uses kapt
     // NOTE: THEN it belongs in "kotlin-codegen", not here!
 }
 
