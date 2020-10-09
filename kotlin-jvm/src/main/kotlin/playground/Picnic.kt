@@ -13,8 +13,6 @@ import playground.shouldBe
 fun main() {
     println()
     println("# JakeWharton/picnic : A Kotlin DSL and Java/Kotlin builder API for constructing HTML-like tables which can be rendered to text.")
-    println("Who? Guests? Brings")
-
 
     val table = table {
         cellStyle {
