@@ -38,6 +38,7 @@ dependencies {
     implementation("com.h2database:h2:_")
     implementation("com.squareup.moshi:moshi:_")
     implementation("com.squareup.sqldelight:sqlite-driver:_")
+    implementation("com.tinder.statemachine:statemachine:_")
     implementation("com.uchuhimo:konf:_")
     implementation("io.github.serpro69:kotlin-faker:_")
     implementation("com.apollographql.apollo:apollo-runtime:_")
