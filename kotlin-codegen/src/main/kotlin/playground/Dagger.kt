@@ -10,7 +10,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * Kodein DI: painless Kotlin dependency injection
+ * Dagger: A fast dependency injector for Java and Android.
  *
  * - [Website](dagger.dev/)
  * - [Github](https://github.com/google/dagger)
