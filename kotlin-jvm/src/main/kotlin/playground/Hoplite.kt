@@ -11,6 +11,8 @@ import playground.shouldBe
  * - [GitHub](https://github.com/sksamuel/hoplite)
  */
 fun main() {
+    println()
+    println("# sksamuel/hoplite")
     println("You can find example configuration files in kotlin-jvm/src/main/resources/hoplite/")
 
     println("Load the default yaml configuration")
@@ -30,7 +32,12 @@ fun main() {
     prodConfig shouldBe Config(env = "prod", server = Server(port = 443, redirectUrl = "/404.html"))
 
     println("Display errors because the qa configuration does not contain the server values")
-    ConfigLoader().loadConfigOrThrow<Config>("/hoplite/qa.properties")
+    try {
+        ConfigLoader().loadConfigOrThrow<Config>("/hoplite/qa.properties")
+    }
+    catch (e: Exception) {
+        println(e.message)
+    }
 }
 
 data class Server(val port: Int, val redirectUrl: String)
