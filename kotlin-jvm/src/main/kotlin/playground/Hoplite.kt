@@ -18,24 +18,23 @@ fun main() {
     println("Load the default yaml configuration")
     val defaultConfig = ConfigLoader()
         .loadConfigOrThrow<Config>("/hoplite/default.yaml")
+    defaultConfig shouldBe Config(env = "dev", server = Server(port = 8080, redirectUrl = "/404.html"))
 
     println("Load the qa configuration from a property file overriding the yaml defaults")
     val qaConfig = ConfigLoader()
         .loadConfigOrThrow<Config>("/hoplite/qa.properties", "/hoplite/default.yaml")
+    qaConfig shouldBe Config(env = "qa", server = Server(port = 8080, redirectUrl = "/404.html"))
 
     println("Load the prod yaml configuration overriding the yaml defaults")
     val prodConfig = ConfigLoader()
         .loadConfigOrThrow<Config>("/hoplite/prod.yaml", "/hoplite/default.yaml")
-
-    defaultConfig shouldBe Config(env = "dev", server = Server(port = 8080, redirectUrl = "/404.html"))
-    qaConfig shouldBe Config(env = "qa", server = Server(port = 8080, redirectUrl = "/404.html"))
     prodConfig shouldBe Config(env = "prod", server = Server(port = 443, redirectUrl = "/404.html"))
 
-    println("Display errors because the qa configuration does not contain the server values")
     try {
         ConfigLoader().loadConfigOrThrow<Config>("/hoplite/qa.properties")
     }
     catch (e: Exception) {
+        println("Display errors because the qa properties file does not contain the server values")
         println(e.message)
     }
 }
