@@ -3,6 +3,7 @@
 package playground.statemachine
 
 import com.tinder.StateMachine
+import playground.shouldBe
 
 /**
  * Tinder/StateMachine - A kotlin DSL for finite state machine
@@ -12,7 +13,18 @@ import com.tinder.StateMachine
 fun main() {
     println("# Tinder/State machine - A kotlin DSL for finite state machine")
 
+    machineState.state shouldBe SprintState.ToStart
 
+    machineState.transition(MeetingEvent.Planning)
+
+    machineState.state shouldBe SprintState.InProgress
+
+    machineState.transition(MeetingEvent.Daily)
+    machineState.transition(MeetingEvent.Daily)
+    machineState.transition(MeetingEvent.Review)
+    machineState.transition(MeetingEvent.Retrospective)
+
+    machineState.state shouldBe SprintState.Done
 }
 
 sealed class SprintState {
