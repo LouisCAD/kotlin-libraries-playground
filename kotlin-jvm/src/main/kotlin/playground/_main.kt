@@ -27,6 +27,7 @@ fun main() {
     playground.picnic.main()
     playground.retrofit.main()
     playground.sqldelight.main()
+    playground.statemachine.main()
     /**
      * Keep the list sorted to minimize merge conflicts on pull-requests!
      */
