@@ -85,6 +85,6 @@ val machineState = StateMachine.create<SprintState, MeetingEvent, SideEffect> {
     }
 }
 
-fun log(message: String) {
+private fun log(message: String) {
     println(message)
 }
