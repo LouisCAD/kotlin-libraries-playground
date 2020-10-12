@@ -11,6 +11,7 @@ fun main() {
     playground.di.koin.main()
     playground.di.manual.main()
     playground.exposed.main()
+    playground.hoplite.main()
     playground.klaxon.main()
     playground.konf.main()
     playground.kotlinfaker.main()
