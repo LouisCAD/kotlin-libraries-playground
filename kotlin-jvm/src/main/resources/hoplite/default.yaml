@@ -1,5 +1,0 @@
-env: dev
-
-server:
-    port: 8080
-    redirectUrl: /404.html

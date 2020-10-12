@@ -31,6 +31,7 @@ dependencies {
     implementation("com.h2database:h2:_")
     implementation("com.h2database:h2:_")
     implementation("com.sksamuel.hoplite:hoplite-core:_")
+    implementation("com.sksamuel.hoplite:hoplite-hocon:_")
     implementation("com.sksamuel.hoplite:hoplite-yaml:_")
     implementation("com.squareup.sqldelight:sqlite-driver:_")
     implementation("com.squareup.sqldelight:sqlite-driver:_")

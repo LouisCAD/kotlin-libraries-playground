@@ -15,20 +15,20 @@ fun main() {
     println("# sksamuel/hoplite")
     println("You can find example configuration files in kotlin-jvm/src/main/resources/hoplite/")
 
-    println("Load the default yaml configuration")
+    println("Load the default Hocon configuration")
     val defaultConfig = ConfigLoader()
-        .loadConfigOrThrow<Config>("/hoplite/default.yaml")
-    defaultConfig shouldBe Config(env = "dev", server = Server(port = 8080, redirectUrl = "/404.html"))
+        .loadConfigOrThrow<Config>("/hoplite/default.conf")
+    defaultConfig shouldBe Config(env = "dev", server = Server(port = 8080, redirectUrl = "/v1/404.html"))
 
-    println("Load the qa configuration from a property file overriding the yaml defaults")
+    println("Load the qa configuration from a property file cascading over the Hocon defaults")
     val qaConfig = ConfigLoader()
-        .loadConfigOrThrow<Config>("/hoplite/qa.properties", "/hoplite/default.yaml")
-    qaConfig shouldBe Config(env = "qa", server = Server(port = 8080, redirectUrl = "/404.html"))
+        .loadConfigOrThrow<Config>("/hoplite/qa.properties", "/hoplite/default.conf")
+    qaConfig shouldBe Config(env = "qa", server = Server(port = 8080, redirectUrl = "/v1/404.html"))
 
-    println("Load the prod yaml configuration overriding the yaml defaults")
+    println("Load the prod Yaml configuration cascading over the Hocon defaults")
     val prodConfig = ConfigLoader()
-        .loadConfigOrThrow<Config>("/hoplite/prod.yaml", "/hoplite/default.yaml")
-    prodConfig shouldBe Config(env = "prod", server = Server(port = 443, redirectUrl = "/404.html"))
+        .loadConfigOrThrow<Config>("/hoplite/prod.yaml", "/hoplite/default.conf")
+    prodConfig shouldBe Config(env = "prod", server = Server(port = 443, redirectUrl = "/v1/404.html"))
 
     try {
         ConfigLoader().loadConfigOrThrow<Config>("/hoplite/qa.properties")
