@@ -2,11 +2,13 @@
 
 package playground.kotlinx.serialization
 
-import kotlinx.serialization.*
-import kotlinx.serialization.json.*
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import kotlinx.serialization.properties.Properties
 import kotlinx.serialization.properties.encodeToMap
-import kotlinx.serialization.Serializable
 import playground.shouldBe
 
 /**
@@ -53,4 +55,12 @@ internal data class User(
 internal data class Users(
     val size: Int,
     val users: List<User> = emptyList()
+)
+
+@Serializable
+data class HttpBinGet(
+    val args: Map<String, String> = emptyMap(),
+    val headers: Map<String, String> = emptyMap(),
+    val origin: String,
+    val url: String
 )

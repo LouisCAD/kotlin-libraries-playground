@@ -22,8 +22,6 @@ fun main() {
     println("Name: ${faker.name.nameWithMiddle()} ${faker.name.lastName()}")
     println("Address: ${faker.address.streetAddress()} ${faker.address.secondaryAddress()} ${faker.address.stateAbbr()} ${faker.address.country()}")
     println("Phone number: ${faker.phoneNumber.phoneNumber()}")
-    val coffeeCountry = faker.coffee.country()
-    println("Coffe - Blend: ${faker.coffee.blendName()} From: ${faker.coffee.regions(coffeeCountry)}, $coffeeCountry - Notes: ${faker.coffee.notes()}")
     println("Rick & Morty - Character: ${faker.rickAndMorty.characters()} Location: ${faker.rickAndMorty.locations()} Quote: ${faker.rickAndMorty.quotes()}")
 
     println("Kotlin-faker with locale ES")

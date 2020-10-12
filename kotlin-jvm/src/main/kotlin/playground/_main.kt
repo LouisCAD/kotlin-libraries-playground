@@ -24,6 +24,7 @@ fun main() {
     playground.moshi.main()
     playground.okhttp.main()
     playground.okio.main()
+    playground.picnic.main()
     playground.retrofit.main()
     playground.sqldelight.main()
     /**
@@ -31,7 +32,4 @@ fun main() {
      */
 }
 
-infix fun <T : Any?> T.shouldBe(expected: T) {
-    println("Test: $expected")
-    check(this == expected) { "Test failed!\nWanted: $expected\nGot:    $this" }
-}
+
