@@ -9,6 +9,7 @@ import playground.shouldBe
  * Tinder/StateMachine - A kotlin DSL for finite state machine
  *
  * - [Tinder/State machine: Github](https://github.com/Tinder/StateMachine)
+ * - [State diagram](https://user-images.githubusercontent.com/6810202/95701244-73211700-0c1f-11eb-95f1-ce507b25a3bb.png)
  */
 fun main() {
     println("# Tinder/State machine - A kotlin DSL for finite state machine")
