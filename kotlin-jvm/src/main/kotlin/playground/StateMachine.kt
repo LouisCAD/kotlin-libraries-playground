@@ -26,6 +26,14 @@ fun main() {
     machineState.transition(MeetingEvent.Retrospective)
 
     machineState.state shouldBe SprintState.Done
+
+    messages shouldBe listOf(
+        "Backlog was updated.",
+        "All impediments were identified.",
+        "All impediments were identified.",
+        "External feedback was received.",
+        "Internal feedback was received.",
+    )
 }
 
 sealed class SprintState {
@@ -86,6 +94,8 @@ val machineState = StateMachine.create<SprintState, MeetingEvent, SideEffect> {
     }
 }
 
+private val messages = mutableListOf<String>()
+
 private fun log(message: String) {
-    println(message)
+    messages += message
 }
