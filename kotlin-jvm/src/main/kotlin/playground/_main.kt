@@ -27,6 +27,7 @@ fun main() {
     playground.okio.main()
     playground.picnic.main()
     playground.retrofit.main()
+    playground.skrapeit.main()
     playground.sqldelight.main()
     /**
      * Keep the list sorted to minimize merge conflicts on pull-requests!

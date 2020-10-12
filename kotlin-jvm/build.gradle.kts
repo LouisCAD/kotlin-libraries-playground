@@ -37,6 +37,7 @@ dependencies {
     implementation("com.squareup.sqldelight:sqlite-driver:_")
     implementation("com.uchuhimo:konf:_")
     implementation("io.github.serpro69:kotlin-faker:_")
+    implementation("it.skrape:skrapeit-core:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-dao:_")
