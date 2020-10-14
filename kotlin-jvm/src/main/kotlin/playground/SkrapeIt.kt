@@ -41,33 +41,7 @@ fun main() {
  * [Picking Html-Elements from a Doc](https://docs.skrape.it/docs/dsl/parsing-html#picking-html-elements-from-a-doc)
  */
 private fun `Pick Html-Elements from a Doc`() {
-    val someHtml = """
-    <html>
-        <head>
-            <link rel="shortcut icon" href="https://some.url/icon">
-            <script src="https://some.url/some-script.js"></script>
-            <meta name="foo" content="bar">
-        </head>
-        <body>
-            <nav>
-                <ol class="navigation">
-                    <li><a href="items">List Items</a></li>
-                    <li><a href="items/one">List Item One</a></li>
-                    <li>Item 42</li>
-                </ol>
-            </nav>
-            i'm the body
-            <h1>i'm the headline</h1>
-            <main>
-                <p class="foo bar">i'm a paragraph</p>
-                <p>i'm a second paragraph</p>
-                <p>i'm a paragraph <wbr> with word break</p>
-                <p>i'm the last paragraph</p>
-            </main>
-        </body>
-    </html>
-"""
-
+    val someHtml = getMockHtml()
     htmlDocument(someHtml) {
         meta {
             withAttribute = "name" to "foo"
@@ -203,4 +177,33 @@ private fun loadReferenceResult(): String {
         .classLoader
         .getResource("references/kotlinx.html/ref.html")!!
         .readText()
+}
+
+private fun getMockHtml(): String {
+    return """
+    <html>
+        <head>
+            <link rel="shortcut icon" href="https://some.url/icon">
+            <script src="https://some.url/some-script.js"></script>
+            <meta name="foo" content="bar">
+        </head>
+        <body>
+            <nav>
+                <ol class="navigation">
+                    <li><a href="items">List Items</a></li>
+                    <li><a href="items/one">List Item One</a></li>
+                    <li>Item 42</li>
+                </ol>
+            </nav>
+            i'm the body
+            <h1>i'm the headline</h1>
+            <main>
+                <p class="foo bar">i'm a paragraph</p>
+                <p>i'm a second paragraph</p>
+                <p>i'm a paragraph <wbr> with word break</p>
+                <p>i'm the last paragraph</p>
+            </main>
+        </body>
+    </html>
+    """
 }
