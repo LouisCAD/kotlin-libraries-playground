@@ -35,7 +35,36 @@ fun main() {
     directory.walkBottomUp().filter { !it.isDirectory }.map {file -> file.name }.toList() shouldBe
         listOf("tada.txt", "long-file.txt", ".hidden.txt", "hello.txt")
 
+    // File
+    val helloTxt = loadReferenceFile("$directoryPath/hello.txt")
+
+    helloTxt.extension shouldBe "txt"
+    helloTxt.nameWithoutExtension shouldBe "hello"
+
+    helloTxt.readLines() shouldBe listOf("Hello World!", "")
+
+    helloTxt.useLines { lines ->
+        val content = mutableListOf<String>()
+
+        lines.forEach { line -> if (line.isNotBlank()) content.add(line) }
+        TestFileContent(content)
+    } shouldBe TestFileContent(listOf("Hello World!"))
+
+    val newDir = createTempDir(prefix = "new", suffix = "dir", directory = directory)
+    val newFile = createTempFile(prefix = "new", directory = newDir)
+
+    newFile.writeText("Hi, I'm a new file")
+    newFile.readLines() shouldBe listOf("Hi, I'm a new file")
+
+    newFile.appendText("\nand this is a new line")
+    newFile.readLines() shouldBe listOf("Hi, I'm a new file", "and this is a new line")
+
+    newDir.deleteRecursively()
+    newFile.exists() shouldBe false
+    newDir.exists() shouldBe false
 }
+
+internal data class TestFileContent(val content: List<String>)
 
 private fun loadReferenceFile(path: String): File {
     return File(Unit.javaClass.classLoader
