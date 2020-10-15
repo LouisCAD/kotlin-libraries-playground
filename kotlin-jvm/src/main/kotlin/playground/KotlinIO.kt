@@ -21,19 +21,19 @@ fun main() {
     val directory = loadReferenceFile(directoryPath)
 
     directory.walkTopDown().map { file -> file.name }.toList() shouldBe
-        listOf("kotlinio", "nested-dir", "tada.txt", "long-file.txt", ".hidden.txt", "hello.txt")
+        listOf("kotlinio", ".hidden.txt", "hello.txt", "nested-dir", "tada.txt", "long-file.txt")
 
     directory.walkBottomUp().map { file -> file.name }.toList() shouldBe
-        listOf("tada.txt", "nested-dir", "long-file.txt", ".hidden.txt", "hello.txt", "kotlinio")
+        listOf("tada.txt", "nested-dir", "long-file.txt", "hello.txt", ".hidden.txt", "kotlinio")
 
     directory.walk(direction = FileWalkDirection.BOTTOM_UP).map { file -> file.name }.toList() shouldBe
-        listOf("tada.txt", "nested-dir", "long-file.txt", ".hidden.txt", "hello.txt", "kotlinio")
+        listOf("tada.txt", "nested-dir", "long-file.txt", "hello.txt", ".hidden.txt", "kotlinio")
 
     directory.walkBottomUp().maxDepth(1).map { file -> file.name }.toList() shouldBe
-        listOf("nested-dir", "long-file.txt", ".hidden.txt", "hello.txt", "kotlinio")
+        listOf("nested-dir", "long-file.txt", "hello.txt", ".hidden.txt", "kotlinio")
 
     directory.walkBottomUp().filter { !it.isDirectory }.map { file -> file.name }.toList() shouldBe
-        listOf("tada.txt", "long-file.txt", ".hidden.txt", "hello.txt")
+        listOf("tada.txt", "long-file.txt", "hello.txt", ".hidden.txt")
 
     // File
     val helloTxt = loadReferenceFile("$directoryPath/hello.txt")
