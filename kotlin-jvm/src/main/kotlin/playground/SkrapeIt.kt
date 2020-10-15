@@ -179,8 +179,8 @@ private fun loadReferenceResult(): String {
         .readText()
 }
 
-private fun getMockHtml(): String {
-    return """
+private fun getMockHtml(): String =
+    """
     <html>
         <head>
             <link rel="shortcut icon" href="https://some.url/icon">
