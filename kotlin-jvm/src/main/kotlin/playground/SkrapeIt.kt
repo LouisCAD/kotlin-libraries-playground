@@ -25,8 +25,10 @@ fun main() {
     )
     println()
 
-    println("Pick Html-Elements from a Doc")
-    `Pick Html-Elements from a Doc`()
+    println("Pick Html Head Elements from a Doc")
+    `Pick Html Head Elements from a Doc`()
+    println("Pick Html Body Elements from a Doc")
+    `Pick Html Body Elements from a Doc`()
     println("Pick Custom HTML tags")
     `Pick Custom HTML tags`()
     println("Build CSS selectors")
@@ -40,15 +42,54 @@ fun main() {
 /**
  * [Picking Html-Elements from a Doc](https://docs.skrape.it/docs/dsl/parsing-html#picking-html-elements-from-a-doc)
  */
-private fun `Pick Html-Elements from a Doc`() {
-    val someHtml = getMockHtml()
-    htmlDocument(someHtml) {
+private fun `Pick Html Head Elements from a Doc`() {
+    val mockHtmlHead =
+        """
+    <html>
+        <head>
+            <link rel="shortcut icon" href="https://some.url/icon">
+            <script src="https://some.url/some-script.js"></script>
+            <meta name="foo" content="bar">
+        </head>
+    </html>
+    """.trimIndent()
+    htmlDocument(mockHtmlHead) {
         meta {
             withAttribute = "name" to "foo"
             findFirst {
                 attribute("content") toBe "bar"
             }
         }
+    }
+}
+
+/**
+ * [Picking Html-Elements from a Doc](https://docs.skrape.it/docs/dsl/parsing-html#picking-html-elements-from-a-doc)
+ */
+private fun `Pick Html Body Elements from a Doc`() {
+    val mockHtmlBody =
+        """
+    <html>
+        <body>
+            <nav>
+                <ol class="navigation">
+                    <li><a href="items">List Items</a></li>
+                    <li><a href="items/one">List Item One</a></li>
+                    <li>Item 42</li>
+                </ol>
+            </nav>
+            i'm the body
+            <h1>i'm the headline</h1>
+            <main>
+                <p class="foo bar">i'm a paragraph</p>
+                <p>i'm a second paragraph</p>
+                <p>i'm a paragraph <wbr> with word break</p>
+                <p>i'm the last paragraph</p>
+            </main>
+        </body>
+    </html>
+    """.trimIndent()
+    htmlDocument(mockHtmlBody) {
         h1 {
             findFirst {
                 text toBe "i'm the headline"
@@ -85,7 +126,7 @@ private fun `Pick Custom HTML tags`() {
         <a-custom-tag>foo</a-custom-tag>
         <a-custom-tag class="some-style">bar</a-custom-tag>
     </body>
-""".trimIndent()
+    """.trimIndent()
 
     htmlDocument(someHtml) {
         "a-custom-tag" {
@@ -178,31 +219,3 @@ private fun loadReferenceResult(): String {
         .getResource("references/kotlinx.html/ref.html")!!
         .readText()
 }
-
-private fun getMockHtml(): String =
-    """
-    <html>
-        <head>
-            <link rel="shortcut icon" href="https://some.url/icon">
-            <script src="https://some.url/some-script.js"></script>
-            <meta name="foo" content="bar">
-        </head>
-        <body>
-            <nav>
-                <ol class="navigation">
-                    <li><a href="items">List Items</a></li>
-                    <li><a href="items/one">List Item One</a></li>
-                    <li>Item 42</li>
-                </ol>
-            </nav>
-            i'm the body
-            <h1>i'm the headline</h1>
-            <main>
-                <p class="foo bar">i'm a paragraph</p>
-                <p>i'm a second paragraph</p>
-                <p>i'm a paragraph <wbr> with word break</p>
-                <p>i'm the last paragraph</p>
-            </main>
-        </body>
-    </html>
-    """.trimIndent()
