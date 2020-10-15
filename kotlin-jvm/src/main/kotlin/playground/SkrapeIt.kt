@@ -85,7 +85,7 @@ private fun `Pick Custom HTML tags`() {
         <a-custom-tag>foo</a-custom-tag>
         <a-custom-tag class="some-style">bar</a-custom-tag>
     </body>
-"""
+""".trimIndent()
 
     htmlDocument(someHtml) {
         "a-custom-tag" {
@@ -205,5 +205,4 @@ private fun getMockHtml(): String {
             </main>
         </body>
     </html>
-    """
-}
+    """.trimIndent()
