@@ -20,19 +20,19 @@ fun main() {
     // FileTreeWalk
     val directory = loadReferenceFile(directoryPath)
 
-    directory.walkTopDown().map {file -> file.name }.toList() shouldBe
+    directory.walkTopDown().map { file -> file.name }.toList() shouldBe
         listOf("kotlinio", "nested-dir", "tada.txt", "long-file.txt", ".hidden.txt", "hello.txt")
 
-    directory.walkBottomUp().map {file -> file.name }.toList() shouldBe
+    directory.walkBottomUp().map { file -> file.name }.toList() shouldBe
         listOf("tada.txt", "nested-dir", "long-file.txt", ".hidden.txt", "hello.txt", "kotlinio")
 
-    directory.walk(direction = FileWalkDirection.BOTTOM_UP).map {file -> file.name }.toList() shouldBe
+    directory.walk(direction = FileWalkDirection.BOTTOM_UP).map { file -> file.name }.toList() shouldBe
         listOf("tada.txt", "nested-dir", "long-file.txt", ".hidden.txt", "hello.txt", "kotlinio")
 
-    directory.walkBottomUp().maxDepth(1).map {file -> file.name }.toList() shouldBe
+    directory.walkBottomUp().maxDepth(1).map { file -> file.name }.toList() shouldBe
         listOf("nested-dir", "long-file.txt", ".hidden.txt", "hello.txt", "kotlinio")
 
-    directory.walkBottomUp().filter { !it.isDirectory }.map {file -> file.name }.toList() shouldBe
+    directory.walkBottomUp().filter { !it.isDirectory }.map { file -> file.name }.toList() shouldBe
         listOf("tada.txt", "long-file.txt", ".hidden.txt", "hello.txt")
 
     // File
@@ -67,7 +67,8 @@ fun main() {
 internal data class TestFileContent(val content: List<String>)
 
 private fun loadReferenceFile(path: String): File {
-    return File(Unit.javaClass.classLoader
-        .getResource(path)!!.file)
-
+    return File(
+        Unit.javaClass.classLoader
+            .getResource(path)!!.file
+    )
 }
