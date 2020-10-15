@@ -15,6 +15,7 @@ fun main() {
     playground.klaxon.main()
     playground.konf.main()
     playground.kotlinfaker.main()
+    playground.kotlinio.main()
     playground.kotlinpoet.main()
     playground.kotlinx.collections.immutable.main()
     playground.kotlinx.datetime.main()
