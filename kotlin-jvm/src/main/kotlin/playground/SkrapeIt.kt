@@ -8,6 +8,7 @@ import it.skrape.matchers.*
 import it.skrape.selects.and
 import it.skrape.selects.html5.*
 import it.skrape.skrape
+import playground.loadResourceFileContent
 
 /**
  *  skrapeit/skrape.it
@@ -195,7 +196,7 @@ private fun `Parse and verify response of url`() {
 }
 
 private fun `Parse and verify local HTML resource`() {
-    htmlDocument(loadReferenceResult()) {
+    htmlDocument(loadResourceFileContent("references/kotlinx.html/ref.html")) {
         h2 {
             findFirst {
                 text toBe "kotlinx.html"
@@ -210,12 +211,3 @@ private fun `Parse and verify local HTML resource`() {
     }
 }
 
-
-private object ForTestingLocalResourceLoading
-
-private fun loadReferenceResult(): String {
-    return ForTestingLocalResourceLoading.javaClass
-        .classLoader
-        .getResource("references/kotlinx.html/ref.html")!!
-        .readText()
-}

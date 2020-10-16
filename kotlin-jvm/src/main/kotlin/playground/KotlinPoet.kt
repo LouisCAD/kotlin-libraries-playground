@@ -8,6 +8,7 @@ import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
+import playground.loadResourceFileContent
 import playground.shouldBe
 
 
@@ -38,7 +39,7 @@ fun main() {
         .build()
         .toString()
 
-    generatedFile shouldBe loadReferenceFile()
+    generatedFile shouldBe loadResourceFileContent("references/kotlinPoet/calculator.kt")
 }
 
 private fun FileSpec.Builder.appendCalculator(calculatorClass: ClassName) = apply {
@@ -178,8 +179,4 @@ private fun FileSpec.Builder.appendTests(calculatorClass: ClassName) = apply {
     ))
 }
 
-private fun loadReferenceFile(): String {
-    return Unit.javaClass.classLoader
-        .getResource("references/kotlinPoet/calculator.kt")!!
-        .readText()
-}
+

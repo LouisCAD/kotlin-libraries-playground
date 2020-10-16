@@ -4,6 +4,7 @@ package playground.kotlinio
 
 import java.io.File
 import playground.shouldBe
+import playground.shouldHaveSameElementsAs
 
 /**
  * Kotlin/IO - Kotlin IO API
@@ -15,28 +16,41 @@ fun main() {
     println()
     println("# Kotlin IO - API for working with files and streams")
 
-    val directoryPath = "references/kotlinio"
-
     // FileTreeWalk
-    val directory = loadReferenceFile(directoryPath)
+    val directory = loadReferenceFile("references/kotlinio")
 
-    directory.walkTopDown().map { file -> file.name }.toList() shouldBe
-        listOf("kotlinio", ".hidden.txt", "hello.txt", "nested-dir", "tada.txt", "long-file.txt")
+    run {
+        val actual = directory.walkTopDown().map { file -> file.name }.toList()
+        val expected =  listOf("kotlinio", "nested-dir", "tada.txt", "long-file.txt", ".hidden.txt", "hello.txt", )
+        actual shouldHaveSameElementsAs expected
+    }
 
-    directory.walkBottomUp().map { file -> file.name }.toList() shouldBe
-        listOf(".hidden.txt", "hello.txt", "tada.txt", "nested-dir", "long-file.txt", "kotlinio")
+    run {
+        val actual = directory.walkBottomUp().map { file -> file.name }.toList()
+        val expected = listOf(".hidden.txt", "hello.txt", "tada.txt", "nested-dir", "long-file.txt", "kotlinio")
+        actual shouldHaveSameElementsAs expected
+    }
 
-    directory.walk(direction = FileWalkDirection.BOTTOM_UP).map { file -> file.name }.toList() shouldBe
-        listOf(".hidden.txt", "hello.txt", "tada.txt", "nested-dir", "long-file.txt", "kotlinio")
+    run {
+        val actual = directory.walk(direction = FileWalkDirection.BOTTOM_UP).map { file -> file.name }.toList()
+        val expected =  listOf(".hidden.txt", "hello.txt", "tada.txt", "nested-dir", "long-file.txt", "kotlinio")
+        actual shouldHaveSameElementsAs expected
+    }
 
-    directory.walkBottomUp().maxDepth(1).map { file -> file.name }.toList() shouldBe
-        listOf(".hidden.txt", "hello.txt", "nested-dir", "long-file.txt", "kotlinio")
+    run {
+        val actual = directory.walkBottomUp().maxDepth(1).map { file -> file.name }.toList()
+        val expected = listOf(".hidden.txt", "hello.txt", "nested-dir", "long-file.txt", "kotlinio")
+        actual shouldHaveSameElementsAs expected
+    }
 
-    directory.walkBottomUp().filter { !it.isDirectory }.map { file -> file.name }.toList() shouldBe
-        listOf(".hidden.txt", "hello.txt", "tada.txt", "long-file.txt")
+    run {
+        val actual = directory.walkBottomUp().filter { !it.isDirectory }.map { file -> file.name }.toList()
+        val expected = listOf(".hidden.txt", "hello.txt", "tada.txt", "long-file.txt")
+        actual shouldHaveSameElementsAs expected
+    }
 
     // File
-    val helloTxt = loadReferenceFile("$directoryPath/hello.txt")
+    val helloTxt = loadReferenceFile("references/kotlinio/hello.txt")
 
     helloTxt.extension shouldBe "txt"
     helloTxt.nameWithoutExtension shouldBe "hello"
