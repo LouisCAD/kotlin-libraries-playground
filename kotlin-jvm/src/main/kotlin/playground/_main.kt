@@ -1,5 +1,8 @@
 package playground
 
+import org.intellij.lang.annotations.Language
+import java.io.File
+
 fun main() {
     /**
      * Keep the list sorted to minimize merge conflicts on pull-requests!
@@ -37,3 +40,15 @@ fun main() {
 }
 
 
+fun loadResourceFileContent(@Language("file-reference") path: String): String {
+    return Unit.javaClass.classLoader
+        .getResource(path)!!
+        .readText()
+}
+
+fun loadResourceFile(@Language("file-reference") path: String): File {
+    return File(
+        Unit.javaClass.classLoader
+            .getResource(path)!!.file
+    )
+}
