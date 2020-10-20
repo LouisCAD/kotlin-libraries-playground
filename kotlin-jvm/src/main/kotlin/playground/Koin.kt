@@ -18,6 +18,9 @@ import playground.shouldBe
  * - [CHANGELOG](https://github.com/InsertKoinIO/koin/blob/master/CHANGELOG.md)
  */
 fun main() {
+    println()
+    println("# Kotlin/org.koin : A pragmatic lightweight dependency injection framework for Kotlin developers.")
+
     val deps = module {
         single(qualifier = named("production")) {
             InMemoryUserStore()

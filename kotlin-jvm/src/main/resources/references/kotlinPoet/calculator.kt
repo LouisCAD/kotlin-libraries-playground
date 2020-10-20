@@ -4,29 +4,30 @@ package references.kotlinPoet
 
 import kotlin.Int
 import kotlin.String
+import kotlin.Unit
 
 /**
  * Use this class for simple calculations.
  */
-class Calculator(
+public class Calculator(
     version: String
 ) {
-    val model: String = """CALC-$version"""
+    public val model: String = """CALC-$version"""
 
-    fun add(vararg values: Int): Int = values.reduce { acc, i -> acc + i }
+    public fun add(vararg values: Int): Int = values.reduce { acc, i -> acc + i }
 
-    fun multiply(vararg values: Int): Int = values.reduce { acc, i -> acc * i }
+    public fun multiply(vararg values: Int): Int = values.reduce { acc, i -> acc * i }
 
-    fun subtract(from: Int, amount: Int): Int = from - amount
+    public fun subtract(from: Int, amount: Int): Int = from - amount
 
-    fun divide(value: Int, onto: Int): Int = value / onto
+    public fun divide(value: Int, onto: Int): Int = value / onto
 
-    infix fun Int.addTo(other: Int): Int = add(this, other)
+    public infix fun Int.addTo(other: Int): Int = add(this, other)
 
-    infix fun Int.multiplyOn(other: Int): Int = multiply(this, other)
+    public infix fun Int.multiplyOn(other: Int): Int = multiply(this, other)
 }
 
-fun main() {
+public fun main(): Unit {
     val c = Calculator(version = "1")
 
     c.testAddition()
@@ -35,7 +36,7 @@ fun main() {
     c.testDivision()
 }
 
-private fun Calculator.testAddition() {
+private fun Calculator.testAddition(): Unit {
     print("""[$model] Testing addition...""")
     try {
         check(add(3, 2, 5) == 10)
@@ -49,7 +50,7 @@ private fun Calculator.testAddition() {
     }
 }
 
-private fun Calculator.testMultiplication() {
+private fun Calculator.testMultiplication(): Unit {
     print("""[$model] Testing multiplication...""")
     try {
         check(multiply(3, 2, 5) == 30)
@@ -63,7 +64,7 @@ private fun Calculator.testMultiplication() {
     }
 }
 
-private fun Calculator.testSubtraction() {
+private fun Calculator.testSubtraction(): Unit {
     print("""[$model] Testing subtraction...""")
     try {
         check(subtract(3, 2) == 1)
@@ -75,7 +76,7 @@ private fun Calculator.testSubtraction() {
     }
 }
 
-private fun Calculator.testDivision() {
+private fun Calculator.testDivision(): Unit {
     print("""[$model] Testing division...""")
     try {
         check(divide(3, 2) == 1)
