@@ -1,5 +1,8 @@
 package playground
 
+import org.intellij.lang.annotations.Language
+import java.io.File
+
 fun main() {
     /**
      * Keep the list sorted to minimize merge conflicts on pull-requests!
@@ -11,9 +14,11 @@ fun main() {
     playground.di.koin.main()
     playground.di.manual.main()
     playground.exposed.main()
+    playground.hoplite.main()
     playground.klaxon.main()
     playground.konf.main()
     playground.kotlinfaker.main()
+    playground.kotlinio.main()
     playground.kotlinpoet.main()
     playground.kotlinx.collections.immutable.main()
     playground.kotlinx.datetime.main()
@@ -26,10 +31,24 @@ fun main() {
     playground.okio.main()
     playground.picnic.main()
     playground.retrofit.main()
+    playground.skrapeit.main()
     playground.sqldelight.main()
+    playground.statemachine.main()
     /**
      * Keep the list sorted to minimize merge conflicts on pull-requests!
      */
 }
 
 
+fun loadResourceFileContent(@Language("file-reference") path: String): String {
+    return Unit.javaClass.classLoader
+        .getResource(path)!!
+        .readText()
+}
+
+fun loadResourceFile(@Language("file-reference") path: String): File {
+    return File(
+        Unit.javaClass.classLoader
+            .getResource(path)!!.file
+    )
+}
