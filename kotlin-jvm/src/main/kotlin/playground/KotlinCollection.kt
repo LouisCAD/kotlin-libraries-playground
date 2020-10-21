@@ -3,6 +3,7 @@
 package playground.kotlin.collections
 
 import playground.shouldBe
+import playground.test
 
 /**
  * kotlin-stdlib/kotlin.collections - Collection types, such as Iterable, Collection, List, Set, Map and related top-level and extension functions.
@@ -16,8 +17,8 @@ fun main() {
     println("# kotlin/collections - Collections library for kotlin")
     println()
     println("Main collections in Kotlin are list, set and map")
-    println("Creating and Iterating List")
-    createLists()
+    println("Creating Lists")
+    createList()
     println("Operations on List")
     operationsOnLists()
     println("Creating and Iterating Set")
@@ -26,224 +27,112 @@ fun main() {
     createMap()
     println("Operations on Map")
     operationsOnMap()
+    println("Operations on Sequences")
+    fibonacciSequences()
 }
 
-fun createLists() {
 
-    val squares = List(10) { it * it }
-    println("List of square contains $squares")
-
-    var imperativeSquares = mutableListOf<Int>()
-    println("Creating list using simple range .. ")
+fun createList() {
+    val imperativeSquares = mutableListOf<Int>()
     for (i in 0..9) {
         imperativeSquares.add(i * i)
     }
-    squares shouldBe imperativeSquares
 
-    imperativeSquares = mutableListOf<Int>()
-    println("Creating list iterating forward using until")
-    for (i in 0 until 10) {
-        imperativeSquares.add(i * i)
-    }
-    squares shouldBe imperativeSquares
+    val squares = List(10) { it * it }
 
-    val squaresreverse = squares.reversed()
-    println("Reversed sqaured list = $squaresreverse")
-    imperativeSquares = mutableListOf<Int>()
-    println("Creating list iterating backward using until")
-    for (i in 9 downTo 0) {
-        imperativeSquares.add(i * i)
-    }
-    squaresreverse shouldBe imperativeSquares
-
-    imperativeSquares = mutableListOf<Int>()
-    println("Creating list using step size -- here the step size is 3")
-    for (i in 0 until 10 step 3) {
-        imperativeSquares.add(i * i)
-    }
-    imperativeSquares shouldBe listOf(0, 9, 36, 81)
-
-    println("Creating list using foreach")
-    imperativeSquares = mutableListOf<Int>()
-    squares.forEach { imperativeSquares.add(it) }
     squares shouldBe imperativeSquares
 }
 
 fun operationsOnLists() {
 
-    val weeks = listOf<String>("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+    val weeks = listOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
     println("Immutable list weeks = $weeks")
-    println("Getting element at given index")
-    weeks.get(0) shouldBe "Sunday"
-    println("Getting index of an element")
-    weeks.indexOf("Tuesday") shouldBe 2
-    println("Checking if list contains a particular value")
-    weeks.contains("Monday") shouldBe true
-    weeks.contains("NotWeek") shouldBe false
 
-    val birds = mutableListOf<String>("Crow", "Peacock", "Dove", "Sparrow", "Pigeon", "Parrot", "Flamingo")
-    println("Mutable list birds = $birds")
-    println("Adding element in list ")
-    birds.add("Owl")
-    birds shouldBe listOf<String>("Crow", "Peacock", "Dove", "Sparrow", "Pigeon", "Parrot", "Flamingo", "Owl")
-    println("Adding element in list for given index")
-    birds.add(1, "Penguin")
-    birds shouldBe listOf<String>(
-        "Crow",
-        "Penguin",
-        "Peacock",
-        "Dove",
-        "Sparrow",
-        "Pigeon",
-        "Parrot",
-        "Flamingo",
-        "Owl"
-    )
-    println("Removing element in list")
-    birds.remove("Dove")
-    birds shouldBe listOf<String>("Crow", "Penguin", "Peacock", "Sparrow", "Pigeon", "Parrot", "Flamingo", "Owl")
-    println("Removing element in list at given index")
-    birds.removeAt(3)
-    birds shouldBe listOf<String>("Crow", "Penguin", "Peacock", "Pigeon", "Parrot", "Flamingo", "Owl")
-    println("Setting element in at particular index")
-    birds.set(5, "Swan")
-    birds shouldBe listOf<String>("Crow", "Penguin", "Peacock", "Pigeon", "Parrot", "Swan", "Owl")
-    println("Adding collection of list with list")
-    val birdsToAdd = listOf<String>("Woodpecker", "Robin")
-    birds.addAll(birdsToAdd)
-    birds shouldBe listOf<String>(
-        "Crow",
-        "Penguin",
-        "Peacock",
-        "Pigeon",
-        "Parrot",
-        "Swan",
-        "Owl",
-        "Woodpecker",
-        "Robin"
-    )
-    println("Adding collection of list in list")
-    val birdsToRemove = listOf<String>("Penguin", "Pigeon")
-    birds.removeAll(birdsToRemove)
-    birds shouldBe listOf<String>("Crow", "Peacock", "Parrot", "Swan", "Owl", "Woodpecker", "Robin")
-    println("Retaining certain element in list")
-    val birdsToRetain = listOf<String>("Crow", "Peacock", "Swan", "Woodpecker", "Robin")
-    birds.retainAll(birdsToRetain)
-    birds shouldBe listOf<String>("Crow", "Peacock", "Swan", "Woodpecker", "Robin")
-    println("Reversing the list")
-    birds.reverse()
-    birds shouldBe listOf<String>("Robin", "Woodpecker", "Swan", "Peacock", "Crow")
-    println("Sorting the list")
-    birds.sort()
-    birds shouldBe listOf<String>("Crow", "Peacock", "Robin", "Swan", "Woodpecker")
+    weeks[0] test "get by index" shouldBe "Sunday"
+    weeks.indexOf("Tuesday") test "get index" shouldBe 2
+
+    println("Checking if list contains a particular value")
+    ("Monday" in weeks) test "in list" shouldBe true
+    ("NotWeek" in weeks) test "not in list" shouldBe false
+
+    val birds = listOf("Crow", "Peacock", "Swan", "Woodpecker", "Robin")
+    println("Birds = $birds")
+    birds.size test "size" shouldBe 5
+    birds.reversed() test "reversed" shouldBe listOf("Robin", "Woodpecker", "Swan", "Peacock", "Crow")
+    birds.sorted() test "sorted" shouldBe listOf("Crow", "Peacock", "Robin", "Swan", "Woodpecker")
+    birds.take(3) test "take" shouldBe listOf("Crow", "Peacock", "Swan")
+    birds.takeLast(3) test "takeLast" shouldBe listOf("Swan", "Woodpecker", "Robin")
+    birds.filter { it.length == 4 } test "filter" shouldBe listOf("Crow", "Swan")
 }
 
 fun createSets() {
+    // Set contains unique elements. Though element dog was added twice the resulting set added dog only once
     val animals = setOf<String>("Dog", "Cat", "Lion", "Dog")
-    println("Set contains unique elements. Though element dog was added twice the resulting set added dog only once ")
-    println("Immutable list weeks = $animals")
     animals shouldBe setOf<String>("Dog", "Cat", "Lion")
-
-    val imperativeAnimals = mutableSetOf<String>()
-    for (animal in animals) {
-        imperativeAnimals.add(animal)
-    }
-
-    animals shouldBe imperativeAnimals
-    println("All operations of List can be performed on Set.")
+    // This is a very fast operation with a set
+    animals.contains("Dog") test "in" shouldBe true
 }
 
+data class Country(val name: String, val capital: String)
+private val countries = listOf(
+    Country("AUSTRALIA", "CANBERRA"),
+    Country("BELGIUM", "BRUSSELS"),
+    Country("GERMANY", "BERLIN"),
+    Country("INDIA", "NEW DELHI"),
+    Country("JAPAN", "TOKYO"),
+)
+
 fun createMap() {
-    println("Creating map using to operator")
-    var capitals = mapOf(
+    val imperativeCapitals = mutableMapOf<String, String>()
+    for (country in countries) {
+        imperativeCapitals[country.name] = country.capital
+    }
+    val capitals = countries.associate { c -> c.name to c.capital}
+    capitals shouldBe imperativeCapitals
+
+    capitals shouldBe mapOf(
         "AUSTRALIA" to "CANBERRA",
         "BELGIUM" to "BRUSSELS",
         "GERMANY" to "BERLIN",
         "INDIA" to "NEW DELHI",
-        "JAPAN" to "TOKYO"
+        "JAPAN" to "TOKYO",
     )
-    println("capitals map is $capitals")
-    var imperativeCapitals = mutableMapOf<String, String>()
-    println("Creating map by traversing element wise")
-    for (item in capitals) {
-        imperativeCapitals.put(item.key, item.value)
-    }
-    println(imperativeCapitals)
-    capitals shouldBe imperativeCapitals
-
-    println("Creating map using to Pair()")
-    capitals = mapOf(
-        Pair("AUSTRALIA", "CANBERRA"),
-        Pair("BELGIUM", "BRUSSELS"),
-        Pair("GERMANY", "BERLIN"),
-        Pair("INDIA", "NEW DELHI"),
-        Pair("JAPAN", "TOKYO")
-    )
-    println("capitals map is $capitals")
-    imperativeCapitals = mutableMapOf<String, String>()
-    println("Alternative way to create map by iterating using (key,value)")
-    for ((key, value) in capitals) {
-        imperativeCapitals.put(key, value)
-    }
-    capitals shouldBe imperativeCapitals
 }
 
 fun operationsOnMap() {
-    var capitals = mapOf(
-        "AUSTRALIA" to "CANBERRA",
-        "BELGIUM" to "BRUSSELS",
-        "GERMANY" to "BERLIN",
-        "INDIA" to "NEW DELHI",
-        "JAPAN" to "TOKYO"
-    )
-    println("Immutable Map capitals = $capitals")
-    println("Checking if map contains particular key")
-    capitals.containsKey("INDIA") shouldBe true
-    println("Checking if map contains particular valur")
-    capitals.containsValue("BRUSSELS") shouldBe true
-    capitals.contains("GHANA") shouldBe false
-    println("Getting value in map for given key")
-    capitals.get("BELGIUM") shouldBe "BRUSSELS"
+    val capitals = countries.associate { c -> c.name to c.capital}
+    capitals.containsKey("INDIA") test "containsKey" shouldBe true
+    capitals.containsValue("BRUSSELS") test "containsValue" shouldBe true
+    capitals["BELGIUM"] test "get" shouldBe "BRUSSELS"
+    capitals.contains("GHANA") test "contains" shouldBe false
 
-    capitals = mutableMapOf(
-        "AUSTRALIA" to "CANBERRA",
-        "BELGIUM" to "BRUSSELS",
-        "GERMANY" to "BERLIN",
-        "INDIA" to "NEW DELHI",
-        "JAPAN" to "TOKYO"
-    )
-    println("Mutable Map capitals = $capitals")
-    println("Adding key, value pair in map")
-    capitals.put("FRANCE", "PARIS")
-    capitals shouldBe mapOf(
-        "AUSTRALIA" to "CANBERRA",
-        "BELGIUM" to "BRUSSELS",
-        "GERMANY" to "BERLIN",
-        "INDIA" to "NEW DELHI",
-        "JAPAN" to "TOKYO",
-        "FRANCE" to "PARIS"
-    )
-    println("Removing element in map given key")
-    capitals.remove("BELGIUM")
-    capitals shouldBe mapOf(
-        "AUSTRALIA" to "CANBERRA",
-        "GERMANY" to "BERLIN",
-        "INDIA" to "NEW DELHI",
-        "JAPAN" to "TOKYO",
-        "FRANCE" to "PARIS"
-    )
-
-    val capitalsToAdd = mapOf<String, String>("CHINA" to "BEIJING", "EGYPT" to "CAIRO")
+    val capitalsToAdd = mapOf("CHINA" to "BEIJING", "EGYPT" to "CAIRO")
     println("Adding Map Collection to the existing Map")
-    capitals.putAll(capitalsToAdd)
-    capitals shouldBe mapOf(
+    (capitals + capitalsToAdd) shouldBe mapOf(
         "AUSTRALIA" to "CANBERRA",
+        "BELGIUM" to "BRUSSELS",
         "GERMANY" to "BERLIN",
         "INDIA" to "NEW DELHI",
         "JAPAN" to "TOKYO",
-        "FRANCE" to "PARIS",
         "CHINA" to "BEIJING",
-        "EGYPT" to "CAIRO"
+        "EGYPT" to "CAIRO",
     )
+}
 
+
+fun fibonacciSequences() {
+    fibonacci().take(10).toList() shouldBe listOf(1, 1, 2, 3, 5, 8, 13, 21, 34, 55)
+}
+
+fun fibonacci() = sequence<Int> {
+    yield(1)
+    yield(1)
+    var current = 1
+    var previous = 1
+    while(true) {
+        val next = current + previous
+        previous = current
+        current = next
+        yield(current)
+    }
 }
