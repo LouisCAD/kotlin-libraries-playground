@@ -21,6 +21,7 @@ fun main() {
     playground.kotlinfaker.main()
     playground.kotlinio.main()
     playground.kotlinpoet.main()
+    playground.kotlin_statistics.main()
     playground.kotlinx.collections.immutable.main()
     playground.kotlinx.datetime.main()
     playground.kotlinx.html.main()
