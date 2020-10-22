@@ -51,6 +51,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:_")
     implementation("org.kodein.di:kodein-di:_")
     implementation("org.koin:koin-core:_")
+    implementation("org.nield:kotlin-statistics:_")
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     implementation(JakeWharton.picnic)
     implementation(JakeWharton.retrofit2.converter.kotlinxSerialization)
