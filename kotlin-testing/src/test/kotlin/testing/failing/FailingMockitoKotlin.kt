@@ -3,11 +3,11 @@ package testing.failing
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import org.junit.jupiter.api.Test
 import testing.common.DataProvider
 import testing.common.Element
 import testing.common.Presenter
 import testing.common.View
-import org.junit.jupiter.api.Test
 
 class FailingMockitoKotlin {
 

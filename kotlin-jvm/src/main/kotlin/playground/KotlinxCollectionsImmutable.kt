@@ -43,9 +43,9 @@ fun persistentSet() {
 
 fun persistentMap() {
     val map = persistentMapOf(
-            1 to "A",
-            2 to "B",
-            42 to "C"
+        1 to "A",
+        2 to "B",
+        42 to "C"
     )
 
     map[1] shouldBe "A"

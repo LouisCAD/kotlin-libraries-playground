@@ -1,17 +1,17 @@
 package testing.style
 
-import testing.common.UseCase
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
+import testing.common.UseCase
 
 
-class KotestBehaviorSpec: BehaviorSpec({
+class KotestBehaviorSpec : BehaviorSpec({
 
-    Given("use case"){
+    Given("use case") {
         val useCase = UseCase()
-        When("execute"){
+        When("execute") {
             val output = useCase.execute()
-            Then("return empty string"){
+            Then("return empty string") {
                 output shouldBe ""
             }
         }

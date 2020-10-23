@@ -3,11 +3,11 @@ package testing.mocking
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import org.junit.jupiter.api.Test
 import testing.common.DataProvider
 import testing.common.Element
 import testing.common.Presenter
 import testing.common.View
-import org.junit.jupiter.api.Test
 
 class MockitoKotlin {
 
@@ -16,8 +16,8 @@ class MockitoKotlin {
     @Test
     fun `given data exists when start presenter then display elements on view`() {
         val elements = listOf(
-                Element(1, "first"),
-                Element(2, "second")
+            Element(1, "first"),
+            Element(2, "second")
         )
 
         val dataProvider: DataProvider = mock {

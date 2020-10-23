@@ -32,8 +32,7 @@ fun main() {
 
     try {
         ConfigLoader().loadConfigOrThrow<Config>("/hoplite/qa.properties")
-    }
-    catch (e: Exception) {
+    } catch (e: Exception) {
         println("Display errors because the qa properties file does not contain the server values")
         println(e.message)
     }

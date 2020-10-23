@@ -2,10 +2,10 @@
 
 package playground.kotlinio
 
-import java.io.File
-import playground.shouldBe
 import playground.loadResourceFile
+import playground.shouldBe
 import playground.shouldHaveSameElementsAs
+import java.io.File
 
 /**
  * Kotlin/IO - Kotlin IO API
@@ -22,25 +22,50 @@ fun main() {
 
     run {
         val actual = directory.walkTopDown().map { file -> file.name }.toList()
-        val expected =  listOf("kotlinio", "nested-dir", "tada.txt", "long-file.txt", ".hidden.txt", "hello.txt", "alternate-long-file.txt")
+        val expected = listOf(
+            "kotlinio",
+            "nested-dir",
+            "tada.txt",
+            "long-file.txt",
+            ".hidden.txt",
+            "hello.txt",
+            "alternate-long-file.txt"
+        )
         actual shouldHaveSameElementsAs expected
     }
 
     run {
         val actual = directory.walkBottomUp().map { file -> file.name }.toList()
-        val expected = listOf(".hidden.txt", "alternate-long-file.txt", "hello.txt", "tada.txt", "nested-dir", "long-file.txt", "kotlinio")
+        val expected = listOf(
+            ".hidden.txt",
+            "alternate-long-file.txt",
+            "hello.txt",
+            "tada.txt",
+            "nested-dir",
+            "long-file.txt",
+            "kotlinio"
+        )
         actual shouldHaveSameElementsAs expected
     }
 
     run {
         val actual = directory.walk(direction = FileWalkDirection.BOTTOM_UP).map { file -> file.name }.toList()
-        val expected =  listOf(".hidden.txt","alternate-long-file.txt", "hello.txt", "tada.txt", "nested-dir", "long-file.txt", "kotlinio")
+        val expected = listOf(
+            ".hidden.txt",
+            "alternate-long-file.txt",
+            "hello.txt",
+            "tada.txt",
+            "nested-dir",
+            "long-file.txt",
+            "kotlinio"
+        )
         actual shouldHaveSameElementsAs expected
     }
 
     run {
         val actual = directory.walkBottomUp().maxDepth(1).map { file -> file.name }.toList()
-        val expected = listOf(".hidden.txt", "alternate-long-file.txt", "hello.txt", "nested-dir", "long-file.txt", "kotlinio")
+        val expected =
+            listOf(".hidden.txt", "alternate-long-file.txt", "hello.txt", "nested-dir", "long-file.txt", "kotlinio")
         actual shouldHaveSameElementsAs expected
     }
 
