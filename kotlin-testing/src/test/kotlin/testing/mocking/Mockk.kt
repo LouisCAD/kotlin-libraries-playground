@@ -1,15 +1,15 @@
-package framework.mockk
+package testing.mocking
 
-import framework.common.DataProvider
-import framework.common.Element
-import framework.common.Presenter
-import framework.common.View
+import testing.common.DataProvider
+import testing.common.Element
+import testing.common.Presenter
+import testing.common.View
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Test
 
-class PresenterTest {
+class Mockk {
 
     val view: View = mockk(relaxUnitFun = true)
 
@@ -61,19 +61,4 @@ class PresenterTest {
         verify { view.displayDetails(givenElement) }
     }
 
-    @Test
-    fun `given element with id=3 don't exists when get one then display error`() {
-
-        val givenElement: Element? = null
-
-        val dataProvider = mockk<DataProvider>()
-
-        every { dataProvider.getOne(any()) } returns givenElement
-
-        val presenter = Presenter(view, dataProvider)
-
-        presenter.getOne(3)
-
-        verify { view.displayError() }
-    }
 }

@@ -1,18 +1,17 @@
-package framework.spek
+package testing.style
 
-import framework.common.DistanceConverter
-import framework.common.Kilometer
-import framework.common.Meter
+import testing.common.DistanceConverter
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
+import testing.common.Input
 
-class DistanceParserParametrizedTest : Spek({
+class SpekParametrizedTest : Spek({
     describe("distance parser") {
 
         val distanceConverter = DistanceConverter()
 
-        listOf(Input(500, 0.5), Input(750, 0.8))
+        listOf(Input(500, 0.5), Input(750, 0.750))
                 .forEach { input ->
                     it("meters ${input.parameter} should parse to ${input.expected}") {
                         assertEquals(input.expected, distanceConverter.parse(input.parameter))
@@ -22,4 +21,3 @@ class DistanceParserParametrizedTest : Spek({
     }
 })
 
-data class Input(val parameter: Meter, val expected: Kilometer)

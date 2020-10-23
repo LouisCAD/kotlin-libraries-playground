@@ -1,11 +1,12 @@
-package framework.kotest
+package testing.style
 
-import framework.common.UseCase
+import testing.common.UseCase
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 
 
-class UseCaseBehaviorSpec: BehaviorSpec({
+class KotestBehaviorSpec: BehaviorSpec({
+
     Given("use case"){
         val useCase = UseCase()
         When("execute"){

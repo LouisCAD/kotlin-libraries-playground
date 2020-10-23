@@ -1,4 +1,4 @@
-package framework.kluent
+package testing.asserts
 
 import org.amshove.kluent.*
 import org.junit.jupiter.api.Test
@@ -52,8 +52,6 @@ class KluentTests {
         poirot.shouldHaveAClue()
         val jacquesClouseau = Detective(hasClue = false)
         invoking { jacquesClouseau.shouldHaveAClue() } `should throw` AnyException
-        // And failing a custom assertions produces the assertion's message
-        jacquesClouseau.shouldHaveAClue()
     }
 
     private fun throwingFunction() {

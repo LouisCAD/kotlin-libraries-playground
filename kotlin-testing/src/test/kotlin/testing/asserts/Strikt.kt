@@ -1,11 +1,11 @@
-package me.rozkmin.testing.strikt
+package testing.asserts
 
-import framework.common.UseCase
+import testing.common.UseCase
 import org.junit.jupiter.api.Test
 import strikt.api.expectThat
 import strikt.assertions.isEmpty
 
-class UseCaseTest {
+class Strikt {
     @Test
     fun `it should return empty string`() {
         val useCase = UseCase()
