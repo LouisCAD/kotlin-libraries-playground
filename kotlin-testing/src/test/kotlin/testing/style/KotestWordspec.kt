@@ -1,10 +1,10 @@
-package framework.kotest
+package testing.style
 
-import framework.common.UseCase
+import testing.common.UseCase
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.matchers.shouldBe
 
-class UseCaseTest : WordSpec({
+class KotestWordspec : WordSpec({
     "use case" should {
         val useCase = UseCase()
         "return empty string"{

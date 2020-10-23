@@ -1,9 +1,9 @@
-package framework.mockito
+package testing.mocking
 
-import framework.common.DataProvider
-import framework.common.Element
-import framework.common.Presenter
-import framework.common.View
+import testing.common.DataProvider
+import testing.common.Element
+import testing.common.Presenter
+import testing.common.View
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
@@ -11,7 +11,7 @@ import org.mockito.Mockito.*
 import org.mockito.junit.jupiter.MockitoExtension
 
 @ExtendWith(MockitoExtension::class)
-class PresenterTest {
+class Mockito {
 
     @Mock
     lateinit var view: View

@@ -1,4 +1,4 @@
-package framework.common
+package testing.common
 
 interface View {
     fun displayItems(list: List<Element>)

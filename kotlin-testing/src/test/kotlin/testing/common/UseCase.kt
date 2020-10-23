@@ -1,4 +1,4 @@
-package framework.common
+package testing.common
 
 class UseCase {
     fun execute() = ""
