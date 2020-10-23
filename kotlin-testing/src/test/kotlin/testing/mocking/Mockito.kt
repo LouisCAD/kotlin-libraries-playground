@@ -1,14 +1,15 @@
 package testing.mocking
 
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.Mock
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.verify
+import org.mockito.junit.jupiter.MockitoExtension
 import testing.common.DataProvider
 import testing.common.Element
 import testing.common.Presenter
 import testing.common.View
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.Mock
-import org.mockito.Mockito.*
-import org.mockito.junit.jupiter.MockitoExtension
 
 @ExtendWith(MockitoExtension::class)
 class Mockito {
@@ -22,8 +23,8 @@ class Mockito {
     @Test
     fun `given data exists when start presenter then display elements on view`() {
         val elements = listOf(
-                Element(1, "first"),
-                Element(2, "second")
+            Element(1, "first"),
+            Element(2, "second")
         )
 
         `when`(dataProvider.getAll()).thenReturn(elements)

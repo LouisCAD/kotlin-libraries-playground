@@ -58,7 +58,7 @@ class KluentTests {
         throw RuntimeException()
     }
 
-    private fun notThrowingFunction() : Boolean {
+    private fun notThrowingFunction(): Boolean {
         return true
     }
 

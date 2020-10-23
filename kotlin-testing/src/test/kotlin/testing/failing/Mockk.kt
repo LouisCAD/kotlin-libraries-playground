@@ -1,13 +1,13 @@
 package testing.failing
 
-import testing.common.DataProvider
-import testing.common.Element
-import testing.common.Presenter
-import testing.common.View
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Test
+import testing.common.DataProvider
+import testing.common.Element
+import testing.common.Presenter
+import testing.common.View
 
 class Mockk {
 

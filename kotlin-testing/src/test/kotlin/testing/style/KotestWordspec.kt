@@ -1,8 +1,8 @@
 package testing.style
 
-import testing.common.UseCase
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.matchers.shouldBe
+import testing.common.UseCase
 
 class KotestWordspec : WordSpec({
     "use case" should {

@@ -1,9 +1,9 @@
 package testing.asserts
 
-import testing.common.UseCase
 import org.junit.jupiter.api.Test
 import strikt.api.expectThat
 import strikt.assertions.isEmpty
+import testing.common.UseCase
 
 class Strikt {
     @Test

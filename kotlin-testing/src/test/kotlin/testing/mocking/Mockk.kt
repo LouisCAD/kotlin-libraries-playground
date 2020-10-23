@@ -1,13 +1,13 @@
 package testing.mocking
 
-import testing.common.DataProvider
-import testing.common.Element
-import testing.common.Presenter
-import testing.common.View
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Test
+import testing.common.DataProvider
+import testing.common.Element
+import testing.common.Presenter
+import testing.common.View
 
 class Mockk {
 
@@ -17,8 +17,8 @@ class Mockk {
     @Test
     fun `given data exists when start presenter then display elements on view`() {
         val elements = listOf(
-                Element(1, "first"),
-                Element(2, "second")
+            Element(1, "first"),
+            Element(2, "second")
         )
 
         val dataProvider = mockk<DataProvider>()

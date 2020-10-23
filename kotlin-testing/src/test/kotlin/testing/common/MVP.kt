@@ -24,7 +24,7 @@ class Presenter(private val view: View, private val dataProvider: DataProvider) 
         }
     }
 
-    fun getOne(id: Int){
+    fun getOne(id: Int) {
         dataProvider.getOne(id)?.let {
             view.displayDetails(it)
         }

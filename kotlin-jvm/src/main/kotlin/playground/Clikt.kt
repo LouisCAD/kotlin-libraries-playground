@@ -3,7 +3,8 @@
 package playground.clikt
 
 import com.github.ajalt.clikt.core.CliktCommand
-import com.github.ajalt.clikt.parameters.options.*
+import com.github.ajalt.clikt.parameters.options.default
+import com.github.ajalt.clikt.parameters.options.option
 
 
 /**
@@ -13,8 +14,8 @@ import com.github.ajalt.clikt.parameters.options.*
  * - [Github](https://github.com/ajalt/clikt)
  */
 class CliktPlayground : CliktCommand() {
-    private val language: String by option(help="Language of greeting").default("EN")
-    private val greeting: String by option(help="Greeting").default("Hello")
+    private val language: String by option(help = "Language of greeting").default("EN")
+    private val greeting: String by option(help = "Greeting").default("Hello")
 
     override fun run() {
         println()
