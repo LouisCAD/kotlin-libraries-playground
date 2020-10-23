@@ -1,0 +1,4 @@
+env: prod
+
+server:
+    port: 443
