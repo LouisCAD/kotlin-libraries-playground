@@ -1,15 +1,10 @@
-package framework.atrium
+package testing.asserts
 
 import ch.tutteli.atrium.api.fluent.en_GB.*
 import ch.tutteli.atrium.api.verbs.expect
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class AtriumAsserts {
-
-    @Test
-    fun `single assertion`() {
-        expect(8 + 10).isGreaterThan(20).isLessThan(19)
-    }
 
     @Test
     fun `passing feature assertion`() {
@@ -25,7 +20,22 @@ class AtriumAsserts {
 
     @Test
     fun `passing collection assertion`() {
-        expect(listOf("String", 12, 21.0)).contains(21)
+        expect(listOf("String", 12, 21.0)).contains(21.0)
+    }
+
+    @Test
+    fun `passing data driven assertion`() {
+        fun myFun(i: Int) = (i + 97).toChar()
+
+        expect("calling myFun with...") {
+            mapOf(
+                1 to 'b',
+                2 to 'c',
+                3 to 'd'
+            ).forEach { (arg, result) ->
+                feature { f(::myFun, arg) }.toBe(result)
+            }
+        }
     }
 
     internal data class FamilyMember(val name: String)
