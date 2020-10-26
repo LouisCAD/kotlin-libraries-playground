@@ -84,8 +84,16 @@ This playground is also the official sample for [gradle refreshVersions](https:/
 
 It makes it super easy to refresh dependencies
 
+`$ ./gradlew refreshVersions`
+
 ![](https://raw.githubusercontent.com/jmfayard/refreshVersions/5d646e3a0f2924b5097bf9ce680a03772807f2c2/docs/screenshots-usage/versions.properties_step02.png)
 
-And to add a new dependency
+And to add a new dependency without leaving the IDEA and with auto-completion :
 
 ![](https://raw.githubusercontent.com/jmfayard/refreshVersions/5d646e3a0f2924b5097bf9ce680a03772807f2c2/docs/screenshots-usage/dependencies_constants_autocomplete_2.png)
+
+
+## ❤️ A big thanks to our wonderful contributors !
+
+
+<a href="https://labhr.github.io/hatrack/#repo=LouisCAD/kotlin-libraries-playground"><img width="1063" alt="Let_s_Build_a_Hat_Rack" src="https://user-images.githubusercontent.com/459464/97205591-f3b34c00-17b7-11eb-884c-11a9ac42a4b8.png"></a>
