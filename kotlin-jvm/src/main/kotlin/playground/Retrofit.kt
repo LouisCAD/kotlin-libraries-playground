@@ -47,16 +47,16 @@ object Network {
     var API_URL = "http://httpbin.org/"
 
     val okHttpClient = OkHttpClient.Builder()
-            .addNetworkInterceptor(HttpLoggingInterceptor())
-            .build()
+        .addNetworkInterceptor(HttpLoggingInterceptor())
+        .build()
 
     val contentType = "application/json".toMediaType()
 
     @OptIn(ExperimentalSerializationApi::class)
     val retrofit = Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl(API_URL)
-            //.addCallAdapterFactory(CallAdapter.Factory)
-            .addConverterFactory(Json.asConverterFactory(contentType))
-            .build()
+        .client(okHttpClient)
+        .baseUrl(API_URL)
+        //.addCallAdapterFactory(CallAdapter.Factory)
+        .addConverterFactory(Json.asConverterFactory(contentType))
+        .build()
 }

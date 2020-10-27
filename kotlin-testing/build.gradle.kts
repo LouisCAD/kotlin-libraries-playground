@@ -4,6 +4,8 @@ plugins {
 
 dependencies {
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
+    testImplementation("ch.tutteli.atrium:atrium-fluent-en_GB:_")
+    testImplementation("org.amshove.kluent:kluent:_")
     testImplementation(Testing.junit)
     testImplementation(Testing.junit.params)
     testImplementation(Testing.kotest.assertions.core)

@@ -35,11 +35,11 @@ fun main() {
     val fakerWithConfig = Faker(fakerConfig)
     fakerWithConfig.unique.enable(faker::address)
     val excludedCountries = listOf(
-            "Albania",
-            "Argelia",
-            "Andorra",
-            "Angola",
-            "Argentina"
+        "Albania",
+        "Argelia",
+        "Andorra",
+        "Angola",
+        "Argentina"
     )
 
     fakerWithConfig.unique.exclude<Address>("country", excludedCountries)

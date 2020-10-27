@@ -4,7 +4,10 @@ package playground.skrapeit
 
 import it.skrape.core.htmlDocument
 import it.skrape.expect
-import it.skrape.matchers.*
+import it.skrape.matchers.ContentTypes
+import it.skrape.matchers.toBe
+import it.skrape.matchers.toBePresentTimes
+import it.skrape.matchers.toContain
 import it.skrape.selects.and
 import it.skrape.selects.html5.*
 import it.skrape.skrape
