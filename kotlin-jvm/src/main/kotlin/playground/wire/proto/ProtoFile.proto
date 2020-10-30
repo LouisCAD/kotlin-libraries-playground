@@ -1,0 +1,15 @@
+
+//Using proto3 version of the proto buffer language
+syntax = "proto3";
+
+// message type
+message HacktoberFest {
+  string library_name = 1;
+  repeated int32 hacktoberfest_participation_years = 2;
+  User user = 3;
+}
+
+message User {
+  string user_name = 1;
+  bool user_participation_this_year = 2;
+}

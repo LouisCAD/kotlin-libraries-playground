@@ -1,3 +1,4 @@
+import Square.wire
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -5,17 +6,18 @@ plugins {
     kotlin("kapt")
     kotlin("plugin.serialization")
     id("com.squareup.sqldelight")
+    id("com.squareup.wire")
+    id ("application")
 }
 
 group = "playground"
 
 repositories {
-    mavenLocal()
-    mavenCentral()
     google()
     jcenter()
     maven(url = "https://dl.bintray.com/kotlin/kotlin-eap/")
 }
+
 
 sqldelight {
     database("AppDatabase") {
@@ -23,6 +25,13 @@ sqldelight {
     }
     linkSqlite = false
 }
+
+wire {
+    kotlin {
+
+    }
+}
+
 
 // File build.gradle.kts
 dependencies {
@@ -49,6 +58,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.kodein.di:kodein-di:_")
+    implementation ("com.squareup.wire:wire-runtime:3.4.0")
     implementation(JakeWharton.retrofit2.converter.kotlinxSerialization)
     implementation(Kotlin.stdlib.jdk8)
     implementation(KotlinX.collections.immutable)
@@ -91,9 +101,7 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-tasks.register("run", JavaExec::class.java) {
-    this.main = "playground._mainKt"
-}
+
 
 /**
  * How do I setup GitHub Actions for my Gradle or Android project?
@@ -121,3 +129,4 @@ tasks.register<DefaultTask>("hello") {
     group = "Custom"
     description = "Minimal task that do nothing. Useful to debug a failing build"
 }
+

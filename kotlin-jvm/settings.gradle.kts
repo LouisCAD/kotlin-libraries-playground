@@ -1,7 +1,14 @@
 import de.fayard.refreshVersions.bootstrapRefreshVersions
 
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
 buildscript {
-    repositories { mavenLocal() ; gradlePluginPortal() }
+    repositories { mavenLocal() }
     val useSnapshot = false
     dependencies.classpath(
             if (useSnapshot) "de.fayard.refreshVersions:refreshVersions:0.9.6-SNAPSHOT" else "de.fayard.refreshVersions:refreshVersions:0.9.5"
@@ -12,6 +19,7 @@ plugins {
     id("com.gradle.enterprise") version "3.4.1"
 }
 
+
 // https://dev.to/jmfayard/the-one-gradle-trick-that-supersedes-all-the-others-5bpg
 gradleEnterprise {
     buildScan {
@@ -20,6 +28,7 @@ gradleEnterprise {
         publishOnFailure()
     }
 }
+
 
 rootProject.name = "kotlin-libraries-playground"
 
