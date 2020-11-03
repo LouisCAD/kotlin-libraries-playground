@@ -21,9 +21,16 @@ jobs:
 
       # Execute Gradle commands in GitHub Actions workflows
       # => https://github.com/marketplace/actions/gradle-command
-      - uses: eskatos/gradle-command-action@v1
+      - id: gradle
+        uses: eskatos/gradle-command-action@v1
         with:
           arguments: runOnGitHub
           wrapper-cache-enabled: true
           dependencies-cache-enabled: true
           configuration-cache-enabled: true
+      - id: buildscan
+        name: Add Build Scan URLs to Pull Request
+        uses: mshick/add-pr-comment@v1
+        with:
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            message: Buildscan url ${{ steps.gradle.outputs.build-scan-url }}
