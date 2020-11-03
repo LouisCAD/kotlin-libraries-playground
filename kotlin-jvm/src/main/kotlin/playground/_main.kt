@@ -16,6 +16,7 @@ fun main() {
     playground.exposed.main()
     playground.hoplite.main()
     playground.klaxon.main()
+    playground.kodein.db.main()
     playground.konf.main()
     playground.kotlin.collections.main()
     playground.kotlinfaker.main()

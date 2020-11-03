@@ -17,6 +17,7 @@ allprojects {
         jcenter()
         maven("https://dl.bintray.com/kotlin/kotlin-eap/")
         maven("https://kotlin.bintray.com/kotlinx/")
+        maven("https://dl.bintray.com/kodein-framework/Kodein-DB")
     }
 
     tasks.withType<KotlinCompile> {
