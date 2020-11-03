@@ -33,4 +33,10 @@ jobs:
         uses: mshick/add-pr-comment@v1
         with:
             repo-token: ${{ secrets.GITHUB_TOKEN }}
-            message: Buildscan url ${{ steps.gradle.outputs.build-scan-url }}
+            message: |
+                **Buildscan url for run [${{ github.run_id }}](https://github.com/n8ebel/GitHubActionsAutomationSandbox/actions/runs/${{ github.run_id }})**
+                ${{ steps.gradle.outputs.build-scan-url }}
+       - uses: actions/upload-artifact@v2
+         with:
+             name: buildscan
+             path: 'buildscan.log'

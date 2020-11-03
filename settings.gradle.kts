@@ -15,7 +15,11 @@ gradleEnterprise {
         termsOfServiceUrl = "https://gradle.com/terms-of-service"
         termsOfServiceAgree = "yes"
         publishAlways()
+        buildScanPublished {
+            file("buildscan.log").writeText("${java.util.Date()} - $buildScanUri\n")
+        }
     }
+
 }
 
 rootProject.name = "kotlin-libraries-playground"
