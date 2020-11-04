@@ -16,7 +16,7 @@ gradleEnterprise {
         termsOfServiceAgree = "yes"
         publishAlways()
         buildScanPublished {
-            file("buildscan.log").writeText("${java.util.Date()} - $buildScanUri\n")
+            file("buildscan.log").appendText("${java.util.Date()} - $buildScanUri\n")
         }
     }
 
