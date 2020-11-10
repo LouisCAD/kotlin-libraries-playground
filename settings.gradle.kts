@@ -1,8 +1,17 @@
 import de.fayard.refreshVersions.bootstrapRefreshVersions
 
 buildscript {
-    repositories { mavenLocal(); gradlePluginPortal() }
-    dependencies.classpath("de.fayard.refreshVersions:refreshVersions:0.9.7")
+    // To use a development version of "gradle refreshVersion" from Jitpack,
+    // put here the number of your pull-request
+    val githubPR: Int? = null
+    repositories {
+        gradlePluginPortal()
+        if (githubPR != null) maven("https://jitpack.io")
+    }
+    val classpath = if (githubPR == null)
+        "de.fayard.refreshVersions:refreshVersions:0.9.7" else
+        "com.github.jmfayard:refreshVersions:PR${githubPR}-SNAPSHOT"
+    dependencies.classpath(classpath)
 }
 
 plugins {
