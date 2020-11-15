@@ -27,8 +27,8 @@ pluginManagement {
 
 plugins {
     id("com.gradle.enterprise") version "3.4.1"
-    id("de.fayard.buildSrcLibs")
     id("de.fayard.refreshVersions")
+    // id("de.fayard.buildSrcLibs") // Uncomment when https://github.com/jmfayard/refreshVersions/pull/280 is done
 }
 
 // https://dev.to/jmfayard/the-one-gradle-trick-that-supersedes-all-the-others-5bpg
