@@ -186,8 +186,8 @@ private fun `Parse and verify response of url`() {
                             " to be a testing lib, but can also be used to scrape websites in a convenient fashion."
                     }
                     findAll {
-                        size toBe 26
-                        toBePresentTimes(26) // shorthand
+                        size toBe 27
+                        toBePresentTimes(27) // shorthand
                     }
                 }
             }
