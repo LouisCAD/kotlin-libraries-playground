@@ -77,6 +77,7 @@ dependencies {
     implementation("com.apollographql.apollo:apollo-runtime:_")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-properties:_")
+    implementation("com.github.kittinunf.fuel:fuel:2.3.0")
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
 }
 
