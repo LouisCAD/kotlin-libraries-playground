@@ -31,6 +31,7 @@ jobs:
       - id: buildscan
         name: Add Build Scan URLs to Pull Request
         uses: mshick/add-pr-comment@v1
+        if: ${{ secrets.GITHUB_TOKEN }}
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           message: |
