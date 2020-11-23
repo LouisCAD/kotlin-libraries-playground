@@ -33,27 +33,27 @@ fun main() {
 }
 
 class KtorHttpbinApi(
-        val client: HttpClient
+    val client: HttpClient
 ) {
 
     suspend fun get(vararg params: Pair<String, String>) =
-            client.get<HttpBinGet>("$API_URL/get") {
-                params.forEach {
-                    url.parameters.append(it.first, it.second)
-                }
+        client.get<HttpBinGet>("$API_URL/get") {
+            params.forEach {
+                url.parameters.append(it.first, it.second)
             }
+        }
 }
 
 object Network {
     var API_URL = "http://httpbin.org"
 
     val okHttpClient = OkHttpClient.Builder()
-            .addNetworkInterceptor(
-                    HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
-            )
-            .build()
+        .addNetworkInterceptor(
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+        )
+        .build()
 
-    val ktorClient =  HttpClient(OkHttp) {
+    val ktorClient = HttpClient(OkHttp) {
         install(JsonFeature) {
             serializer = defaultSerializer()
         }

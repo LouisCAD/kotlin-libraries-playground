@@ -2,8 +2,11 @@
 
 package playground.okhttp
 
-import okhttp3.*
+import okhttp3.FormBody
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import playground.shouldBe
 
 /**
@@ -19,18 +22,18 @@ fun main() {
     val client = OkHttpClient()
 
     val url = "http://httpbin.org/post".toHttpUrlOrNull()!!
-            .newBuilder().addQueryParameter("hello", "world")
-            .build()
+        .newBuilder().addQueryParameter("hello", "world")
+        .build()
 
     val formBody = FormBody.Builder()
-            .add("search", "Jurassic Park")
-            .build()
+        .add("search", "Jurassic Park")
+        .build()
 
     val request = Request.Builder()
-            .url(url)
-            .header("X-My-Header", "42")
-            .post(formBody)
-            .build()
+        .url(url)
+        .header("X-My-Header", "42")
+        .post(formBody)
+        .build()
 
     val response: Response = client.newCall(request).execute()
     response.code shouldBe 200

@@ -27,7 +27,7 @@ fun main() {
             row(guest.who, guest.guests.joinToString(), guest.brings.joinToString())
         }
     }
-    "\n$table" shouldBe  """
+    "\n$table" shouldBe """
 ┌─────────┬──────────────────┬─────────────────┐
 │ Who?    │ Guests?          │ Brings what?    │
 ├─────────┼──────────────────┼─────────────────┤
