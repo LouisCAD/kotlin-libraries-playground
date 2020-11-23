@@ -28,6 +28,7 @@ dependencies {
     implementation("com.beust:klaxon:_")
     implementation("com.github.ajalt.clikt:clikt:_")
     implementation("com.github.ajalt.clikt:clikt:_")
+    implementation("com.github.kittinunf.fuel:fuel:2.3.0")
     implementation("com.h2database:h2:_")
     implementation("com.h2database:h2:_")
     implementation("com.sksamuel.hoplite:hoplite-core:_")
@@ -77,7 +78,6 @@ dependencies {
     implementation("com.apollographql.apollo:apollo-runtime:_")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-properties:_")
-    implementation("com.github.kittinunf.fuel:fuel:2.3.0")
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
 }
 
