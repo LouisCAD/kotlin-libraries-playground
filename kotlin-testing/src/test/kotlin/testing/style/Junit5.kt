@@ -1,15 +1,17 @@
-package framework.junit5
+package testing.style
 
-import framework.common.DistanceConverter
-import framework.common.Kilometer
-import framework.common.Meter
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.*
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.ArgumentsProvider
+import org.junit.jupiter.params.provider.ArgumentsSource
+import testing.common.DistanceConverter
+import testing.common.Kilometer
+import testing.common.Meter
 import java.util.stream.Stream
 
-class DistanceConverterParameterizedTest {
+class Junit5ParameterizedTest {
     @ParameterizedTest
     @ArgumentsSource(TestInputProvider::class)
     fun `check distance parser`(input: Input) {
@@ -28,8 +30,8 @@ class DistanceConverterParameterizedTest {
     class TestInputProvider : ArgumentsProvider {
         override fun provideArguments(context: ExtensionContext?): Stream<out Arguments> {
             return Stream.of(
-                    Input(500, 0.5),
-                    Input(750, 0.8)
+                Input(500, 0.5),
+                Input(750, 0.750)
             ).map { Arguments.of(it) }
         }
     }

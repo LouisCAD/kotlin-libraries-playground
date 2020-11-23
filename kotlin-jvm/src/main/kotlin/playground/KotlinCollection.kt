@@ -74,6 +74,7 @@ fun createSets() {
 }
 
 data class Country(val name: String, val capital: String)
+
 private val countries = listOf(
     Country("AUSTRALIA", "CANBERRA"),
     Country("BELGIUM", "BRUSSELS"),
@@ -87,7 +88,7 @@ fun createMap() {
     for (country in countries) {
         imperativeCapitals[country.name] = country.capital
     }
-    val capitals = countries.associate { c -> c.name to c.capital}
+    val capitals = countries.associate { c -> c.name to c.capital }
     capitals shouldBe imperativeCapitals
 
     capitals shouldBe mapOf(
@@ -100,7 +101,7 @@ fun createMap() {
 }
 
 fun operationsOnMap() {
-    val capitals = countries.associate { c -> c.name to c.capital}
+    val capitals = countries.associate { c -> c.name to c.capital }
     capitals.containsKey("INDIA") test "containsKey" shouldBe true
     capitals.containsValue("BRUSSELS") test "containsValue" shouldBe true
     capitals["BELGIUM"] test "get" shouldBe "BRUSSELS"
@@ -129,7 +130,7 @@ fun fibonacci() = sequence<Int> {
     yield(1)
     var current = 1
     var previous = 1
-    while(true) {
+    while (true) {
         val next = current + previous
         previous = current
         current = next

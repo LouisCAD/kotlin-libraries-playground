@@ -1,5 +1,19 @@
 package playground
 
+fun shouldThrow(message: String, block: () -> Any?) {
+    val message = try {
+        block()
+        "Expected a throwable, but nothing was thrown."
+    } catch (e: Throwable) {
+        if (e.message == message) {
+            println("Test: got expected exception <<$message>>")
+            null
+        } else {
+            "Test: expected exception <<$message>> but got <<${e.message}>>"
+        }
+    }
+    if (message != null) error(message)
+}
 
 infix fun <T : Any?> T.shouldBe(expected: T) {
     println("Test: $expected")
