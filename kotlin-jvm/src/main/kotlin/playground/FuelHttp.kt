@@ -1,7 +1,17 @@
-package playground
+@file:Suppress("PackageDirectoryMismatch")
+
+package playground.fuel
 
 import com.github.kittinunf.fuel.core.FuelManager
+import playground.shouldBe
 import java.net.URL
+
+/**
+ * Fuel HTTP Client
+
+- [Website](https://fuel.gitbook.io/documentation/)
+- [GitHub kittinunf/fuel]( https://github.com/kittinunf/fuel)
+ */
 
 fun main() {
     println()
