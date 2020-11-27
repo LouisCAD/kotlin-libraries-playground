@@ -15,7 +15,7 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 
 dependencies {
-    implementation(project(":kotlin-server-shared"))
+    implementation(project(":kotlin-server:kotlin-server-shared"))
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-data-rest")
 	implementation("org.springframework.boot:spring-boot-starter-jersey")
