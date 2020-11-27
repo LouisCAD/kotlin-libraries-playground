@@ -11,11 +11,10 @@ interface IAuthor {
 /**
  * Author dto that will serialized and sent to clients.
  */
-data class AuthorDTO(
+data class AuthorDto(
     var id: Long? = null,
-    var name: String? = null,
-    var books: List<BookDto> = emptyList()
+    var name: String? = null
 )
 
-fun <T: IAuthor> IAuthor.toAuthorDto(books: List<IBook<T>>): AuthorDTO =
-    AuthorDTO(id, name, books.map(IBook<T>::toBookDto))
+fun IAuthor.toAuthorDto(): AuthorDto =
+    AuthorDto(id, name)

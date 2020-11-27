@@ -1,5 +1,7 @@
 package playground.server.springboot.feature.book
 
+import org.springframework.data.repository.PagingAndSortingRepository
+import org.springframework.stereotype.Repository
 import playground.server.springboot.feature.author.Author
 import playground.server.springboot.util.rest.IDtoConverter
 import playground.server.shared.BookDto
@@ -21,6 +23,13 @@ data class Book(
     @ManyToOne
     override var author: Author? = null
 ): IBook<Author>
+
+/**
+ * Repository to access books.
+ */
+@Repository
+interface IBookRepository : PagingAndSortingRepository<Book, Long>
+
 
 object BookDtoConverter : IDtoConverter<Book, BookDto> {
     override fun convert(entity: Book): BookDto = entity.toBookDto()

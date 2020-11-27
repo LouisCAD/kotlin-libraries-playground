@@ -1,0 +1,42 @@
+###
+GET {{server}}/book
+
+
+###
+GET {{server}}/book/1
+
+###
+GET {{server}}/author
+
+
+###
+GET {{server}}/author/1
+
+
+###
+POST {{server}}/author
+Content-Type: application/json
+
+{
+    "name": "Victor Hugo"
+}
+
+###
+POST {{server}}/book
+Content-Type: application/json
+
+{
+    "title": "Les misérables",
+    "publication": "1865-01-01",
+    "authorId": 3
+
+}
+
+
+###
+DELETE {{server}}/book/3
+Content-Type: application/json
+
+{
+    "name": "Victor Hugo"
+}
