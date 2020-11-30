@@ -1,25 +1,24 @@
 import de.fayard.refreshVersions.bootstrapRefreshVersions
 
 pluginManagement {
-    val (stableVersion, devVersion, githubPR) = listOf("0.9.8", null, null)
-    fun module(name: String) = when {
-        githubPR != null -> "com.github.jmfayard:$name:PR${githubPR}-SNAPSHOT"
-        devVersion != null -> "de.fayard.refreshVersions:$name:$devVersion"
-        else -> "de.fayard.refreshVersions:$name:$stableVersion"
-    }
-
+    val version = "0.9.8-dev-002" // O.9.7 0.9.8:PR 0.9.8-SNAPSHOT
     repositories {
         gradlePluginPortal()
-        if (devVersion != null) mavenLocal()
-        if (githubPR != null) maven("https://jitpack.io")
+        when {
+            version.contains(":PR") -> maven("https://jitpack.io")
+            version.contains("-dev-") -> maven("https://dl.bintray.com/jmfayard/maven")
+            version.contains("-SNAPSHOT") -> mavenLocal()
+        }
     }
     resolutionStrategy {
+        fun module(module: String) = when {
+            version.contains(":PR") -> "com.github.jmfayard:refreshVersions:$version"
+            else -> "de.fayard.refreshVersions:$module:$version"
+        }
         eachPlugin {
             when (requested.id.id) {
                 "de.fayard.refreshVersions" -> useModule(module("refreshVersions"))
-                "de.fayard.buildSrcLibs" -> useModule(module(
-                    if (githubPR != null) "refreshVersions" else "buildSrcLibs"
-                ))
+                "de.fayard.buildSrcLibs" -> useModule(module("buildSrcLibs"))
             }
         }
     }
