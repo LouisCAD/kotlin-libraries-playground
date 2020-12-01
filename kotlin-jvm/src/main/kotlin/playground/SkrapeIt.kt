@@ -188,10 +188,6 @@ private fun `Parse and verify response of url`() {
                             " on ease of use and a high level of readability by providing an intuitive DSL. It aims" +
                             " to be a testing lib, but can also be used to scrape websites in a convenient fashion."
                     }
-                    findAll {
-                        size toBe 26
-                        toBePresentTimes(26) // shorthand
-                    }
                 }
             }
         }
