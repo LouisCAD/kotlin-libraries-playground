@@ -1,18 +1,18 @@
 import de.fayard.refreshVersions.bootstrapRefreshVersions
 
 pluginManagement {
-    val version = "0.9.8-SNAPSHOT" // O.9.7 0.9.8:PR 0.9.8-SNAPSHOT
+    val version = "PR299-SNAPSHOT" // O.9.7 0.9.8:PR299-SNAPSHOT 0.9.8-SNAPSHOT  0.9.8-dev-002
     repositories {
         gradlePluginPortal()
         when {
-            version.contains(":PR") -> maven("https://jitpack.io")
+            version.contains("PR") -> maven("https://jitpack.io")
             version.contains("-dev-") -> maven("https://dl.bintray.com/jmfayard/maven")
             version.contains("-SNAPSHOT") -> mavenLocal()
         }
     }
     resolutionStrategy {
         fun module(module: String) = when {
-            version.contains(":PR") -> "com.github.jmfayard:refreshVersions:$version"
+            version.contains("PR") -> "com.github.jmfayard:refreshVersions:$version"
             else -> "de.fayard.refreshVersions:$module:$version"
         }
         eachPlugin {
