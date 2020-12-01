@@ -1,7 +1,7 @@
 import de.fayard.refreshVersions.bootstrapRefreshVersions
 
 pluginManagement {
-    val version = "0.9.8-dev-002" // O.9.7 0.9.8:PR 0.9.8-SNAPSHOT
+    val version = "0.9.8-SNAPSHOT" // O.9.7 0.9.8:PR 0.9.8-SNAPSHOT
     repositories {
         gradlePluginPortal()
         when {
