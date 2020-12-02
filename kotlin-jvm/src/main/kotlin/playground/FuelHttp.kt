@@ -3,10 +3,12 @@
 package playground.fuel
 
 import com.github.kittinunf.fuel.core.FuelManager
+import com.github.kittinunf.fuel.core.Request
+import com.github.kittinunf.fuel.core.interceptors.LogRequestInterceptor
+import com.github.kittinunf.fuel.core.interceptors.LogResponseInterceptor
 import com.github.kittinunf.fuel.serialization.responseObject
 import playground.kotlinx.serialization.HttpBinGet
 import playground.shouldBe
-import java.net.URL
 
 /**
  * Fuel HTTP Client
@@ -19,16 +21,16 @@ fun main() {
     println()
     println("# kittinunf /fuel - The easiest HTTP networking library for Kotlin/Android")
 
-    val url = "http://httpbin.org"
-    val httpClient = FuelManager.instance
+    val url = "http://httpbin.org/get"
+    val httpClient: FuelManager = FuelManager()
+        .addRequestInterceptor(LogRequestInterceptor)
+        .addResponseInterceptor(LogResponseInterceptor)
 
-    httpClient
-        .get(url, listOf("hello" to "world"))
-        .responseObject<HttpBinGet> { _, response, result ->
-            val httpBin = result.component1()!!
-
-            response.statusCode shouldBe 200
-            httpBin.url shouldBe "http://httpbin.org?hello=world"
-            httpBin.args shouldBe mapOf("hello" to "world")
-        }
+    val request: Request = httpClient.get(url, listOf("hello" to "world"))
+    request.responseObject<HttpBinGet> { _, response, (httpBin: HttpBinGet?, error) ->
+        response.statusCode shouldBe 200
+        error shouldBe null
+        println("httpbin=" + requireNotNull(httpBin))
+        httpBin.url shouldBe "http://httpbin.org?hello=world"
+    }.join()
 }
