@@ -1,12 +1,33 @@
 import de.fayard.refreshVersions.bootstrapRefreshVersions
 
-buildscript {
-    repositories { mavenLocal(); gradlePluginPortal() }
-    dependencies.classpath("de.fayard.refreshVersions:refreshVersions:0.9.7")
+pluginManagement {
+    val version = "PR299-SNAPSHOT" // O.9.7 0.9.8:PR299-SNAPSHOT 0.9.8-SNAPSHOT  0.9.8-dev-002
+    repositories {
+        gradlePluginPortal()
+        when {
+            version.contains("PR") -> maven("https://jitpack.io")
+            version.contains("-dev-") -> maven("https://dl.bintray.com/jmfayard/maven")
+            version.contains("-SNAPSHOT") -> mavenLocal()
+        }
+    }
+    resolutionStrategy {
+        fun module(module: String) = when {
+            version.contains("PR") -> "com.github.jmfayard:refreshVersions:$version"
+            else -> "de.fayard.refreshVersions:$module:$version"
+        }
+        eachPlugin {
+            when (requested.id.id) {
+                "de.fayard.refreshVersions" -> useModule(module("refreshVersions"))
+                "de.fayard.buildSrcLibs" -> useModule(module("buildSrcLibs"))
+            }
+        }
+    }
 }
 
 plugins {
     id("com.gradle.enterprise") version "3.4.1"
+    id("de.fayard.buildSrcLibs")
+    id("de.fayard.refreshVersions")
 }
 
 // https://dev.to/jmfayard/the-one-gradle-trick-that-supersedes-all-the-others-5bpg
