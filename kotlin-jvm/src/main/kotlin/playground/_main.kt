@@ -14,6 +14,7 @@ fun main() {
     playground.di.koin.main()
     playground.di.manual.main()
     playground.exposed.main()
+    playground.fuel.main()
     playground.hoplite.main()
     playground.klaxon.main()
     playground.kodein.db.main()
