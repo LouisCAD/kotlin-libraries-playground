@@ -13,8 +13,6 @@ on:
 jobs:
   gradle:
     runs-on: ubuntu-latest
-    env:
-      TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-java@v1
@@ -30,15 +28,6 @@ jobs:
           wrapper-cache-enabled: true
           dependencies-cache-enabled: true
           configuration-cache-enabled: true
-      - id: buildscan
-        name: Add Build Scan URLs to Pull Request
-        uses: mshick/add-pr-comment@v1
-        if: env.TOKEN
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          message: |
-            Buildscan url for run [${{ github.run_id }}](https://github.com/LouisCAD/kotlin-libraries-playground/actions/runs/${{ github.run_id }})
-            ${{ steps.gradle.outputs.build-scan-url }}
       - id: artifact
         name: Add build scan to the artifact
         uses: actions/upload-artifact@v2
