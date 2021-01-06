@@ -36,6 +36,7 @@ dependencies {
     implementation("com.squareup.sqldelight:sqlite-driver:_")
     implementation("com.tinder.statemachine:statemachine:_")
     implementation("com.uchuhimo:konf:_")
+    implementation("io.github.lucapiccinelli:konad:_")
     implementation("io.github.serpro69:kotlin-faker:_")
     implementation("it.skrape:skrapeit-core:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
