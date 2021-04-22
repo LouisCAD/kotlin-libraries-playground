@@ -9,7 +9,7 @@ import testing.common.Element
 import testing.common.Presenter
 import testing.common.View
 
-class Mockk {
+class FailingMockk {
 
     val view: View = mockk(relaxUnitFun = true)
 

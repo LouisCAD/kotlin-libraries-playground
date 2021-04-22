@@ -23,7 +23,7 @@ dependencies {
     //testImplementation(Testing.spek.runtime.jvm)
     testImplementation(Testing.strikt.arrow)
     testImplementation(Testing.strikt.core)
-    testImplementation("io.arrow-kt:arrow-core:0.13.1")
+    testImplementation("io.arrow-kt:arrow-core:0.11.0")
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
 }
 

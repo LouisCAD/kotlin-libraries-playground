@@ -122,7 +122,7 @@ class KotestAsserts {
         leftEither.shouldBeLeft()
         leftEither shouldBeLeft "ERROR!!"
 
-        val nonEmptyList = nonEmptyListOf(1, 2, 3, 4, 5, null)
+        val nonEmptyList = NonEmptyList.of(1, 2, 3, 4, 5, null)
 
         nonEmptyList shouldContain 1
         nonEmptyList.shouldContainNull()

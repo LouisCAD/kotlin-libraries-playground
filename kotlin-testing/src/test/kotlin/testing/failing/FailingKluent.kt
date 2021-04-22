@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
  *
  * For more info, @see <a href="https://github.com/MarkusAmshove/Kluent">Kluent</a>
  */
-class KluentFailing {
+class FailingKluent {
     @Test
     fun `Failing - Basic assertions`() {
         "Hola qué tal?" `should be equal to` "Bonjour, ca va?"

@@ -5,7 +5,7 @@ import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import testing.common.DistanceConverter
 
-class DistanceParserParametrizedTest : Spek({
+class FailingSpekTest : Spek({
     describe("distance parser") {
 
         val distanceConverter = DistanceConverter()
