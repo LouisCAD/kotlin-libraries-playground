@@ -2,9 +2,9 @@
 
 package playground.di.koin
 
-import org.koin.core.KoinComponent
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import org.koin.core.context.startKoin
-import org.koin.core.inject
 import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module

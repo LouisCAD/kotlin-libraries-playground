@@ -1,13 +1,6 @@
 package testing.asserts
 
-import arrow.core.Either
-import arrow.core.NonEmptyList
-import arrow.core.Some
-import arrow.core.Validated
-import arrow.core.invalid
-import arrow.core.none
-import arrow.core.toOption
-import arrow.core.valid
+import arrow.core.*
 import io.kotest.assertions.arrow.either.shouldBeLeft
 import io.kotest.assertions.arrow.either.shouldBeRight
 import io.kotest.assertions.arrow.nel.shouldContain
@@ -121,15 +114,15 @@ class KotestAsserts {
         optionSome.shouldBeSome()
 
 
-        val rightEither = Either.right(1)
-        val leftEither = Either.left("ERROR!!")
+        val rightEither = Either.Right(1)
+        val leftEither = Either.Left("ERROR!!")
 
         rightEither.shouldBeRight()
         rightEither shouldBeRight 1
         leftEither.shouldBeLeft()
         leftEither shouldBeLeft "ERROR!!"
 
-        val nonEmptyList = NonEmptyList.of(1, 2, 3, 4, 5, null)
+        val nonEmptyList = nonEmptyListOf(1, 2, 3, 4, 5, null)
 
         nonEmptyList shouldContain 1
         nonEmptyList.shouldContainNull()

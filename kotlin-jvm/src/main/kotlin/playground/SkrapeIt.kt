@@ -177,7 +177,7 @@ private fun `Parse and verify response of url`() {
         url = "https://github.com/skrapeit/skrape.it"
         expect {
             statusCode toBe 200
-            statusMessage toBe "OK"
+            //statusMessage toBe "OK"
             contentType toBe ContentTypes.TEXT_HTML_UTF8
 
             htmlDocument {

@@ -67,7 +67,7 @@ internal class UnsupportedCountryListener : DBListener<City> {
 
     override fun didPut(
         model: City,
-        key: Key<*>,
+        key: Key<City>,
         typeName: ReadMemory,
         metadata: Metadata,
         size: Int,
