@@ -174,13 +174,13 @@ class KotestAsserts {
             sent = false, message = "May you have an amazing day"
         )
 
-        withClue("sent field should be true") {
-            mail.sent shouldBe true
+        withClue("sent field should be false") {
+            mail.sent shouldBe false
         }
 
         mail.asClue {
             it.dateCreated shouldBeAfter LocalDate.of(2020, 10, 26)
-            it.sent shouldBe true
+            it.sent shouldBe false
         }
     }
 
@@ -193,7 +193,7 @@ class KotestAsserts {
 
         mail.asClue {
             it.dateCreated shouldBeAfter LocalDate.of(2020, 10, 26)
-            it.sent shouldBe true
+            it.sent shouldBe false
         }
     }
 

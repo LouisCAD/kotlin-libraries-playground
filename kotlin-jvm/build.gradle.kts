@@ -39,6 +39,7 @@ dependencies {
     implementation("io.github.lucapiccinelli:konad:_")
     implementation("io.github.serpro69:kotlin-faker:_")
     implementation("it.skrape:skrapeit-core:_")
+    implementation("it.skrape:skrapeit-http-fetcher:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-dao:_")
     implementation("org.jetbrains.exposed:exposed-java-time:_")
