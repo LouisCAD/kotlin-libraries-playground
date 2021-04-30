@@ -6,7 +6,6 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven( "https://dl.bintray.com/arrow-kt/arrow-kt/")
 }
 
 dependencies {
