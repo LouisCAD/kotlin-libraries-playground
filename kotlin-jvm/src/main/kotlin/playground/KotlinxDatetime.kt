@@ -6,9 +6,8 @@ import kotlinx.datetime.*
 import playground.shouldBe
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
+import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
-import kotlin.time.days
-import kotlin.time.hours
 
 
 fun main() {
@@ -63,14 +62,14 @@ private fun playWithInstants() {
     run {
         val rightNow = Clock.System.now()
 
-        val oneHourAfter = rightNow + 1.hours
-        val tenDaysBefore = rightNow - 1.days
+        val oneHourAfter = rightNow + Duration.hours(1)
+        val tenDaysBefore = rightNow - Duration.days(1)
 
         // and compare them
         check(tenDaysBefore < rightNow && rightNow < oneHourAfter)
 
         val timeSpread = oneHourAfter - tenDaysBefore
-        timeSpread shouldBe (1.days + 1.hours)
+        timeSpread shouldBe (Duration.days(1) + Duration.hours(1))
     }
 
     // We can use bigger time-frames too
