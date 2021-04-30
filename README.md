@@ -6,6 +6,25 @@ Also the official sample for [gradle refreshVersions](https://github.com/jmfayar
 
 [![](https://user-images.githubusercontent.com/459464/93568735-ddcc9300-f990-11ea-952b-1c9a461f8e14.png)](http://www.youtube.com/watch?v=VhYERonB8co "Gradle refreshVersions")
 
+## Usage
+
+Run all the samples
+
+```
+$ ./gradlew :kotlin-jvm:run
+```
+
+Run all the tests
+
+```
+$ ./gradlew :kotlin-testing:test
+```
+
+Test tests called FailingXXX are expected to fail
+
+<img width="522" alt="kotlin-libraries-playground_–_versions_properties__kotlin-libraries-playground__and_GitHub_Desktop" src="https://user-images.githubusercontent.com/459464/116738577-edb25800-a9f2-11eb-9a63-96805bb59cf4.png">
+
+
 ## ❤️ Contributors welcome! #hacktoberfest
 
 We want to collect sample usage of Kotlin libraries, and the more the better!
@@ -16,7 +35,7 @@ You are very welcome to contribute your own library sample.
 
 ### 🤔How do you keep up with all the new stuff?
 
-There are [great resources to learn Kotlin](https://dev.to/jmfayard/best-ways-to-learn-kotlin-from-scratch-or-from-java-with-books-or-tutorials-online-or-in-the-ide-52cm). 
+There are [great resources to learn Kotlin](https://dev.to/jmfayard/best-ways-to-learn-kotlin-from-scratch-or-from-java-with-books-or-tutorials-online-or-in-the-ide-52cm).
 
 But once you master the language, you are not done just yet.
 
@@ -35,8 +54,8 @@ There are several inefficient ways to do that:
 
 ### 🦅Widening your knowledge of libraries
 
-The `kotlin-libraries-playgound` contains samples for a growing number of good Kotlin libraries including 
-[Moshi, Okio, OkHttp, Retrofit, Kotlinx Serialization, Ktor-client, ...](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/main/kotlin/playground), 
+The `kotlin-libraries-playgound` contains samples for a growing number of good Kotlin libraries including
+[Apollo, CliKt, Kodein DI, Kodein DB, Exposed, Fuel, Hoplite, Klaxon, Konad, Konf, Kotlin Collections, Kotlin  Faker, Kotlin IO, Kotlinpoet, Kotlin Statistics, Kotlinx Serialization, Ktor Client, Mordant, Moshi, OkHttp, OkIO, Picnic, Retrofit, Skrapeit, SqlDelight, Statemachine, ...](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/main/kotlin/playground),
 [KoTest, Mockk, Spek, Strikt, Mockito, Junit-Jupiter, ...](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/test/kotlin/framework) ...
 
 You are very welcome to contribute new samples (see contributing section below).
