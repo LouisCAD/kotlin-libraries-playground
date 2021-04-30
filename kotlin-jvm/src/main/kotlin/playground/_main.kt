@@ -30,6 +30,7 @@ fun main() {
     playground.kotlinx.html.main()
     playground.kotlinx.serialization.main()
     playground.ktor.client.main()
+    playground.markdown.main()
     playground.mordant.main()
     playground.moshi.main()
     playground.okhttp.main()

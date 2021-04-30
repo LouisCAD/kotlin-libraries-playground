@@ -46,6 +46,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:_")
     implementation("org.jetbrains.kotlin:kotlin-reflect:_")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:_")
+    implementation("org.jetbrains:markdown-jvm:_")
     implementation("org.kodein.db:kodein-db-jvm:_")
     implementation("org.kodein.db:kodein-db-serializer-kotlinx:_")
     implementation( "org.kodein.db:kodein-leveldb-jni-jvm-linux:_")
