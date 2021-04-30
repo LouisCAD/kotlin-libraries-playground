@@ -13,7 +13,6 @@ import playground.shouldBe
  * [Website](https://square.github.io/kotlinpoet)
  * [GitHub](https://github.com/square/kotlinpoet)
  */
-
 fun main() {
     println()
     println("# Kotlin Poet")

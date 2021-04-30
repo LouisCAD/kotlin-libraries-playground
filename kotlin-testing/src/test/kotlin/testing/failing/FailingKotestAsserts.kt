@@ -1,13 +1,6 @@
 package testing.failing
 
-import arrow.core.Either
-import arrow.core.NonEmptyList
-import arrow.core.Some
-import arrow.core.Validated
-import arrow.core.invalid
-import arrow.core.none
-import arrow.core.toOption
-import arrow.core.valid
+import arrow.core.*
 import io.kotest.assertions.arrow.either.shouldBeLeft
 import io.kotest.assertions.arrow.either.shouldBeRight
 import io.kotest.assertions.arrow.nel.shouldContain
@@ -128,8 +121,8 @@ class FailingKotestAsserts {
             optionSome.shouldBeNone()
             optionNone.shouldBeSome()
 
-            val rightEither = Either.right(1)
-            val leftEither = Either.left("ERROR!!")
+            val rightEither = Either.Right(1)
+            val leftEither = Either.Left("ERROR!!")
 
             leftEither.shouldBeRight()
             leftEither shouldBeRight 1

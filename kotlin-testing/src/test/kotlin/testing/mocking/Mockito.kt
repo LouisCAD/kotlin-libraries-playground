@@ -1,10 +1,10 @@
 package testing.mocking
 
+import com.nhaarman.mockitokotlin2.anyOrNull
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.verify
+import org.mockito.Mockito.*
 import org.mockito.junit.jupiter.MockitoExtension
 import testing.common.DataProvider
 import testing.common.Element
@@ -73,6 +73,6 @@ class Mockito {
 
         presenter.getOne(3)
 
-        verify(view).displayError()
+        verify(view, never()).displayDetails(anyOrNull())
     }
 }

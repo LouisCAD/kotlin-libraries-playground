@@ -1,13 +1,6 @@
 package testing.asserts
 
-import arrow.core.Either
-import arrow.core.NonEmptyList
-import arrow.core.Some
-import arrow.core.Validated
-import arrow.core.invalid
-import arrow.core.none
-import arrow.core.toOption
-import arrow.core.valid
+import arrow.core.*
 import io.kotest.assertions.arrow.either.shouldBeLeft
 import io.kotest.assertions.arrow.either.shouldBeRight
 import io.kotest.assertions.arrow.nel.shouldContain
@@ -121,8 +114,8 @@ class KotestAsserts {
         optionSome.shouldBeSome()
 
 
-        val rightEither = Either.right(1)
-        val leftEither = Either.left("ERROR!!")
+        val rightEither = Either.Right(1)
+        val leftEither = Either.Left("ERROR!!")
 
         rightEither.shouldBeRight()
         rightEither shouldBeRight 1
@@ -181,13 +174,13 @@ class KotestAsserts {
             sent = false, message = "May you have an amazing day"
         )
 
-        withClue("sent field should be true") {
-            mail.sent shouldBe true
+        withClue("sent field should be false") {
+            mail.sent shouldBe false
         }
 
         mail.asClue {
             it.dateCreated shouldBeAfter LocalDate.of(2020, 10, 26)
-            it.sent shouldBe true
+            it.sent shouldBe false
         }
     }
 
@@ -200,7 +193,7 @@ class KotestAsserts {
 
         mail.asClue {
             it.dateCreated shouldBeAfter LocalDate.of(2020, 10, 26)
-            it.sent shouldBe true
+            it.sent shouldBe false
         }
     }
 

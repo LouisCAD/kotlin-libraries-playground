@@ -2,12 +2,12 @@
 
 package playground.skrapeit
 
+import it.skrape.core.fetcher.HttpFetcher
 import it.skrape.core.htmlDocument
 import it.skrape.expect
-import it.skrape.matchers.ContentTypes
-import it.skrape.matchers.toBe
-import it.skrape.matchers.toBePresentTimes
-import it.skrape.matchers.toContain
+import it.skrape.fetcher.Result
+import it.skrape.fetcher.skrape
+import it.skrape.matchers.*
 import it.skrape.selects.and
 import it.skrape.selects.html5.*
 import it.skrape.skrape
@@ -173,11 +173,12 @@ private fun `Build CSS selectors`() {
  * [Testing an Endpoint that is returning HTML](https://docs.skrape.it/docs/dsl/basic-test-scenario#testing-an-endpoint-that-is-returning-html)
  */
 private fun `Parse and verify response of url`() {
-    skrape {
-        url = "https://github.com/skrapeit/skrape.it"
+    skrape(HttpFetcher) {
+        request {
+            url = "https://github.com/skrapeit/skrape.it"
+        }
         expect {
-            statusCode toBe 200
-            statusMessage toBe "OK"
+            responseStatus.code toBe 200
             contentType toBe ContentTypes.TEXT_HTML_UTF8
 
             htmlDocument {

@@ -33,7 +33,7 @@ class KotestStringSpec : StringSpec({
     "check distance parse"{
         forAll(
             row(500L, 0.5),
-            row(750L, 0.8)
+            row(750L, 0.750)
         ) { meter, kilometer ->
             converter.parse(meter) shouldBe kilometer
         }

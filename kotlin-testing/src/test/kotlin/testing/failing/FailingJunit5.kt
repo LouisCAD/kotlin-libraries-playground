@@ -11,7 +11,7 @@ import testing.common.Kilometer
 import testing.common.Meter
 import java.util.stream.Stream
 
-class Junit5ParameterizedTest {
+class FailingJunit5ParameterizedTest {
     @ParameterizedTest
     @ArgumentsSource(TestInputProvider::class)
     fun `check distance parser`(input: Input) {
