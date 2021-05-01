@@ -4,6 +4,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 plugins {
     kotlin("jvm").apply(false)
     id("com.github.ben-manes.versions")
+    java
 }
 
 
@@ -62,4 +63,15 @@ tasks.named("dependencyUpdates", DependencyUpdatesTask::class.java).configure {
         isNonStable(candidate.version)
     }
     checkConstraints = true
+
+    /**
+     * Toolchains for JVM projects
+     * https://docs.gradle.org/current/userguide/toolchains.html
+     */
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(14))
+        }
+    }
+
 }
