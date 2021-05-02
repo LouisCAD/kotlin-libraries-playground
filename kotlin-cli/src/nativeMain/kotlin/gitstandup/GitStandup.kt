@@ -4,7 +4,6 @@ import io.executeShellCommand
 fun main(args: Array<String>) {
     val command = CliCommand()
         command.main(args)
-    command.run()
     if (true) return
     val currentDir = executeShellCommand("pwd")
     val gitRepositories = executeShellCommand("find . -name '.git' -maxdepth 2")
