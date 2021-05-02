@@ -15,10 +15,6 @@ allprojects {
         mavenCentral()
         google()
         jcenter()
-        maven("https://dl.bintray.com/kotlin/kotlin-eap/")
-        maven("https://kotlin.bintray.com/kotlinx/")
-        maven("https://dl.bintray.com/kodein-framework/Kodein-DB") // TODO: Remove when Kodein DB exits beta
-        maven("https://dl.bintray.com/jetbrains/markdown")
     }
 
     tasks.withType<KotlinCompile> {

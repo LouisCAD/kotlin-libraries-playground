@@ -2,7 +2,9 @@
 
 package playground.mordant
 
-import com.github.ajalt.mordant.TermColors
+import com.github.ajalt.mordant.rendering.TextColors.*
+import com.github.ajalt.mordant.rendering.TextStyles.*
+import com.github.ajalt.mordant.terminal.Terminal
 
 /**
  * ajalt/Clikt : Multiplatform command line interface parsing for Kotlin
@@ -11,38 +13,31 @@ import com.github.ajalt.mordant.TermColors
 
 fun main() {
     //Initialise TermColors
-    val termColors = TermColors()
+    val terminal = Terminal()
 
-    println(termColors.brightCyan("This is the usage of Mordant library, lets print some cool stuff on our terminal!"))
+    terminal.println(brightCyan("This is the usage of Mordant library, lets print some cool stuff on our terminal!"))
     //To print text in a particular color in supported terminals
-    println(termColors.red("Hey There! , this text should ideally be in Red Color!"))
+    terminal.println(red("Hey There! , this text should ideally be in Red Color!"))
 
     //To print multiple colors in a single sentence
-    with(termColors) {
-        println("${red("Kotlin")} ${white("is")} ${blue("awesome!")}")
-    }
+    terminal.println("${red("Kotlin")} ${white("is")} ${blue("awesome!")}")
+
 
     //Foreground and background colors Note: you can initialise TermColors()  directly within 'with' or re-use pre-initialised one
-    with(TermColors()) {
-        println((yellow on brightGreen)("This is highlighted text on your terminal!, isn't this cool?"))
-    }
+    terminal.println((yellow on brightGreen)("This is highlighted text on your terminal!, isn't this cool?"))
 
     //To change the background color alone
-    with(termColors) {
-        println("To checkout various kotlin libraries head to ${brightBlue.bg("kotlin-playground")}")
-    }
+    terminal.println("To checkout various kotlin libraries head to ${brightBlue.bg("kotlin-playground")}")
 
     //To create your own style and apply them anywhere!
-    with(termColors) {
+    run {
         val style = (bold + white + underline)
-        println(style("This text is supposed to by style according to the style variable"))
-        println(style("Now you have reused your styles as you can see this text allows follows the same custom styling!"))
+        terminal.println(style("This text is supposed to by style according to the style variable"))
+        terminal.println(style("Now you have reused your styles as you can see this text allows follows the same custom styling!"))
     }
 
     //Nested Styles - you can combine various styles using your creativity!
-    with(termColors) {
-        println(white("You ${(blue on yellow)("can ${(black + strikethrough)("nest")} styles")} arbitrarily and create awesome text!"))
-    }
+    terminal.println(white("You ${(blue on yellow)("can ${(black + strikethrough)("nest")} styles")} arbitrarily and create awesome text!"))
 
 
 }

@@ -27,6 +27,7 @@ kotlin {
         val nativeMain by getting {
             dependencies {
                 implementation("com.github.ajalt.clikt:clikt:_")
+                implementation ("com.github.ajalt.mordant:mordant:_")
             }
         }
     }
