@@ -8,11 +8,17 @@ import platform.posix.*
  */
 fun executeShellCommand(
     command: String,
+    directory: String? = null,
     trim: Boolean = true,
     redirectStderr: Boolean = true
 ): String {
+    if (directory != null) {
+        chdir(directory)
+    }
+
     val commandToExecute = if (redirectStderr) "$command 2>&1" else command
     val fp = popen(commandToExecute, "r") ?: error("Failed to run command: $command")
+
 
     val stdout = buildString {
         val buffer = ByteArray(4096)
