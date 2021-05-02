@@ -25,7 +25,9 @@ kotlin {
     }
     sourceSets {
         val nativeMain by getting {
-
+            dependencies {
+                implementation("com.github.ajalt.clikt:clikt:_")
+            }
         }
     }
 }
