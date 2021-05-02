@@ -7,6 +7,17 @@ plugins {
     java
 }
 
+/**
+ * Toolchains for JVM projects
+ * https://docs.gradle.org/current/userguide/toolchains.html
+ *
+ * Work around for Kotlin https://youtrack.jetbrains.com/issue/KT-43095
+ */
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
+}
 
 allprojects {
     group = "playground"
@@ -22,9 +33,19 @@ allprojects {
         maven("https://dl.bintray.com/jetbrains/markdown")
     }
 
+
+
     tasks.withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "1.8"
         kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+
+        kotlinOptions.jdkHome = javaToolchains
+            .compilerFor(java.toolchain)
+            .get()
+            .metadata
+            .installationPath
+            .asFile
+            .absolutePath
+        kotlinOptions.jvmTarget = java.toolchain.languageVersion.get().toString()
     }
 }
 
@@ -63,15 +84,5 @@ tasks.named("dependencyUpdates", DependencyUpdatesTask::class.java).configure {
         isNonStable(candidate.version)
     }
     checkConstraints = true
-
-    /**
-     * Toolchains for JVM projects
-     * https://docs.gradle.org/current/userguide/toolchains.html
-     */
-    java {
-        toolchain {
-            languageVersion.set(JavaLanguageVersion.of(14))
-        }
-    }
 
 }
