@@ -38,10 +38,10 @@ tasks.register<Copy>("install") {
     val destDir = "/usr/local/bin"
     dependsOn("runDebugExecutableNative")
     from("build/bin/native/debugExecutable") {
-        rename { "git-standup" }
+        rename { "standup" }
     }
     into(destDir)
     doLast {
-        println("git-standup installed into $destDir")
+        println("$ standup installed into $destDir")
     }
 }
