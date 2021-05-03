@@ -1,29 +1,39 @@
 import gitstandup.CliCommand
-import io.executeShellCommand
+import io.stdoutOfShellCommand
 
 
 fun main(args: Array<String>) {
     val command = CliCommand()
     command.main(args)
 
-    val currentDir = executeShellCommand("pwd")
-    val gitRepositories = executeShellCommand(command.findOptions())
+    val currentDir = stdoutOfShellCommand("pwd")
+    val gitRepositories = stdoutOfShellCommand(command.findCommand())
     gitRepositories.lines().forEach { path ->
-        val normalize = path.removePrefix("./").removeSuffix("/.git")
-        runStandup("$currentDir/$normalize", command)
+        val relativeRepositoryPath = path.removePrefix("./").removeSuffix("/.git")
+        runStandup("$currentDir/$relativeRepositoryPath", command)
     }
 }
 
 fun runStandup(directoryPath: String, command: CliCommand) {
-    println("# $directoryPath")
+    stdoutOfShellCommand("ls -l")
 
     // fetch the latest commits if necessary
     if (command.fetch) {
-        executeShellCommand("git fetch --all", directoryPath)
+        val fetchCommand = "git fetch --all"
+        if (command.verbose) println(fetchCommand)
+        stdoutOfShellCommand(fetchCommand, directoryPath)
     }
 
     // history
-    if (command.verbose) println(command.gitLogCommand())
-    val result = executeShellCommand(command.gitLogCommand(), directoryPath)
-    println(result)
+    val result = stdoutOfShellCommand(command.gitLogCommand(), directoryPath)
+    if (result.isNotBlank()) {
+        println("# $directoryPath")
+        println(result)
+    } else if (command.verbose){
+        println("# $directoryPath")
+        println("No commits from ${command.authorName()} during this period")
+    }
+    if (command.debug) {
+        println("$ " + command.gitLogCommand())
+    }
 }

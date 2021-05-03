@@ -6,7 +6,7 @@ import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.types.int
-import io.executeShellCommand
+import io.stdoutOfShellCommand
 
 class CliCommand : CliktCommand(
     help = """
@@ -14,9 +14,9 @@ class CliCommand : CliktCommand(
     """.trimIndent(),
     epilog = """
         Examples:
-            standup -a "John Doe" -w "MON-FRI" -m 3
+            git-standup -a "John Doe" -w "MON-FRI" -m 3
     """.trimIndent(),
-    name = "standup"
+    name = "git-standup"
 ) {
     init {
         completionOption()
@@ -40,6 +40,7 @@ class CliCommand : CliktCommand(
     val before: String by option("-B", "--before", help = "List commits before this date").default("")
     val `author-date` by option("-R", "--author-date", help = "Display the author date instead of the committer date").flag()
     val verbose by option(help = "verbose").flag(defaultForHelp = "disabled")
+    val debug by option(help = "debug").flag(defaultForHelp = "disabled")
     override fun run() {
         println(this)
         if (help) println(getFormattedHelp())
@@ -57,11 +58,7 @@ class CliCommand : CliktCommand(
         val gitPrettyFormat="%Cred%h%Creset - %s %Cgreen($gitPrettyDate) %C(bold blue)<%an>%Creset"
         val gitDateFormat= if (`date-format`.isBlank()) "relative" else `date-format`
         val color = "always" // ???
-        val author = when(authorOpt) {
-            "all" -> ".*"
-            "me"-> executeShellCommand("git config user.name")
-            else -> authorOpt
-        }
+        val author = authorName()
         append("git '--no-pager' 'log' '$branch' '--no-merges' ")
         append(" --since='$since' $until ")
         append(" --author='$author' ")
@@ -71,14 +68,21 @@ class CliCommand : CliktCommand(
         if (`diff-stat` != null) append(" --stat ")
     }
 
-    fun findOptions() = buildString {
+    fun authorName() = when (authorOpt) {
+        "all" -> ".*"
+        "me" -> stdoutOfShellCommand("git config user.name")
+        else -> authorOpt
+    }
+
+    fun findCommand() = buildString {
         append("find . ")
         val maxDepth = if (depth == -1) 2 else (depth + 1)
         append(" -maxdepth $maxDepth ")
 
         if (`symbolic-links`) append(" -L ")
 
-        append(" -mindepth 0 -name .git ")
+        append(" -mindepth 0 ")
+        append(" -name .git -type d ")
     }.also { println("$ $it") }
 
 }
