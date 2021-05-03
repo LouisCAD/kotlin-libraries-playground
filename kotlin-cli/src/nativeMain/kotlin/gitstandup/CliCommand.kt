@@ -13,6 +13,9 @@ class CliCommand : CliktCommand(
        Recall what you did on the last working day ..or be nosy and find what someone else did.
     """.trimIndent(),
     epilog = """
+        Repositories will be searched in the current directory
+        unless a file `.git-standup-whitelist` is found that contains repository paths.
+
         Examples:
             git-standup -a "John Doe" -w "MON-FRI" -m 3
     """.trimIndent(),
@@ -75,12 +78,15 @@ class CliCommand : CliktCommand(
     }
 
     fun findCommand() = buildString {
-        append("find . ")
         val maxDepth = if (depth == -1) 2 else (depth + 1)
         append(" -maxdepth $maxDepth ")
 
         if (`symbolic-links`) append(" -L ")
 
+        append("find ")
+        append(searchPath)
+        append(" -maxdepth $maxDepth ")
+        append(withLinks)
         append(" -mindepth 0 ")
         append(" -name .git -type d ")
     }.also { println("$ $it") }

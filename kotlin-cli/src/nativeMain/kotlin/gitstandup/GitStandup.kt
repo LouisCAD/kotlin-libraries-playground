@@ -1,6 +1,7 @@
 import gitstandup.CliCommand
 import io.stdoutOfShellCommand
 
+val GIT_STANDUP_WHITELIST = ".git-standup-whitelist"
 
 fun main(args: Array<String>) {
     val command = CliCommand()
@@ -29,11 +30,11 @@ fun runStandup(directoryPath: String, command: CliCommand) {
     if (result.isNotBlank()) {
         println("# $directoryPath")
         println(result)
-    } else if (command.verbose){
+    } else if (command.silence.not()){
         println("# $directoryPath")
         println("No commits from ${command.authorName()} during this period")
     }
-    if (command.debug) {
+    if (command.verbose) {
         println("$ " + command.gitLogCommand())
     }
 }
