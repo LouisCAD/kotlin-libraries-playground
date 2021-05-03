@@ -1,6 +1,5 @@
 package gitstandup
 
-import GIT_STANDUP_WHITELIST
 import com.github.ajalt.clikt.completion.completionOption
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.default
@@ -28,7 +27,7 @@ class CliCommand : CliktCommand(
         completionOption()
     }
 
-    val authorOpt: String by option("--author", "-a", help = "author name").default("me")
+    val authorOpt: String by option("--author", "-a", help = "Specify author to restrict search to").default("me")
     val branch: String by option(
         "--branch",
         "-b",
@@ -51,7 +50,7 @@ class CliCommand : CliktCommand(
         "--date-format",
         help = "Specify the number of days back until this day"
     ).default("")
-    val help: Boolean by option("-h", "--help", help = "Dispaly this help screen").flag()
+    val help: Boolean by option("-h", "--help", help = "Display this help screen").flag()
     val `gpg-signed` by option(
         "-g",
         "--gpg-signed",
@@ -73,9 +72,9 @@ class CliCommand : CliktCommand(
         help = "Display the author date instead of the committer date"
     ).flag()
     val verbose by option(help = "verbose").flag(defaultForHelp = "disabled")
+
     override fun run() {
         if (verbose) println(this)
-        if (help) println(getFormattedHelp())
     }
 
     fun gitLogCommand() = buildString {
@@ -106,26 +105,25 @@ class CliCommand : CliktCommand(
 
     fun authorName() = when (authorOpt) {
         "all" -> ".*"
-        "me" -> stdoutOfShellCommand("git config user.name")
+        "me" -> stdoutOfShellCommand("git config user.name", ".", trim=true, redirectStderr = true)
         else -> authorOpt
     }
 
-    fun findCommand() = buildString {
+    val GIT_STANDUP_WHITELIST = ".git-standup-whitelist"
+
+    fun findCommand(): String {
         val maxDepth = if (depth == -1) 2 else (depth + 1)
         val withLinks = if (`symbolic-links`) " -L " else ""
         val searchPath = when {
-            // TODO check whether it works when the path contains space
             fileIsReadable(GIT_STANDUP_WHITELIST) -> readAllText(GIT_STANDUP_WHITELIST).escapePaths()
             else -> " . "
         }
 
-        append("find ")
-        append(searchPath)
-        append(" -maxdepth $maxDepth ")
-        append(withLinks)
-        append(" -mindepth 0 ")
-        append(" -name .git -type d ")
-    }.also { if (verbose) println("$ $it") }
+        return """
+            find $searchPath -maxdepth  $maxDepth $withLinks -mindepth 0 -name .git
+        """.trimIndent()
+            .also { if (verbose) println("$ $it") }
+    }
 
     /* handle paths that contains whitespace **/
     private fun String.escapePaths(): String =

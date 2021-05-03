@@ -6,15 +6,13 @@ import platform.posix.*
 /**
  * https://stackoverflow.com/questions/57123836/kotlin-native-execute-command-and-get-the-output
  */
-fun stdoutOfShellCommand(
-    command: String,
-    directory: String? = null,
-    trim: Boolean = true,
-    redirectStderr: Boolean = true
+actual fun stdoutOfShellCommand(
+    command: String, // "find . -name .git"
+    directory: String,
+    trim: Boolean,
+    redirectStderr: Boolean
 ): String {
-    if (directory != null) {
-        chdir(directory)
-    }
+     chdir(directory)
 
     val commandToExecute = if (redirectStderr) "$command 2>&1" else command
     val fp = popen(commandToExecute, "r") ?: error("Failed to run command: $command")

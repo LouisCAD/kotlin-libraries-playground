@@ -1,14 +1,17 @@
 import gitstandup.CliCommand
 import io.stdoutOfShellCommand
 
-val GIT_STANDUP_WHITELIST = ".git-standup-whitelist"
-
 fun main(args: Array<String>) {
     val command = CliCommand()
     command.main(args)
 
-    val currentDir = stdoutOfShellCommand("pwd")
-    val gitRepositories = stdoutOfShellCommand(command.findCommand())
+    if (command.help) {
+        println(command.getFormattedHelp())
+        return
+    }
+
+    val currentDir = stdoutOfShellCommand("pwd", ".", trim=true, redirectStderr = true)
+    val gitRepositories = stdoutOfShellCommand(command.findCommand(),".", trim=true, redirectStderr = true)
     gitRepositories.lines().forEach { path ->
         val relativeRepositoryPath = path.removePrefix("./").removeSuffix("/.git")
         runStandup("$currentDir/$relativeRepositoryPath", command)
@@ -16,17 +19,16 @@ fun main(args: Array<String>) {
 }
 
 fun runStandup(directoryPath: String, command: CliCommand) {
-    stdoutOfShellCommand("ls -l")
 
     // fetch the latest commits if necessary
     if (command.fetch) {
         val fetchCommand = "git fetch --all"
         if (command.verbose) println(fetchCommand)
-        stdoutOfShellCommand(fetchCommand, directoryPath)
+        stdoutOfShellCommand(fetchCommand, directoryPath, trim=true, redirectStderr = true)
     }
 
     // history
-    val result = stdoutOfShellCommand(command.gitLogCommand(), directoryPath)
+    val result = stdoutOfShellCommand(command.gitLogCommand(), directoryPath, trim=true, redirectStderr = true)
     if (result.isNotBlank()) {
         println("# $directoryPath")
         println(result)

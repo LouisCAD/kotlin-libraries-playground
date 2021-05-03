@@ -26,6 +26,10 @@ kotlin {
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
+    jvm("desktop") {
+
+    }
+
     nativeTarget.apply {
         binaries {
             executable {
@@ -34,16 +38,23 @@ kotlin {
         }
     }
     sourceSets {
-        getByName("nativeTest") {
-        // TODO: add tests
-        // TODO: add GitHub actions
+        val commonMain by getting  {
 
         }
-        getByName("nativeMain") {
+        val commonTest by getting {}
+        val desktopMain by getting {
+            dependsOn(commonMain)
+        }
+        val desktopTest by getting {}
+        val nativeMain by getting {
+            dependsOn(commonMain)
             dependencies {
                 implementation("com.github.ajalt.clikt:clikt:_")
             }
         }
+        val nativeTest by getting {
+        }
+
     }
 }
 
@@ -59,7 +70,7 @@ tasks.register<Copy>("install") {
     }
     into(destDir)
     doLast {
-        println("$ standup installed into $destDir")
+        println("$ git-standup installed into $destDir")
     }
 }
 

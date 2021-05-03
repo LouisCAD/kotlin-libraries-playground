@@ -11,7 +11,7 @@ import platform.posix.*
  * **/
 
 
-fun readAllText(filePath: String): String {
+actual fun readAllText(filePath: String): String {
     val returnBuffer = StringBuilder()
     val file = fopen(filePath, "r") ?: throw IllegalArgumentException("Cannot open input file $filePath")
 
@@ -33,7 +33,7 @@ fun readAllText(filePath: String): String {
 }
 
 
-fun writeAllText(filePath: String, text: String) {
+actual fun writeAllText(filePath: String, text: String) {
     val file = fopen(filePath, "w") ?: throw IllegalArgumentException("Cannot open output file $filePath")
     try {
         memScoped {
@@ -45,12 +45,12 @@ fun writeAllText(filePath: String, text: String) {
 }
 
 
-fun writeAllLines(filePath: String, lines: List<String>, lineEnding: String = "\n") {
+actual fun writeAllLines(filePath: String, lines: List<String>) {
     val file = fopen(filePath, "w") ?: throw IllegalArgumentException("Cannot open output file $filePath")
     try {
         memScoped {
             lines.forEach {
-                if (fputs(it + lineEnding, file) == EOF) {
+                if (fputs(it + "\n", file) == EOF) {
                     throw Error("File write error")
                 }
             }
@@ -60,5 +60,5 @@ fun writeAllLines(filePath: String, lines: List<String>, lineEnding: String = "\
     }
 }
 
-fun fileIsReadable(filePath: String): Boolean =
+actual fun fileIsReadable(filePath: String): Boolean =
     access(filePath, R_OK ) == 0
