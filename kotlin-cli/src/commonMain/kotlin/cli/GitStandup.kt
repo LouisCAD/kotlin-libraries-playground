@@ -1,5 +1,6 @@
 package cli
 
+import cli.CliConfig.CURRENT_GIT_USER
 import cli.CliConfig.FIND
 import cli.CliConfig.GIT
 import io.ExecuteCommandOptions
@@ -14,19 +15,18 @@ object CliConfig {
     val GIT_STANDUP_WHITELIST = ".git-standup-whitelist"
     var GIT = "git"
     var FIND = "find"
+    var CURRENT_GIT_USER = "me"
 }
 
 fun runGitStandup(args: Array<String>) {
+    val options = ExecuteCommandOptions(directory = ".", abortOnError = true, redirectStderr = true, trim = true)
     GIT = findExecutable(GIT)
     FIND = findExecutable(FIND)
+    CURRENT_GIT_USER = executeCommandAndCaptureOutput(listOf(GIT, "config", "user.name"), options)
 
     val command = CliCommand()
-    val options = ExecuteCommandOptions(directory = ".", abortOnError = true, redirectStderr = true, trim = true)
     val currentDirectory = executeCommandAndCaptureOutput(listOf("pwd"), options).trim()
 
-    command.currentGitUser = executeCommandAndCaptureOutput(
-        listOf(GIT, "config", "user.name"), options
-    )
     command.main(args)
 
     if (command.help) {

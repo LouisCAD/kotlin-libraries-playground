@@ -1,6 +1,7 @@
 package cli
 
 import cli.CliConfig.COMMAND_NAME
+import cli.CliConfig.CURRENT_GIT_USER
 import cli.CliConfig.FIND
 import cli.CliConfig.GIT
 import cli.CliConfig.GIT_STANDUP_WHITELIST
@@ -87,19 +88,21 @@ class CliCommand : CliktCommand(
         val since = if (daysTo == 1) "yesterday" else "$daysTo days ago"
         val after = if (afterOpt.isNotBlank()) "--after=$afterOpt" else ""
         val gitPrettyDate = if (`author-date`) "%ad" else "%cd"
-        val gitPrettyFormat = "%Cred%h%Creset - %s %Cgreen($gitPrettyDate) %C(bold blue)<%an>%Creset"
         val gitDateFormat = if (`date-format`.isBlank()) "relative" else `date-format`
         val color = "always" // ???
         val author = authorName()
+        var gitPrettyFormat = "'%Cred%h%Creset - %s %Cgreen($gitPrettyDate) %C(bold blue)<%an>%Creset'"
+        if (`gpg-signed`) gitPrettyFormat += " %C(yellow)gpg: %G?%Creset"
         val until = when {
             daysUntil != 0 -> "--until='${daysUntil} days ago'"
             before.isNotBlank() -> "--until='$before'"
             else -> ""
         }
 
-        args += listOf(GIT, "--no-pager", "log", "--no-merges")
+        args += listOf(GIT, "--no-pager", "log")
         args += branch.split(" ")
-        args += "--since='$since'"
+        args += "--no-merges"
+        args += "--since=$since"
         args += until
         args += after
         args += "--author=$author"
@@ -112,10 +115,9 @@ class CliCommand : CliktCommand(
         return args
     }
 
-    lateinit var currentGitUser: String
     fun authorName() = when (authorOpt) {
         "all" -> ".*"
-        "me" -> currentGitUser
+        "me" -> CURRENT_GIT_USER
         else -> authorOpt
     }
 
