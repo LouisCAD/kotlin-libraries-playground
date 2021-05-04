@@ -1,5 +1,9 @@
 package cli
 
+import cli.CliConfig.COMMAND_NAME
+import cli.CliConfig.FIND
+import cli.CliConfig.GIT
+import cli.CliConfig.GIT_STANDUP_WHITELIST
 import com.github.ajalt.clikt.completion.completionOption
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.default
@@ -18,9 +22,9 @@ class CliCommand : CliktCommand(
         unless a file `.git-standup-whitelist` is found that contains repository paths.
 
         Examples:
-            git-standup -a "John Doe" -w "MON-FRI" -m 3
+            $COMMAND_NAME -a "John Doe" -w "MON-FRI" -m 3
     """.trimIndent(),
-    name = "git-standup"
+    name = COMMAND_NAME
 ) {
     init {
         completionOption()
@@ -115,7 +119,6 @@ class CliCommand : CliktCommand(
         else -> authorOpt
     }
 
-    val GIT_STANDUP_WHITELIST = ".git-standup-whitelist"
 
     fun findCommand(): List<String> {
         val args = mutableListOf<String>()
@@ -134,11 +137,5 @@ class CliCommand : CliktCommand(
         args += ".git"
         return args.also { if (verbose) println("$ $it") }
     }
-
-    /* handle paths that contains whitespace **/
-    private fun String.escapePaths(): String =
-        this.lines().joinToString(separator = " ", prefix = " ", postfix = " ") { path ->
-            if (path.contains(" ")) "'$path'" else path
-        }
 }
 

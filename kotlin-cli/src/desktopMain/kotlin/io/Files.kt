@@ -21,7 +21,7 @@ actual fun executeCommandAndCaptureOutput(
     options: ExecuteCommandOptions
 ): String {
     val builder = ProcessBuilder()
-    builder.command(command)
+    builder.command(command.filter { it.isNotBlank() })
     builder.directory(File(options.directory))
     val process = builder.start()
     val stdout = process.inputStream.bufferedReader().use { it.readText() }
@@ -31,3 +31,7 @@ actual fun executeCommandAndCaptureOutput(
     val output = if (stderr.isBlank()) stdout else "$stdout $stderr"
     return if (options.trim) output.trim() else output
 }
+
+
+actual fun findExecutable(executable: String): String =
+    executeCommandAndCaptureOutput(listOf("which", executable), ExecuteCommandOptions(".", true, false, true))

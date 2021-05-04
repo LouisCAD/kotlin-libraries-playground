@@ -62,3 +62,6 @@ actual fun writeAllLines(filePath: String, lines: List<String>) {
 
 actual fun fileIsReadable(filePath: String): Boolean =
     access(filePath, R_OK ) == 0
+
+actual fun findExecutable(executable: String): String =
+    executable

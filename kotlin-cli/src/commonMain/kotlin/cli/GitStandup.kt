@@ -1,14 +1,25 @@
 package cli
 
+import cli.CliConfig.FIND
+import cli.CliConfig.GIT
 import io.ExecuteCommandOptions
 import io.executeCommandAndCaptureOutput
 import io.fileIsReadable
+import io.findExecutable
+import kotlin.native.concurrent.ThreadLocal
 
-val GIT = "/usr/local/bin/git"
-val FIND = "/usr/bin/find"
-// /usr/bin/find ~/IdeaProjects/kotlin-libraries-playground/ ~/IdeaProjects/refreshVersions  -maxdepth 2 -mindepth 0 -name .git
+@ThreadLocal
+object CliConfig {
+    val COMMAND_NAME = "git-standup"
+    val GIT_STANDUP_WHITELIST = ".git-standup-whitelist"
+    var GIT = "git"
+    var FIND = "find"
+}
+
 fun runGitStandup(args: Array<String>) {
-    println("readble? " + fileIsReadable("/Users/jmfayard/.git"))
+    GIT = findExecutable(GIT)
+    FIND = findExecutable(FIND)
+
     val command = CliCommand()
     val options = ExecuteCommandOptions(directory = ".", abortOnError = true, redirectStderr = true, trim = true)
     val currentDirectory = executeCommandAndCaptureOutput(listOf("pwd"), options).trim()
@@ -23,19 +34,22 @@ fun runGitStandup(args: Array<String>) {
         return
     }
     val gitRepositories =
-        executeCommandAndCaptureOutput(command.findCommand(), options.copy(abortOnError = false, directory = currentDirectory))
+        executeCommandAndCaptureOutput(
+            command.findCommand(),
+            options.copy(abortOnError = false, directory = currentDirectory)
+        )
     gitRepositories.lines().filter { it.contains(".git") }.forEach { path ->
         val repositoryPath = when {
             path.startsWith("./") -> "$currentDirectory/" + path.removePrefix("./")
             else -> path
         }.removeSuffix(".git").removeSuffix("/")
-        println("path: $path => $repositoryPath")
         findCommitsInRepo(repositoryPath, command)
     }
 }
 
 fun findCommitsInRepo(repositoryPath: String, command: CliCommand) {
-    val options = ExecuteCommandOptions(directory = repositoryPath, abortOnError = true, redirectStderr = true, trim = true)
+    val options =
+        ExecuteCommandOptions(directory = repositoryPath, abortOnError = true, redirectStderr = true, trim = true)
 
     if (fileIsReadable("$repositoryPath/.git").not()) {
         if (command.verbose) println("Skipping non-repository with path='$repositoryPath'")
@@ -55,9 +69,7 @@ fun findCommitsInRepo(repositoryPath: String, command: CliCommand) {
     }
 
     // history
-    val result = executeCommandAndCaptureOutput(
-        command.gitLogCommand().also { if (command.verbose) println("$repositoryPath $ $it") },
-        options)
+    val result = executeCommandAndCaptureOutput(command.gitLogCommand(), options)
     if (result.isNotBlank()) {
         println("# $repositoryPath")
         println(result)

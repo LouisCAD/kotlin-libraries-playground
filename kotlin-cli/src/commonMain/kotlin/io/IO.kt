@@ -1,5 +1,6 @@
 package io
 
+
 expect fun readAllText(filePath: String): String
 
 expect fun writeAllText(filePath: String, text: String)
@@ -22,3 +23,6 @@ data class ExecuteCommandOptions(
     val redirectStderr: Boolean,
     val trim: Boolean
 )
+
+// call $ which $executable on the JVM
+expect fun findExecutable(executable: String): String
