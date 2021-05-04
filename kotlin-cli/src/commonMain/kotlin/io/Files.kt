@@ -11,9 +11,14 @@ expect fun writeAllLines(
 
 expect fun fileIsReadable(filePath: String): Boolean
 
-expect fun stdoutOfShellCommand(
-    command: String,
-    directory: String,
-    trim: Boolean,
-    redirectStderr: Boolean
+expect fun executeCommandAndCaptureOutput(
+    command: List<String>,
+    options: ExecuteCommandOptions
 ): String
+
+data class ExecuteCommandOptions(
+    val directory: String,
+    val abortOnError: Boolean,
+    val redirectStderr: Boolean,
+    val trim: Boolean
+)

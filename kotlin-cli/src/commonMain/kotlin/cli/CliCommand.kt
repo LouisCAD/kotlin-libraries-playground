@@ -1,4 +1,4 @@
-package gitstandup
+package cli
 
 import com.github.ajalt.clikt.completion.completionOption
 import com.github.ajalt.clikt.core.CliktCommand
@@ -8,7 +8,6 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.types.int
 import io.fileIsReadable
 import io.readAllText
-import io.stdoutOfShellCommand
 
 class CliCommand : CliktCommand(
     help = """
@@ -77,10 +76,12 @@ class CliCommand : CliktCommand(
         if (verbose) println(this)
     }
 
-    fun gitLogCommand() = buildString {
+    fun gitLogCommand(): List<String> {
+        val args = mutableListOf<String>()
+
         val branch = if (branch.isBlank()) "--all" else "--first-parent $branch"
         val since = if (daysTo == 1) "yesterday" else "$daysTo days ago"
-        val after = if (afterOpt.isNotBlank()) " --after='$afterOpt' " else ""
+        val after = if (afterOpt.isNotBlank()) "--after=$afterOpt" else ""
         val gitPrettyDate = if (`author-date`) "%ad" else "%cd"
         val gitPrettyFormat = "%Cred%h%Creset - %s %Cgreen($gitPrettyDate) %C(bold blue)<%an>%Creset"
         val gitDateFormat = if (`date-format`.isBlank()) "relative" else `date-format`
@@ -92,37 +93,46 @@ class CliCommand : CliktCommand(
             else -> ""
         }
 
-        append("git '--no-pager' 'log' '$branch' '--no-merges' ")
-        append(" --since='$since' ")
-        append(until)
-        append(after)
-        append(" --author='$author' ")
-        append(" --abbrev-commit --oneline ")
-        append(" --pretty=format:'$gitPrettyFormat' --date='$gitDateFormat' ")
-        append(" --color='$color' ")
-        if (`diff-stat` != null) append(" --stat ")
+        args += listOf(GIT, "--no-pager", "log", "--no-merges")
+        args += branch.split(" ")
+        args += "--since='$since'"
+        args += until
+        args += after
+        args += "--author=$author"
+        args += "--abbrev-commit"
+        args += "--oneline"
+        args += "--pretty=format:$gitPrettyFormat"
+        args += "--date=$gitDateFormat"
+        args += "--color=$color"
+        if (`diff-stat` != null) args += ("--stat")
+        return args
     }
 
+    lateinit var currentGitUser: String
     fun authorName() = when (authorOpt) {
         "all" -> ".*"
-        "me" -> stdoutOfShellCommand("git config user.name", ".", trim=true, redirectStderr = true)
+        "me" -> currentGitUser
         else -> authorOpt
     }
 
     val GIT_STANDUP_WHITELIST = ".git-standup-whitelist"
 
-    fun findCommand(): String {
-        val maxDepth = if (depth == -1) 2 else (depth + 1)
-        val withLinks = if (`symbolic-links`) " -L " else ""
-        val searchPath = when {
-            fileIsReadable(GIT_STANDUP_WHITELIST) -> readAllText(GIT_STANDUP_WHITELIST).escapePaths()
-            else -> " . "
-        }
+    fun findCommand(): List<String> {
+        val args = mutableListOf<String>()
 
-        return """
-            find $searchPath -maxdepth  $maxDepth $withLinks -mindepth 0 -name .git
-        """.trimIndent()
-            .also { if (verbose) println("$ $it") }
+        args += FIND
+        args += when {
+            fileIsReadable(GIT_STANDUP_WHITELIST) -> readAllText(GIT_STANDUP_WHITELIST).lines().map { it.trim().removeSuffix("/") }
+            else -> listOf(".")
+        }
+        if (`symbolic-links`) args += "-L"
+        args += "-maxdepth"
+        args += if (depth == -1) "2" else (depth + 1).toString()
+        args += "-mindepth"
+        args += "0"
+        args += "-name"
+        args += ".git"
+        return args.also { if (verbose) println("$ $it") }
     }
 
     /* handle paths that contains whitespace **/

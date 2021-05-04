@@ -3,7 +3,7 @@ plugins {
     kotlin("multiplatform")
 }
 
-group = "gitstandup"
+group = "cli"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -39,7 +39,9 @@ kotlin {
     }
     sourceSets {
         val commonMain by getting  {
-
+            dependencies {
+                implementation("com.github.ajalt.clikt:clikt:_")
+            }
         }
         val commonTest by getting {}
         val desktopMain by getting {
@@ -48,9 +50,7 @@ kotlin {
         val desktopTest by getting {}
         val nativeMain by getting {
             dependsOn(commonMain)
-            dependencies {
-                implementation("com.github.ajalt.clikt:clikt:_")
-            }
+
         }
         val nativeTest by getting {
         }

@@ -6,16 +6,16 @@ import platform.posix.*
 /**
  * https://stackoverflow.com/questions/57123836/kotlin-native-execute-command-and-get-the-output
  */
-actual fun stdoutOfShellCommand(
-    command: String, // "find . -name .git"
-    directory: String,
-    trim: Boolean,
-    redirectStderr: Boolean
+actual fun executeCommandAndCaptureOutput(
+    command: List<String>, // "find . -name .git"
+    options: ExecuteCommandOptions
 ): String {
-     chdir(directory)
-
-    val commandToExecute = if (redirectStderr) "$command 2>&1" else command
-    val fp = popen(commandToExecute, "r") ?: error("Failed to run command: $command")
+     chdir(options.directory)
+    val commandToExecute = command.joinToString(separator = " ") { arg ->
+        if (arg.contains(" ")) "'$arg'" else arg
+    }
+    val redirect = if (options.redirectStderr) " 2>&1 " else ""
+    val fp = popen("$commandToExecute $redirect", "r") ?: error("Failed to run command: $command")
 
     val stdout = buildString {
         val buffer = ByteArray(4096)
@@ -26,9 +26,9 @@ actual fun stdoutOfShellCommand(
     }
 
     val status = pclose(fp)
-    if (status != 0) {
-        throw Exception("Command `$command` failed with status $status${if (redirectStderr) ": $stdout" else ""}")
+    if (status != 0 && options.abortOnError) {
+        throw Exception("Command `$command` failed with status $status${if (options.redirectStderr) ": $stdout" else ""}")
     }
 
-    return if (trim) stdout.trim() else stdout
+    return if (options.trim) stdout.trim() else stdout
 }

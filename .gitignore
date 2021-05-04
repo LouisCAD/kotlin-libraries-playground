@@ -4,3 +4,4 @@ build/
 local.properties
 users.db/
 buildscan.log
+*.hprof
