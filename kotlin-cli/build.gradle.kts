@@ -43,11 +43,20 @@ kotlin {
                 implementation("com.github.ajalt.clikt:clikt:_")
             }
         }
-        val commonTest by getting {}
+        val commonTest by getting {
+            dependencies {
+                implementation(Kotlin.test.common)
+                implementation(Kotlin.test.annotationsCommon)
+            }
+        }
         val desktopMain by getting {
             dependsOn(commonMain)
         }
-        val desktopTest by getting {}
+        val desktopTest by getting {
+            dependencies {
+
+            }
+        }
         val nativeMain by getting {
             dependsOn(commonMain)
 
