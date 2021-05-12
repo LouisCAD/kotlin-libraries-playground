@@ -20,7 +20,7 @@ dependencies {
     testImplementation(Testing.mockito.kotlin)
     testImplementation(Testing.spek.dsl.jvm)
     testImplementation(Testing.spek.runner.junit5)
-    //testImplementation(Testing.spek.runtime.jvm)
+    testImplementation(Testing.spek.runtime.jvm)
     testImplementation(Testing.strikt.arrow)
     testImplementation(Testing.strikt.core)
     testImplementation("io.arrow-kt:arrow-core:0.11.0")
