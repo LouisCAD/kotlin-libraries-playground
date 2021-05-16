@@ -7,12 +7,16 @@ pluginManagement {
 
 plugins {
     id("com.gradle.enterprise") version "3.6.1"
-    id("de.fayard.refreshVersions") version "0.10.0"
+    id("de.fayard.refreshVersions") version "0.10.1-LOCAL-SNAPSHOT"
 }
 
 
 refreshVersions {
     enableBuildSrcLibs()
+
+    rejectVersionIf {
+        versionKey != "version.kotlinx.coroutines" && candidate.stabilityLevel.isLessStableThan(current.stabilityLevel)
+    }
 }
 
 // https://dev.to/jmfayard/the-one-gradle-trick-that-supersedes-all-the-others-5bpg
