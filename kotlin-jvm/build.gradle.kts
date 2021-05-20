@@ -26,7 +26,7 @@ dependencies {
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     implementation ("com.github.ajalt:mordant:_")
     implementation("com.beust:klaxon:_")
-    implementation("com.github.ajalt.clikt:clikt:_")
+    implementation(libs.clikt)
     implementation("com.github.kittinunf.fuel:fuel:_")
     implementation("com.github.kittinunf.fuel:fuel-kotlinx-serialization:_")
     implementation("com.h2database:h2:_")
