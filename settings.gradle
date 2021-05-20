@@ -34,3 +34,5 @@ rootProject.name = "kotlin-libraries-playground"
 include("kotlin-jvm")
 include("kotlin-testing")
 include("kotlin-codegen")
+
+enableFeaturePreview("VERSION_CATALOGS")
