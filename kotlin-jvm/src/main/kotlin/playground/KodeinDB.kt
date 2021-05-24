@@ -58,8 +58,9 @@ internal data class City(
     val city: String,
     val country: String
 ) : HasMetadata {
-    override fun getMetadata(db: ModelDB, vararg options: Options.Write): Metadata =
-        Metadata(city, "country" to country)
+    override fun getMetadata(db: ModelDB, vararg options: Options.Puts): Metadata {
+        return Metadata(city, "country" to country)
+    }
 }
 
 internal class UnsupportedCountryListener : DBListener<City> {
@@ -71,9 +72,8 @@ internal class UnsupportedCountryListener : DBListener<City> {
         typeName: ReadMemory,
         metadata: Metadata,
         size: Int,
-        options: Array<out Options.Write>
+        options: Array<out Options.Puts>
     ) {
         require(model.country in suppoortedCountries) { "Invalid country=${model.country} - supported: $suppoortedCountries" }
     }
-
 }
