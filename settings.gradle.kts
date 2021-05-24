@@ -31,7 +31,9 @@ gradleEnterprise {
 
 rootProject.name = "kotlin-libraries-playground"
 
-
+apply(from= "gradle/detekt-android-sdk.gradle")
+val hasAndroidSdk: Boolean by extra
+if (hasAndroidSdk) include("android")
 include("kotlin-jvm")
 include("kotlin-testing")
 include("kotlin-codegen")
