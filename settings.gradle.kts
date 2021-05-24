@@ -1,3 +1,4 @@
+include(":android")
 pluginManagement {
     repositories {
         gradlePluginPortal()
