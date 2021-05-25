@@ -1,0 +1,88 @@
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+}
+
+android {
+    compileSdk 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdk 21
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    google()
+    jcenter()
+    maven { url "https://www.jitpack.io" }
+}
+
+// BORDEL
+apply(from: '../libraries.gradle')
+
+// BORDEL
+ext.okhttpVersion = "4.9.1"
+
+dependencies {
+
+
+    implementation("org.tachiyomi:source-api:1.1")
+
+    implementation group: 'com.squareup.okio', name: 'okio', version: '2.10.0'
+
+
+    def lifecycleVersion = "2.3.0" // BORDEL
+    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-process:$lifecycleVersion")
+
+    implementation("org.jsoup:jsoup:1.12.0")
+
+    implementation("asm:asm-all:3.2.0")
+
+    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+
+    implementation("com.afollestad.material-dialogs:core:$materialDialogsVersion")
+
+    implementation("androidx.work:work-runtime-ktx:$workVersion")
+
+    implementation("junit:junit:" + junitVersion)
+
+    implementation(libs.test.assertj)
+
+    implementation(Dependencies.material)
+
+    // REFRESH VERSIONS
+    implementation("commons-io:commons-io:_")
+
+}
+
+
+configurations.all {
+    resolutionStrategy {
+        force 'asm:asm-all:3.3.1'
+    }
+}
+
