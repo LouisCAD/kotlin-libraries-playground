@@ -1,6 +1,7 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
         mavenLocal()
     }
 }
@@ -8,12 +9,16 @@ pluginManagement {
 
 plugins {
     id("com.gradle.enterprise") version "3.6.1"
-    id("de.fayard.refreshVersions") version "0.10.0"
+    id("de.fayard.refreshVersions") version "0.10.1-SNAPSHOT"
 }
 
 
 refreshVersions {
     enableBuildSrcLibs()
+
+    rejectVersionIf {
+        candidate.stabilityLevel.isLessStableThan(current.stabilityLevel)
+    }
 }
 
 // https://dev.to/jmfayard/the-one-gradle-trick-that-supersedes-all-the-others-5bpg
@@ -38,3 +43,6 @@ if (hasAndroidSdk) include("zenika")
 include("kotlin-jvm")
 include("kotlin-testing")
 include("kotlin-codegen")
+
+// Enable Gradle's version catalog support https://docs.gradle.org/current/userguide/platforms.html
+enableFeaturePreview("VERSION_CATALOGS")
