@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-java@v1
         with:
-          java-version: 8
+          java-version: 11
 
       # Execute Gradle commands in GitHub Actions workflows
       # => https://github.com/marketplace/actions/gradle-command
