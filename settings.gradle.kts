@@ -1,4 +1,8 @@
 include(":android")
+buildscript {
+    // BORDEL
+    extra["materialDialogsVersion"] = "3.1.1"
+}
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -37,3 +41,4 @@ if (hasAndroidSdk) include("android")
 include("kotlin-jvm")
 include("kotlin-testing")
 include("kotlin-codegen")
+include("kotlin-server")

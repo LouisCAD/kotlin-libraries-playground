@@ -1,0 +1,37 @@
+plugins {
+   id("org.jetbrains.kotlin.jvm")
+}
+
+// BORDEL
+apply(from: '../libraries.gradle')
+
+// BORDEL
+ext.okhttpVersion="4.9.1"
+
+dependencies {
+
+
+    implementation("org.tachiyomi:source-api:1.1")
+
+    implementation group: 'com.squareup.okio', name: 'okio', version: '2.10.0'
+
+    def lifecycleVersion = "2.3.0" // BORDEL
+    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-process:$lifecycleVersion")
+
+    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+
+    implementation("com.afollestad.material-dialogs:core:$materialDialogsVersion")
+
+    implementation("androidx.work:work-runtime-ktx:$workVersion")
+
+    implementation("junit:junit:" + junitVersion)
+
+    implementation(libs.test.assertj)
+
+    implementation(Dependencies.material)
+
+
+}
+
+
