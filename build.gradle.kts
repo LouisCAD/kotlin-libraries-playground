@@ -1,21 +1,22 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
+plugins {
+    kotlin("jvm").apply(false)
+    id("com.github.ben-manes.versions")
+}
+
 buildscript {
-    val kotlin_version by extra("1.5.10")
+    // BORDEL
+    val materialDialogsVersion by extra("3.1.1")
+
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
         classpath("com.android.tools.build:gradle:_")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
-}
-
-plugins {
-    kotlin("jvm").apply(false)
-    id("com.github.ben-manes.versions")
 }
 
 

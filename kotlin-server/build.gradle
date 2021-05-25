@@ -2,6 +2,22 @@ plugins {
    id("org.jetbrains.kotlin.jvm")
 }
 
+/** Sync ERRORS
+ *
+ Could not resolve: org.tachiyomi:source-api:1.1
+ Could not resolve: androidx.lifecycle:lifecycle-process:2.3.0
+ Could not resolve: org.jsoup:jsoup:1.12.0
+ Could not resolve: androidx.work:work-runtime-ktx:2.5.0
+ Could not resolve: com.google.android.material:material:1.4.0-beta01
+ */
+repositories {
+    mavenLocal()
+    mavenCentral()
+    google()
+    jcenter()
+    maven { url "https://www.jitpack.io" }
+}
+
 // BORDEL
 apply(from: '../libraries.gradle')
 
@@ -15,9 +31,12 @@ dependencies {
 
     implementation group: 'com.squareup.okio', name: 'okio', version: '2.10.0'
 
+
     def lifecycleVersion = "2.3.0" // BORDEL
     implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-process:$lifecycleVersion")
+
+    implementation("org.jsoup:jsoup:1.12.0")
 
     implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
 

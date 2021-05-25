@@ -1,14 +1,10 @@
-include(":android")
-buildscript {
-    // BORDEL
-    extra["materialDialogsVersion"] = "3.1.1"
-}
 pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenLocal()
     }
 }
+
 
 plugins {
     id("com.gradle.enterprise") version "3.6.1"

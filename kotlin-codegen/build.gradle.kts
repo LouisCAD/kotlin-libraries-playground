@@ -10,6 +10,8 @@ dependencies {
     implementation("com.squareup.moshi:moshi:_")
     kapt(Square.moshi.kotlinCodegen)
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
+
+    implementation("org.jsoup:jsoup:1.13.1")
 }
 
 
