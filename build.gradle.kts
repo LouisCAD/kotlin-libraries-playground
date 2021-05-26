@@ -7,7 +7,7 @@ plugins {
 }
 
 buildscript {
-    // BORDEL
+    // Root project's extra property
     val materialDialogsVersion by extra("3.1.1")
 
     repositories {

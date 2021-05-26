@@ -40,41 +40,48 @@ repositories {
     maven { url "https://www.jitpack.io" }
 }
 
-// BORDEL
 apply(from: '../libraries.gradle')
 
-// BORDEL
 ext.okhttpVersion = "4.9.1"
 
 dependencies {
 
-
+    // Simplest
     implementation("org.tachiyomi:source-api:1.1")
 
+    // Other syntax
     implementation group: 'com.squareup.okio', name: 'okio', version: '2.10.0'
 
-
-    def lifecycleVersion = "2.3.0" // BORDEL
+    // Local variable
+    def lifecycleVersion = "2.3.0"
     implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-process:$lifecycleVersion")
 
+    // Present in another module
     implementation("org.jsoup:jsoup:1.12.0")
 
+    // has a resolutionStragey
     implementation("asm:asm-all:3.2.0")
 
+    // Module's extra property
     implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
 
+    // Root project's extra property
     implementation("com.afollestad.material-dialogs:core:$materialDialogsVersion")
 
+    // gradle.properties
     implementation("androidx.work:work-runtime-ktx:$workVersion")
 
+    // apply(from: '../libraries.gradle')
     implementation("junit:junit:" + junitVersion)
 
+    // apply(from: '../libraries.gradle')
     implementation(libs.test.assertj)
 
+    // buildSrc/src/main/kotlin/Dependencies.kt
     implementation(Dependencies.material)
 
-    // REFRESH VERSIONS
+    // Managed by refreshVersions ❤️
     implementation("commons-io:commons-io:_")
 
 }

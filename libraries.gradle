@@ -1,4 +1,4 @@
-// BORDEL
+// apply(from: '../libraries.gradle')
 ext{
     slf4jVersion = '1.7.7'
     serenityCoreVersion = '2.0.81'
