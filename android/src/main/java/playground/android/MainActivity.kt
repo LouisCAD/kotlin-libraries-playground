@@ -15,8 +15,5 @@ class MainActivity : AppCompatActivity() {
         val adapter = LibraryAdapter(this,Suppliers.libraries)
         recyclerView.adapter = adapter
 
-
-
-
     }
 }
