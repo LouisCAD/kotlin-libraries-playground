@@ -3,11 +3,9 @@ package playground.android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MainActivity2 : AppCompatActivity() {
+class CoilSample : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
-
+        setContentView(R.layout.activity_coil_sample)
     }
-
 }

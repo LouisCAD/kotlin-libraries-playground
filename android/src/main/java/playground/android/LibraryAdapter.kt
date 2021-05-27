@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class LibraryAdapter(private val context:Context, private val libraries:List<LibraryName>):RecyclerView.Adapter<LibraryAdapter.MyViewHolder>() {
@@ -26,6 +27,26 @@ class LibraryAdapter(private val context:Context, private val libraries:List<Lib
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
        val library = libraries[position]
        holder.setData(library,position)
+        holder.itemView.setOnClickListener { listener(library) }
+    }
+
+    private fun listener(item: LibraryName) {
+
+        var intent = Intent()
+
+        when(item.name)
+        {
+            "Contour" -> {
+                intent = Intent(context,ContourSample::class.java)
+            }
+
+            "Coil" ->{
+                intent = Intent(context,CoilSample::class.java)
+            }
+        }
+
+          context.startActivity(intent)
+
     }
 
     override fun getItemCount(): Int {
