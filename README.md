@@ -56,7 +56,7 @@ There are several inefficient ways to do that:
 
 The `kotlin-libraries-playgound` contains samples for a growing number of good Kotlin libraries including
 [Apollo, CliKt, Kodein DI, Kodein DB, Exposed, Fuel, Hoplite, Klaxon, Konad, Konf, Kotlin Collections, Kotlin  Faker, Kotlin IO, Kotlinpoet, Kotlin Statistics, Kotlinx Serialization, Ktor Client, Mordant, Moshi, OkHttp, OkIO, Picnic, Retrofit, Skrapeit, SqlDelight, Statemachine, ...](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/main/kotlin/playground),
-[KoTest, Mockk, Spek, Strikt, Mockito, Junit-Jupiter, ...](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/test/kotlin/framework) ...
+[KoTest, Mockk, Spek, Strikt, Mockito, Junit-Jupiter, ...](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-testing/src/test/kotlin/testing) ...
 
 You are very welcome to contribute new samples (see contributing section below).
 
