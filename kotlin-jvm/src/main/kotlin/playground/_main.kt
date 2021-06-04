@@ -20,6 +20,7 @@ fun main() {
     playground.kodein.db.main()
     playground.konad.main()
     playground.konf.main()
+    playground.konform.main()
     playground.kotlin.collections.main()
     playground.kotlinfaker.main()
     playground.kotlinio.main()

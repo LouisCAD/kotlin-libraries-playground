@@ -38,6 +38,7 @@ dependencies {
     implementation("com.uchuhimo:konf:_")
     implementation("io.github.lucapiccinelli:konad:_")
     implementation("io.github.serpro69:kotlin-faker:_")
+    implementation("io.konform:konform:_")
     implementation("it.skrape:skrapeit-core:_")
     implementation("it.skrape:skrapeit-http-fetcher:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
