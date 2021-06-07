@@ -1,6 +1,7 @@
 package testing.style
 
 import io.kotest.core.spec.style.FreeSpec
+import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
 import testing.common.DistanceConverter
 import testing.common.Input
@@ -21,4 +22,19 @@ class KotestFreeSpec : FreeSpec({
             }
         }
     }
+
+    fun square(a: Int) = a*a
+
+    "squares" {
+       val testData = listOf(
+           2 to 4,
+           3 to 9,
+           4 to 16,
+           5 to 25
+       )
+        testData.forAll { (input, expected) ->
+            square(input) shouldBe expected
+        }
+    }
+
 })
