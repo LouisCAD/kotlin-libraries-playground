@@ -4,7 +4,7 @@ plugins {
     id("com.squareup.sqldelight")
     id("com.apollographql.apollo")
 
-    id("com.squareup.wire") version "3.7.0"
+    id("com.squareup.wire")
     /** kotlin("kapt") **/
     // NOTE: IF if your library uses kapt
     // NOTE: THEN it belongs in "kotlin-codegen", not here!
