@@ -2,6 +2,7 @@ include(":android")
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        mavenCentral()
         mavenLocal()
     }
 }
