@@ -30,6 +30,7 @@ dependencies {
     implementation("com.github.kittinunf.fuel:fuel:_")
     implementation("com.github.kittinunf.fuel:fuel-kotlinx-serialization:_")
     implementation("com.h2database:h2:_")
+    implementation("com.rabbitmq:amqp-client:_")
     implementation("com.sksamuel.hoplite:hoplite-core:_")
     implementation("com.sksamuel.hoplite:hoplite-hocon:_")
     implementation("com.sksamuel.hoplite:hoplite-yaml:_")
