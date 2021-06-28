@@ -41,6 +41,7 @@ fun main() {
     playground.skrapeit.main()
     playground.sqldelight.main()
     playground.statemachine.main()
+    playground.velocity.main()
     /**
      * Keep the list sorted to minimize merge conflicts on pull-requests!
      */

@@ -42,6 +42,8 @@ dependencies {
     implementation("io.konform:konform:_")
     implementation("it.skrape:skrapeit-core:_")
     implementation("it.skrape:skrapeit-http-fetcher:_")
+    implementation("org.apache.velocity.tools:velocity-tools-generic:_")
+    implementation("org.apache.velocity:velocity-engine-core:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-dao:_")
     implementation("org.jetbrains.exposed:exposed-java-time:_")
