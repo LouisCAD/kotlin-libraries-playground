@@ -57,6 +57,7 @@ dependencies {
     implementation("org.kodein.di:kodein-di:_")
     implementation("org.koin:koin-core:_")
     implementation("org.nield:kotlin-statistics:_")
+    implementation("org.slf4j:slf4j-simple:_")
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     implementation(JakeWharton.picnic)
     implementation(JakeWharton.retrofit2.converter.kotlinxSerialization)
