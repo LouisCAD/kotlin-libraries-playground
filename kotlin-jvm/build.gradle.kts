@@ -24,6 +24,7 @@ apollo {
 dependencies {
     implementation(project(":kotlin-codegen"))
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
+    implementation("app.cash.barber:barber:_")
     implementation ("com.github.ajalt:mordant:_")
     implementation("com.beust:klaxon:_")
     implementation("com.github.ajalt.clikt:clikt:_")

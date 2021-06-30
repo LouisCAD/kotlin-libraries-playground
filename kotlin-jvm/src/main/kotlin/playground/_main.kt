@@ -8,6 +8,7 @@ fun main() {
      * Keep the list sorted to minimize merge conflicts on pull-requests!
      */
     playground.apollo.main()
+    playground.barber.main()
     playground.clikt.main(arrayOf("--language", "FR", "--greeting", "Bonjour"))
     playground.clikt.main(arrayOf())
     playground.di.kodein.main()
