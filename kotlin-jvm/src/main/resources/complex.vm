@@ -1,0 +1,19 @@
+#* @vtlvariable name="customer" type="playground.velocity.VelocityCustomer" *#
+#* @vtlvariable name="name" type="java.lang.String" *#
+## This is a comment
+#* this is
+a multi-line
+comment
+ *#
+Hello $name
+#set($language = "French")
+#if($details)
+I speak $language
+#end
+#set($customer.Age = 41)
+Customer $customer.Name is $customer.Age years old.
+Is he old? #if($customer.isOld())true enough#{else}no way!#end
+Groceries:
+#foreach($grocery in $groceries)
+    - $grocery
+#end

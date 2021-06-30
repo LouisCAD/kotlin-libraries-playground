@@ -1,0 +1,4 @@
+#set( $foo = "Velocity" )
+<body>
+Hello $foo World!
+</body>

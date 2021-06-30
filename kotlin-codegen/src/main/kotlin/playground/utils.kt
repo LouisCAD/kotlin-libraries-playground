@@ -5,7 +5,7 @@ fun shouldThrow(message: String, block: () -> Any?) {
         block()
         "Expected a throwable, but nothing was thrown."
     } catch (e: Throwable) {
-        if (e.message == message) {
+        if ("$e".contains(message)) {
             println("Test: got expected exception <<$message>>")
             null
         } else {

@@ -68,7 +68,7 @@ private fun Config.printConfig() {
         Credentials:
         - username: ${this[CredentialsSpec.username]}
         - password: ${this[CredentialsSpec.password]}
-        
+
         Server:
         - domain: ${this[ServerSpec.domain]}
         - protocol: ${this[ServerSpec.protocol]}
