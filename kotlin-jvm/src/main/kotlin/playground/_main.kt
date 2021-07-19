@@ -38,6 +38,7 @@ fun main() {
     playground.okio.main()
     playground.picnic.main()
     playground.retrofit.main()
+    playground.rxjava.main()
     playground.skrapeit.main()
     playground.sqldelight.main()
     playground.statemachine.main()
