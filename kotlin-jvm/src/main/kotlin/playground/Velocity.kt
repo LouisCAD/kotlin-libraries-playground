@@ -28,7 +28,7 @@ fun main() {
 fun helloWorld(engine: VelocityEngine) {
     val context = VelocityContext()
     context.put("name", "Velocity")
-    val template: Template = engine.getTemplate("hello.vm")
+    val template: Template = engine.getTemplate("/hello.vm")
     template.apply(context) shouldBe """
         <body>
         Hello Velocity World!
@@ -45,7 +45,7 @@ fun complexExample(engine: VelocityEngine) {
         put("customer", VelocityCustomer("Jean-Michel", 39))
         put("groceries", listOf("apple", "milk"))
     }
-    engine.getTemplate("complex.vm").apply(context) shouldBe """
+    engine.getTemplate("/complex.vm").apply(context) shouldBe """
         Hello Velocity
         I speak French
         Customer Jean-Michel is 41 years old.
