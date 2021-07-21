@@ -20,8 +20,8 @@ fun main() {
     println("# Velocity")
 
     val engine = velocityEngine()
-    helloWorld(engine)
-    complexExample(engine)
+    if (engine.resourceExists("/hello.vm")) helloWorld(engine)
+    if (engine.resourceExists("/complex.vm")) complexExample(engine)
 }
 
 
