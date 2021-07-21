@@ -24,12 +24,14 @@ apollo {
 dependencies {
     implementation(project(":kotlin-codegen"))
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
+    implementation("app.cash.barber:barber:_")
     implementation ("com.github.ajalt:mordant:_")
     implementation("com.beust:klaxon:_")
     implementation("com.github.ajalt.clikt:clikt:_")
     implementation("com.github.kittinunf.fuel:fuel:_")
     implementation("com.github.kittinunf.fuel:fuel-kotlinx-serialization:_")
     implementation("com.h2database:h2:_")
+    implementation("com.rabbitmq:amqp-client:_")
     implementation("com.sksamuel.hoplite:hoplite-core:_")
     implementation("com.sksamuel.hoplite:hoplite-hocon:_")
     implementation("com.sksamuel.hoplite:hoplite-yaml:_")
@@ -42,6 +44,8 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxjava:_")
     implementation("it.skrape:skrapeit-core:_")
     implementation("it.skrape:skrapeit-http-fetcher:_")
+    implementation("org.apache.velocity.tools:velocity-tools-generic:_")
+    implementation("org.apache.velocity:velocity-engine-core:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-dao:_")
     implementation("org.jetbrains.exposed:exposed-java-time:_")
@@ -57,6 +61,7 @@ dependencies {
     implementation("org.kodein.di:kodein-di:_")
     implementation("org.koin:koin-core:_")
     implementation("org.nield:kotlin-statistics:_")
+    implementation("org.slf4j:slf4j-simple:_")
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
     implementation(JakeWharton.picnic)
     implementation(JakeWharton.retrofit2.converter.kotlinxSerialization)
