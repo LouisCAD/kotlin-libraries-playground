@@ -74,7 +74,7 @@ dependencies {
     implementation(Ktor.client.core)
     implementation(Ktor.client.okHttp)
     implementation(Ktor.client.serialization)
-    implementation("com.squareup:kotlinpoet:1.7.2")
+    implementation("com.squareup:kotlinpoet:_")
     implementation(Square.okHttp3.loggingInterceptor)
     implementation(Square.okHttp3.mockWebServer)
     implementation(Square.okHttp3.okHttp)

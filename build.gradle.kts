@@ -9,7 +9,7 @@ buildscript {
     }
     dependencies {
         classpath("com.android.tools.build:gradle:_")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:_")
     }
 }
 
