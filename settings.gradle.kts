@@ -1,4 +1,3 @@
-include(":android")
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -8,7 +7,7 @@ pluginManagement {
 
 plugins {
     id("com.gradle.enterprise") version "3.6.3"
-    id("de.fayard.refreshVersions") version "0.11.0"
+    id("de.fayard.refreshVersions") version "0.11.1-SNAPSHOT"
 }
 
 
