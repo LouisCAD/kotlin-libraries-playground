@@ -35,7 +35,7 @@ dependencies {
     implementation("com.sksamuel.hoplite:hoplite-core:_")
     implementation("com.sksamuel.hoplite:hoplite-hocon:_")
     implementation("com.sksamuel.hoplite:hoplite-yaml:_")
-    implementation("com.squareup.sqldelight:sqlite-driver:_")
+    implementation(Square.sqlDelight.drivers.jdbcSqlite)
     implementation("com.tinder.statemachine:statemachine:_")
     implementation("com.uchuhimo:konf:_")
     implementation("io.github.lucapiccinelli:konad:_")
@@ -74,7 +74,7 @@ dependencies {
     implementation(Ktor.client.core)
     implementation(Ktor.client.okHttp)
     implementation(Ktor.client.serialization)
-    implementation("com.squareup:kotlinpoet:_")
+    implementation(Square.kotlinPoet)
     implementation(Square.okHttp3.loggingInterceptor)
     implementation(Square.okHttp3.mockWebServer)
     implementation(Square.okHttp3.okHttp)
@@ -82,8 +82,8 @@ dependencies {
     implementation(Square.retrofit2.retrofit)
     implementation("com.apollographql.apollo:apollo-coroutines-support:_")
     implementation("com.apollographql.apollo:apollo-runtime:_")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-properties:_")
+    implementation(KotlinX.serialization.json)
+    implementation(KotlinX.serialization.properties)
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
 }
 
