@@ -44,7 +44,7 @@ You now face another challenging task: become familiar with its ecosystem of lib
 With time, you want to both acquire:
 
 - a **wider** knowledge of what good libraries are available in the ecosystem in general
-- a **deeper** knowledge of some specific libraries particulary important for you
+- a **deeper** knowledge of some specific libraries particularly important for you
 
 There are several inefficient ways to do that:
 
