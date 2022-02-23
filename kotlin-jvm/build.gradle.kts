@@ -46,6 +46,8 @@ dependencies {
     implementation("it.skrape:skrapeit-http-fetcher:_")
     implementation("org.apache.velocity.tools:velocity-tools-generic:_")
     implementation("org.apache.velocity:velocity-engine-core:_")
+    implementation("org.jdbi:jdbi3-core:_")
+    implementation("org.jdbi:jdbi3-kotlin-sqlobject:_")
     implementation("org.jetbrains.exposed:exposed-core:_")
     implementation("org.jetbrains.exposed:exposed-dao:_")
     implementation("org.jetbrains.exposed:exposed-java-time:_")
