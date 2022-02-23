@@ -17,6 +17,7 @@ fun main() {
     playground.exposed.main()
     playground.fuel.main()
     playground.hoplite.main()
+    playground.jdbi.main()
     playground.klaxon.main()
     playground.kodein.db.main()
     playground.konad.main()
