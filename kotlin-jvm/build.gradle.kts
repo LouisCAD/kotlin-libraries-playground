@@ -86,6 +86,8 @@ dependencies {
     implementation("com.apollographql.apollo:apollo-runtime:_")
     implementation(KotlinX.serialization.json)
     implementation(KotlinX.serialization.properties)
+    implementation("io.coil-kt:coil:0.9.1")
+
     // Keep dependencies sorted to minimize merge conflicts on pull-requests!
 }
 

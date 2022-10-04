@@ -34,7 +34,7 @@ android {
 }
 
 dependencies {
-
+    implementation("io.coil-kt:coil:0.9.1")
     implementation(Kotlin.stdlib)
     implementation(AndroidX.core.ktx)
     implementation(AndroidX.appCompat)
