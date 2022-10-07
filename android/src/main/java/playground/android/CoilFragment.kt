@@ -12,6 +12,13 @@ import coil.transform.RoundedCornersTransformation
 import java.io.File
 
 
+
+/**
+ * coil-kt/coil - An image loading library for Android backed by Kotlin Coroutines
+
+- [Website](https://coil-kt.github.io/coil/)
+- [GitHub coil-kt/coil](https://github.com/coil-kt/coil)
+ */
 class CoilFragment : Fragment() {
 
     private var ivFile: ImageView? = null
