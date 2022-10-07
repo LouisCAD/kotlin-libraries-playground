@@ -34,7 +34,7 @@ android {
 }
 
 dependencies {
-
+    implementation(COIL.compose)
     implementation(Kotlin.stdlib)
     implementation(AndroidX.core.ktx)
     implementation(AndroidX.appCompat)
