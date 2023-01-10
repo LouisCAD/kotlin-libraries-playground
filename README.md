@@ -1,8 +1,8 @@
 # Kotlin Libraries Playground
 
-A playground to gain a wider and deeper knowledge of the libraries in the Kotlin ecosystem
+This is a playground that offers a wider and more comprehensive knowledge of the libraries in the Kotlin ecosystem.
 
-Also the official sample for [gradle refreshVersions](https://github.com/jmfayard/refreshVersions)
+Also, it is the official sample for [gradle refreshVersions](https://github.com/jmfayard/refreshVersions)
 
 [![](https://user-images.githubusercontent.com/459464/93568735-ddcc9300-f990-11ea-952b-1c9a461f8e14.png)](http://www.youtube.com/watch?v=VhYERonB8co "Gradle refreshVersions")
 
@@ -37,7 +37,7 @@ You are very welcome to contribute your own library sample.
 
 There are [great resources to learn Kotlin](https://dev.to/jmfayard/best-ways-to-learn-kotlin-from-scratch-or-from-java-with-books-or-tutorials-online-or-in-the-ide-52cm).
 
-But once you master the language, you are not done just yet.
+However, mastering the Kotlin language is just the beginning.
 
 You now face another challenging task: become familiar with its ecosystem of libraries.
 
@@ -58,14 +58,14 @@ The `kotlin-libraries-playgound` contains samples for a growing number of good K
 [Apollo, CliKt, Kodein DI, Kodein DB, Exposed, Fuel, Hoplite, Klaxon, Konad, Konf, Kotlin Collections, Kotlin  Faker, Kotlin IO, Kotlinpoet, Kotlin Statistics, Kotlinx Serialization, Ktor Client, Mordant, Moshi, OkHttp, OkIO, Picnic, Retrofit, Skrapeit, SqlDelight, Statemachine, ...](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-jvm/src/main/kotlin/playground),
 [KoTest, Mockk, Spek, Strikt, Mockito, Junit-Jupiter, ...](https://github.com/LouisCAD/kotlin-libraries-playground/tree/main/kotlin-testing/src/test/kotlin/testing) ...
 
-You are very welcome to contribute new samples (see contributing section below).
+You are much welcome to contribute new samples (see contributing section below).
 
-For each library, we have a sample usage that is:
+For each library, we have a sample usage, that is:
 
 - self-contained (own package and main function, usually one file)
 - simple, yet meaningful (no fancy coffee machine with [termosiphon](https://github.com/google/dagger/tree/master/examples/maven/coffee/src/main/java/example/dagger))
 
-Here is for example the sample usage for [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
+For example, here is a sample usage: [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
 
 ```kotlin
 package playground.kotlinx.serialization
@@ -87,7 +87,7 @@ internal data class User(
 ```
 
 
-## 🔭 Deepening your understanding of one library
+## 🔭 Expanding your understanding of one library
 
 Clone this repository and make it yours.
 
